@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>공유 자료실</title>
+<meta name="description" content="정성헌 목사 신학 아카이브 공유 자료실. 유사종교, 신학지남, 신앙고백 세 자료를 한 파일씩 바로 내려받거나 열어 볼 수 있습니다.">
+<style>
+:root{
+  --navy:#162d47; --navy2:#1d3a5c; --navy3:#24466c;
+  --ink:#0f172a; --muted:#46586d; --bg:#f6f8fb; --paper:#fff;
+  --line:#d5dfe9; --accent:#8c2434; --accent2:#6f1a28;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-size:17px;line-height:1.8;word-break:keep-all;overflow-wrap:break-word}
+h1,h2,p,ul,li{margin:0;padding:0}
+a{color:var(--navy3);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+
+header{background:var(--navy);color:#fff;padding:42px 0 38px;border-bottom:4px solid var(--accent)}
+header .kicker{display:inline-block;font-size:.8em;letter-spacing:.14em;color:#b9cde3;font-weight:700}
+header h1{margin-top:12px;font-size:1.95em;line-height:1.3;letter-spacing:-.03em;font-weight:800;color:#fff}
+header p.sub{margin-top:12px;color:#c9d9ea;font-size:.95em;line-height:1.7}
+
+main{padding:34px 0 8px}
+
+.top{display:inline-flex;align-items:center;gap:6px;margin-bottom:22px;padding:11px 16px;
+  background:#eff3f8;border:1px solid #dde7f1;border-radius:11px;font-size:.93em;font-weight:700;color:var(--navy3)}
+.top:hover{background:#e5edf6}
+
+.card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  padding:26px 24px 24px;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 26px rgba(15,23,42,.07);
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.card+.card{margin-top:18px}
+.card:hover{transform:translateY(-3px);border-color:#b7c8da;
+  box-shadow:0 2px 4px rgba(15,23,42,.07),0 16px 34px rgba(15,23,42,.12)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.card .tag{display:inline-block;font-size:.78em;font-weight:800;letter-spacing:.06em;
+  color:var(--accent);background:#fbeef0;border:1px solid #e8c9cf;border-radius:999px;padding:3px 11px}
+.card h2{margin-top:14px;font-size:1.45em;line-height:1.35;letter-spacing:-.02em;font-weight:800;color:var(--navy)}
+.card .lead{margin-top:10px;color:var(--muted);font-size:.94em;line-height:1.8}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.chips li{font-size:.82em;color:var(--navy2);background:#eff3f8;border:1px solid #dde7f1;
+  border-radius:8px;padding:5px 10px;line-height:1.4}
+.go{margin-top:20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;min-height:54px;background:var(--accent);color:#fff;font-weight:800;font-size:1em;
+  border-radius:12px;letter-spacing:.01em;box-shadow:0 6px 16px rgba(140,36,52,.26)}
+.card:hover .go{background:var(--accent2)}
+
+.note{margin:24px 0 0;padding:16px 18px;background:#f3f6fa;border:1px solid var(--line);
+  border-left:4px solid var(--navy3);border-radius:10px;color:var(--muted);font-size:.88em;line-height:1.8}
+.note b{color:var(--navy2)}
+
+footer{margin-top:36px;padding:26px 0 44px;border-top:1px solid var(--line);color:var(--muted);font-size:.86em;line-height:1.9}
+footer b{color:var(--navy3)}
+
+@media (max-width:520px){
+  body{font-size:16px}
+  header{padding:34px 0 30px}
+  header h1{font-size:1.55em}
+  .card{padding:22px 18px 20px;border-radius:14px}
+  .card h2{font-size:1.25em}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="kicker">정성헌 목사 신학 아카이브</span>
+    <h1>공유 자료실</h1>
+    <p class="sub">나누어 드릴 세 가지 자료를 한 파일씩 모았습니다. 필요한 것을 골라 바로 여십시오.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <a class="top" href="../">&larr; 첫 화면으로</a>
+
+    <a class="card" href="./유사종교.html">
+      <span class="tag">자료 1</span>
+      <h2>유사종교(類似宗敎)</h2>
+      <p class="lead">꾸란과 이슬람, 한국의 유사종교와 이단, 자유주의 신학, 문서설과 성경비평, 퀴어신학, 무신론과 사탄주의 — 여섯 진영의 주장을 그들의 근거와 논조 그대로 왼쪽에, 개혁주의·성경신학·언약신학의 대조를 오른쪽에 두었습니다. 부록으로 꾸란 114수라 6,236절 한글 전문을 실었습니다.</p>
+      <ul class="chips">
+        <li>꾸란과 이슬람 9항목</li>
+        <li>유사종교와 이단 16항목</li>
+        <li>자유주의 신학 8항목</li>
+        <li>문서설과 성경비평 8항목</li>
+        <li>퀴어신학 19항목</li>
+        <li>무신론과 사탄주의 8항목</li>
+        <li>부록 · 꾸란 114수라</li>
+      </ul>
+      <span class="go">유사종교 열기 →</span>
+    </a>
+
+    <a class="card" href="./신학지남.html">
+      <span class="tag">자료 2</span>
+      <h2>신학지남</h2>
+      <p class="lead">《신학지남》 전편을 한 파일로 모은 통합판입니다. 통권별로 넘겨 읽고, 낱말로 찾고, 시대별로 모아 볼 수 있습니다. 파일이 37MB로 크기 때문에 처음 열 때 네트워크 속도에 따라 몇 초 걸릴 수 있습니다.</p>
+      <ul class="chips">
+        <li>통권별 보기</li>
+        <li>낱말 검색</li>
+        <li>시대별 모아보기</li>
+        <li>한 파일 오프라인 문서 (약 37MB)</li>
+      </ul>
+      <span class="go">신학지남 열기 →</span>
+    </a>
+
+    <a class="card" href="./신앙고백.html">
+      <span class="tag">자료 3</span>
+      <h2>신앙고백</h2>
+      <p class="lead">시대순으로 이어지는 교회의 신앙고백을 한자리에서 읽을 수 있게 엮었습니다. 각 고백의 역사적 배경, 주제별 비교, 본문을 함께 담았고 상단에서 시대를 골라 옮겨 다니실 수 있습니다.</p>
+      <ul class="chips">
+        <li>시대순 연대기</li>
+        <li>역사적 배경</li>
+        <li>주제별 비교·검색</li>
+        <li>본문 전문</li>
+      </ul>
+      <span class="go">신앙고백 열기 →</span>
+    </a>
+
+    <p class="note"><b>신학지남</b>은 약 37MB짜리 한 파일이라 처음 여실 때 네트워크 속도에 따라 몇 초 걸릴 수 있습니다. 한 번 열린 뒤에는 기기 안에서 바로 넘겨 보실 수 있고, 세 자료 모두 PC·태블릿·휴대전화에서 그대로 열립니다.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>대구선교교회</b> · 대한예수교 장로회 재건총회<br>
+    만든이 정성헌 목사 · 문의 <a href="mailto:c56612@daum.net">c56612@daum.net</a>
+  </div>
+</footer>
+
+</body>
+</html>
