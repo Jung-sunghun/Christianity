@@ -23,7 +23,14 @@ a{color:var(--navy3);text-decoration:none}
 header{background:var(--navy);color:#fff;padding:44px 0 40px;border-bottom:4px solid var(--accent)}
 header .kicker{display:inline-block;font-size:.8em;letter-spacing:.14em;color:#b9cde3;font-weight:700}
 header h1{margin-top:12px;font-size:2.05em;line-height:1.3;letter-spacing:-.03em;font-weight:800;color:#fff}
-header p.sub{margin-top:14px;color:#c9d9ea;font-size:.95em;line-height:1.7}
+header .creed{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16)}
+header .creed .item{display:flex;align-items:flex-start;gap:13px}
+header .creed .item+.item{margin-top:16px}
+header .creed .label{flex:0 0 auto;margin-top:3px;display:inline-block;white-space:nowrap;
+  font-size:.76em;font-weight:800;letter-spacing:.1em;line-height:1.7;
+  color:#f2dfb2;background:rgba(138,106,31,.42);border:1px solid rgba(226,196,132,.5);
+  border-radius:999px;padding:2px 12px}
+header .creed .value{color:#e9f0f7;font-size:1em;line-height:1.85;letter-spacing:-.005em}
 
 main{padding:36px 0 8px}
 .card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;
@@ -57,6 +64,11 @@ footer .row span{white-space:nowrap}
   body{font-size:16px}
   header{padding:34px 0 30px}
   header h1{font-size:1.62em}
+  header .creed{margin-top:18px;padding-top:16px}
+  header .creed .item{display:block}
+  header .creed .item+.item{margin-top:15px}
+  header .creed .label{margin:0 0 7px}
+  header .creed .value{font-size:.97em;line-height:1.8}
   .card{padding:22px 18px 20px;border-radius:14px}
   .card h2{font-size:1.28em}
   .wrap{padding:0 16px}
@@ -69,7 +81,16 @@ footer .row span{white-space:nowrap}
   <div class="wrap">
     <span class="kicker">대구선교교회 · 대한예수교 장로회 재건총회</span>
     <h1>정성헌 목사 신학 아카이브</h1>
-    <p class="sub">이단과 유사종교, 그리고 오늘의 신학적 물음에 답하기 위해 정리한 대조 자료 모음입니다.<br>상대의 주장을 그들의 언어로 정확히 읽고, 개혁주의·성경신학의 좌표에서 1:1로 대조합니다.</p>
+    <div class="creed">
+      <p class="item">
+        <span class="label">핵심가치</span>
+        <span class="value">하나님 나라의 보물을 캐내어 나누는 공간입니다.</span>
+      </p>
+      <p class="item">
+        <span class="label">사명</span>
+        <span class="value">선조들에게 물려받은 개혁주의 신학과 구속사적 성경해석과 신사참배 박해에서 믿음으로 승리한 재건총회 선배들에게 물려받은 순교자적 신앙으로 건강한 교회와 예수님의 제자된 성도를 세워 하나님 나라 복음을 전파하며, 한 영혼, 한 생명을 살려내기 위해 달려갑니다.</span>
+      </p>
+    </div>
   </div>
 </header>
 
