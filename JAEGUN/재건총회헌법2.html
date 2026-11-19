@@ -498,6 +498,22 @@ table.mx td .empty{color:#8b9aab;font-size:.9em}
 .totop.left{left:22px;right:auto}
 @media (max-width:1024px){ .totop.left{display:none!important} }
 
+/* ── 아카이브 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
+.jh-foot{--jh-line:var(--line,#d5dfe9);--jh-body:var(--muted,var(--ink3,#46586d));
+  --jh-strong:var(--navy2,var(--accent-d,var(--accent2,#1d3a5c)));--jh-link:var(--navy3,var(--accent,#24466c));
+  margin:40px 0 0;padding:28px 0 48px;border-top:1px solid var(--jh-line);
+  color:var(--jh-body);font-size:.86em;line-height:1.9;text-align:left;
+  word-break:keep-all;overflow-wrap:break-word}
+.jh-foot .jh-row{line-height:1.9}
+.jh-foot .jh-row span{white-space:nowrap;margin-right:14px}
+.jh-foot b{color:var(--jh-strong);font-weight:700}
+.jh-foot a{color:var(--jh-link);text-decoration:none;border-bottom:none}
+.jh-foot a:hover{text-decoration:underline;border-bottom:none}
+.jh-foot p{margin:0;padding:0;font-size:1em;line-height:1.9}
+.jh-foot .jh-support{margin-top:0;line-height:1.9}
+.jh-foot .jh-acct{color:var(--jh-strong);font-weight:700}
+.jh-foot.jh-inband{margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--jh-line);font-size:1em}
+@media (max-width:520px){.jh-foot{padding:22px 0 40px}}
 </style>
 </head>
 <body>
@@ -680,6 +696,22 @@ table.mx td .empty{color:#8b9aab;font-size:.9em}
 </div>
 <div class="story-sec"><button class="chip" data-home="1" style="height:46px;padding:0 18px;font-weight:800">← 표지로 돌아가기</button></div>
 </div></div>
+
+<footer class="jh-foot" aria-label="만든이와 후원 안내">
+  <div class="wrap">
+    <div class="jh-row">
+      <span><b>만든이</b>: 정성헌 목사</span>
+      <span><b>교회</b>: 대구선교교회</span>
+      <span><b>교단</b>: 대한예수교 장로회 재건총회</span>
+      <span><b>문의</b>: <a href="mailto:c56612@daum.net">c56612@daum.net</a></span>
+    </div>
+    <div class="jh-support">
+      <p class="jh-acct">자원후원계좌: iM뱅크 508-10-9580903 정성헌(일본선교)</p>
+      <p class="jh-desc">후원금은 선교와 사역과 연구에 사용됩니다.</p>
+    </div>
+  </div>
+</footer>
+
   </main>
 </div>
 

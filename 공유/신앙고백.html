@@ -1257,6 +1257,23 @@ html[data-theme="dark"] .makerbox .mk-v{color:#e7e2d6}
 
 /* 다크 테마 — 표 넘김 안내 */
 html[data-theme="dark"] .scrollhint{color:#9fb0d6}
+/* ── 아카이브 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
+.jh-foot{--jh-line:var(--line,#d5dfe9);--jh-body:var(--muted,var(--ink3,#46586d));
+  --jh-strong:var(--navy2,var(--accent-d,var(--accent2,#1d3a5c)));--jh-link:var(--navy3,var(--accent,#24466c));
+  margin:40px 0 0;padding:28px 0 48px;border-top:1px solid var(--jh-line);
+  color:var(--jh-body);font-size:.86em;line-height:1.9;text-align:left;
+  word-break:keep-all;overflow-wrap:break-word}
+.jh-foot .jh-row{line-height:1.9}
+.jh-foot .jh-row span{white-space:nowrap;margin-right:14px}
+.jh-foot b{color:var(--jh-strong);font-weight:700}
+.jh-foot a{color:var(--jh-link);text-decoration:none;border-bottom:none}
+.jh-foot a:hover{text-decoration:underline;border-bottom:none}
+.jh-foot p{margin:0;padding:0;font-size:1em;line-height:1.9}
+.jh-foot .jh-support{margin-top:0;line-height:1.9}
+.jh-foot .jh-acct{color:var(--jh-strong);font-weight:700}
+.jh-foot.jh-inband{margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--jh-line);font-size:1em}
+@media (max-width:520px){.jh-foot{padding:22px 0 40px}}
+.jh-foot{--jh-strong:var(--accent,#7a3f22);--jh-link:var(--accent2,#245a4c)}
 </style>
 </head>
 <body>
@@ -1676,6 +1693,19 @@ html[data-theme="dark"] .scrollhint{color:#9fb0d6}
 </section>
 </div>
     <div id="artWrap" style="display:none"></div>
+
+<footer class="jh-foot" aria-label="만든이와 후원 안내">
+  <div class="jh-row">
+    <span><b>만든이</b>: 정성헌 목사</span>
+    <span><b>교회</b>: 대구선교교회</span>
+    <span><b>교단</b>: 대한예수교 장로회 재건총회</span>
+    <span><b>문의</b>: <a href="mailto:c56612@daum.net">c56612@daum.net</a></span>
+  </div>
+  <div class="jh-support">
+    <p class="jh-acct">자원후원계좌: iM뱅크 508-10-9580903 정성헌(일본선교)</p>
+    <p class="jh-desc">후원금은 선교와 사역과 연구에 사용됩니다.</p>
+  </div>
+</footer>
   </div>
   <button id="toTop" class="totop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button>
   <button id="toTopLeft" class="totop left" aria-label="왼쪽 창 맨 위로" title="왼쪽 창 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button>
