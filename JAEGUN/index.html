@@ -83,6 +83,28 @@ footer b{color:var(--navy3)}
 </style>
 </head>
 <body>
+<!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->
+<style>
+#hpguideBar{display:flex;grid-column:1/-1;justify-content:center;align-items:center;gap:8px;
+  padding:9px 12px;margin:0;background:#162d47;border-bottom:1px solid rgba(255,255,255,.18);
+  font-family:inherit;text-align:center;word-break:keep-all;overflow-wrap:break-word;
+  position:relative;z-index:20}
+#hpguideBar>button{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  margin:0;min-height:38px;padding:7px 18px;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  border:1px solid rgba(255,255,255,.46);border-radius:999px;
+  background:rgba(255,255,255,.13);color:#fff;
+  font-family:inherit;font-size:.88em;font-weight:700;line-height:1.3;letter-spacing:.01em;
+  box-shadow:none;transition:background .15s ease,border-color .15s ease}
+#hpguideBar>button:hover{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.7)}
+#hpguideBar>button:focus-visible{outline:2px solid #f2dfb2;outline-offset:2px}
+@media (max-width:430px){#hpguideBar{padding:8px 10px}
+  #hpguideBar>button{font-size:.84em;padding:6px 14px;min-height:36px}}
+</style>
+<div id="hpguideBar" role="region" aria-label="홈 화면 바로가기 안내">
+  <button type="button" id="hpguideOpen" aria-haspopup="dialog" aria-controls="hpguideModal">📱 홈 화면 바로가기 안내</button>
+</div>
+
 
 <header>
   <div class="wrap">
@@ -146,5 +168,147 @@ footer b{color:var(--navy3)}
   </div>
 </footer>
 
+
+<!-- [홈 화면 바로가기 안내] 안내 창 ───────────────────────────────────── -->
+<style>
+#hpguideModal{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483000;
+  margin:0;padding:0;border:0}
+#hpguideModal *{box-sizing:border-box}
+#hpguideModal.hpguide-on{display:block}
+#hpguideModal .hpguide-veil{position:fixed;inset:0;z-index:0;background:rgba(8,14,24,.6);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+#hpguideModal .hpguide-scroll{position:fixed;inset:0;z-index:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  display:flex;flex-direction:column;align-items:center;padding:26px 16px 32px}
+#hpguideModal .hpguide-box{position:relative;width:100%;max-width:540px;margin:auto 0;
+  background:#fff;color:#0f172a;border:1px solid #dbe3ec;border-radius:18px;
+  padding:26px 24px 22px;
+  box-shadow:0 26px 70px rgba(8,14,24,.45),0 2px 6px rgba(8,14,24,.16);
+  font-family:inherit;font-size:16px;line-height:1.75;text-align:left;
+  word-break:keep-all;overflow-wrap:break-word}
+#hpguideModal .hpguide-x{position:absolute;top:10px;right:10px;width:40px;height:40px;
+  display:flex;align-items:center;justify-content:center;margin:0;padding:0;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  border:1px solid #e2e8f0;border-radius:50%;background:#f6f8fb;color:#46586d;
+  font-family:inherit;font-size:17px;line-height:1;font-weight:700}
+#hpguideModal .hpguide-x:hover{background:#eaeff6;color:#162d47}
+#hpguideModal .hpguide-x:focus-visible{outline:2px solid #8c2434;outline-offset:2px}
+#hpguideModal h2{margin:0 40px 12px 0;padding:0;font-size:1.1em;line-height:1.45;
+  font-weight:800;letter-spacing:-.02em;color:#162d47}
+#hpguideModal .hpguide-tip{margin:0 0 18px;padding:11px 13px;border-radius:10px;
+  background:#fdf6e7;border:1px solid #ecd9ac;border-left:4px solid #b8860b;
+  color:#6b5a2a;font-size:.85em;line-height:1.7;font-weight:400}
+#hpguideModal .hpguide-tip b{font-weight:700;color:#5b4a1d}
+#hpguideModal .hpguide-step{padding:14px 0 0;margin:0;border-top:1px solid #e6ecf3}
+#hpguideModal .hpguide-step+.hpguide-step{margin-top:14px}
+#hpguideModal .hpguide-step h3{display:flex;align-items:center;gap:9px;margin:0 0 7px;padding:0;
+  font-size:.98em;line-height:1.4;font-weight:800;color:#162d47;letter-spacing:-.01em}
+#hpguideModal .hpguide-step h3 .num{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;background:#8c2434;color:#fff;
+  font-size:.82em;font-weight:800;line-height:1}
+#hpguideModal .hpguide-step .path{margin:0;padding:0 0 0 33px;color:#1f2d3d;font-size:.92em;line-height:1.85}
+#hpguideModal .hpguide-step .path b{font-weight:700;color:#8c2434}
+#hpguideModal .hpguide-step .sub{margin:5px 0 0;padding:0 0 0 33px;color:#5b6b7f;font-size:.8em;line-height:1.6}
+#hpguideModal .hpguide-done{margin:18px 0 0;padding:13px 14px;border-radius:10px;
+  background:#eef4fb;border:1px solid #d3e0ee;color:#1d3a5c;font-size:.88em;line-height:1.7;font-weight:600}
+#hpguideModal .hpguide-actions{margin:16px 0 0}
+#hpguideModal .hpguide-ok{display:block;width:100%;min-height:48px;margin:0;padding:11px 16px;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  border:0;border-radius:11px;background:#162d47;color:#fff;
+  font-family:inherit;font-size:.98em;font-weight:800;letter-spacing:.02em}
+#hpguideModal .hpguide-ok:hover{background:#24466c}
+#hpguideModal .hpguide-ok:focus-visible{outline:3px solid #8c2434;outline-offset:2px}
+@media (max-width:430px){
+  #hpguideModal .hpguide-scroll{padding:14px 12px 20px}
+  #hpguideModal .hpguide-box{font-size:15px;padding:22px 17px 18px;border-radius:16px}
+  #hpguideModal h2{font-size:1.02em;margin-right:36px}
+  #hpguideModal .hpguide-step .path{padding-left:0}
+  #hpguideModal .hpguide-step .sub{padding-left:0}
+}
+</style>
+<div id="hpguideModal" role="dialog" aria-modal="true" aria-labelledby="hpguideTitle" aria-hidden="true">
+  <div class="hpguide-veil" data-hpguide-close="1"></div>
+  <div class="hpguide-scroll">
+    <div class="hpguide-box">
+      <button type="button" class="hpguide-x" data-hpguide-close="1" aria-label="안내 창 닫기">✕</button>
+      <h2 id="hpguideTitle">📱 휴대폰 바탕화면(홈 화면)에 바로가기 만들기</h2>
+      <p class="hpguide-tip">※ 카카오톡에서 링크를 여셨다면, 먼저 <b>오른쪽 위 ⋮ → 다른 브라우저로 열기</b>(또는 <b>Chrome으로 열기</b>)를 눌러 주세요.</p>
+
+      <div class="hpguide-step">
+        <h3><span class="num">1</span>크롬(Chrome)에서 올리기</h3>
+        <p class="path">오른쪽 위 <b>⋮</b> → <b>설치 및 바로가기 만들기</b> → <b>바로가기 만들기</b> → 이름 확인 후 <b>추가</b></p>
+        <p class="sub">※ 구버전 크롬에서는 ‘홈 화면에 추가’로 보입니다.</p>
+      </div>
+
+      <div class="hpguide-step">
+        <h3><span class="num">2</span>삼성 인터넷(안드로이드 기본 브라우저)에서 올리기</h3>
+        <p class="path">오른쪽 아래 <b>≡ (줄 세 개)</b> → <b>현재 페이지 추가</b> → <b>홈 화면</b> → 이름 확인 후 <b>추가</b></p>
+      </div>
+
+      <div class="hpguide-step">
+        <h3><span class="num">3</span>아이폰(Safari)에서 올리기</h3>
+        <p class="path">화면 아래쪽(또는 주소창 옆) <b>공유 버튼(□↑)</b> → <b>홈 화면에 추가</b> → 이름 확인 후 <b>추가</b></p>
+        <p class="sub">※ 카톡에서 여셨다면 오른쪽 아래 나침반 모양 Safari 아이콘을 먼저 눌러 주세요.</p>
+      </div>
+
+      <p class="hpguide-done">이제 바탕화면에 생긴 아이콘을 누르면 앱처럼 바로 열립니다.</p>
+      <div class="hpguide-actions">
+        <button type="button" class="hpguide-ok" data-hpguide-close="1">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById('hpguideModal');
+  var openBtn=document.getElementById('hpguideOpen');
+  if(!modal||!openBtn) return;
+  var box=modal.querySelector('.hpguide-box');
+  var lastFocus=null;
+  var prevHtmlOverflow='',prevBodyOverflow='';
+  function isOpen(){return modal.classList.contains('hpguide-on');}
+  function open(){
+    lastFocus=document.activeElement;
+    prevHtmlOverflow=document.documentElement.style.overflow;
+    prevBodyOverflow=document.body.style.overflow;
+    document.documentElement.style.overflow='hidden';
+    document.body.style.overflow='hidden';
+    modal.classList.add('hpguide-on');
+    modal.setAttribute('aria-hidden','false');
+    var f=modal.querySelector('.hpguide-ok')||modal.querySelector('.hpguide-x');
+    if(f&&f.focus) f.focus();
+  }
+  function close(){
+    if(!isOpen()) return;
+    modal.classList.remove('hpguide-on');
+    modal.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow=prevHtmlOverflow;
+    document.body.style.overflow=prevBodyOverflow;
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  openBtn.addEventListener('click',function(e){e.preventDefault();open();});
+  function onBackdrop(t){return t===modal||t===modal.querySelector('.hpguide-scroll')||(t.getAttribute&&t.getAttribute('data-hpguide-close'));}
+  modal.addEventListener('click',function(e){
+    var t=e.target;
+    if(onBackdrop(t)){ e.preventDefault(); close(); return; }
+    while(t&&t!==modal){ if(t.getAttribute&&t.getAttribute('data-hpguide-close')){e.preventDefault();close();return;} t=t.parentNode; }
+  });
+  document.addEventListener('keydown',function(e){
+    if(!isOpen()) return;
+    if(e.key==='Escape'||e.key==='Esc'||e.keyCode===27){
+      e.preventDefault(); e.stopPropagation();
+      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      close(); return;
+    }
+    if(e.key==='Tab'){
+      var f=modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if(!f.length) return;
+      var first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  },true);
+  window.hpguideOpen=open; window.hpguideClose=close;
+})();
+</script>
 </body>
 </html>
