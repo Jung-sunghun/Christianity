@@ -1433,6 +1433,67 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
   .gwmodal .gcard{width:96vw;padding:14px 14px 12px}
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   15차 ②: 표지 — 「구약1. 모세오경」 아래 다섯 책 이름 알약(캡슐) 단추
+   누르면 그 책 1장이 오른쪽 본문에 열리고 왼쪽 목차도 그 책으로 바뀐다.
+   ══════════════════════════════════════════════════════════════════ */
+.cover-books{display:flex;flex-wrap:wrap;gap:9px;margin:.46em 0 .18em;padding:0;border:0}
+.cover-books .cbpill{display:inline-flex;align-items:center;justify-content:center;gap:.34em;
+  font-family:inherit;font-size:1em;font-weight:800;letter-spacing:-.01em;line-height:1.2;
+  padding:.56em 1.16em;border-radius:999px;cursor:pointer;
+  color:var(--navy2);background:#fff;border:1.6px solid var(--navy2);
+  box-shadow:0 2px 8px rgba(36,52,148,.12);
+  transition:background .16s ease,color .16s ease,box-shadow .18s ease,transform .16s ease}
+.cover-books .cbpill::after{content:"1장";font-size:.72em;font-weight:700;opacity:.6;letter-spacing:0}
+.cover-books .cbpill:hover,.cover-books .cbpill:focus-visible{background:var(--navy2);color:#fff;
+  box-shadow:0 6px 16px rgba(36,52,148,.26);transform:translateY(-1px)}
+.cover-books .cbpill:hover::after,.cover-books .cbpill:focus-visible::after{opacity:.86}
+.cover-books .cbpill:active{transform:translateY(0)}
+.cover-books .cbpill:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cover-books .cbpill.on{background:var(--navy2);color:#fff;box-shadow:0 6px 16px rgba(36,52,148,.26)}
+.cover-books .cbpill.on::after{opacity:.86}
+.cover-bookhint{font-size:.82em;line-height:1.62;margin:.05em 0 .62em;color:var(--muted)}
+.cover-bookhint b{color:var(--navy2)}
+html[data-theme="dark"] .cover-books .cbpill{background:#20263c;border-color:#8fa8e6;color:#cdd9fb}
+html[data-theme="dark"] .cover-books .cbpill:hover,
+html[data-theme="dark"] .cover-books .cbpill.on{background:#41528f;border-color:#a9bdf0;color:#f2f6ff}
+html[data-theme="dark"] .cover-bookhint b{color:#a9bdf0}
+@media (max-width:520px){
+  .cover-books{gap:7px}
+  .cover-books .cbpill{font-size:.95em;padding:.54em 1em}
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   15차 ③: 왼쪽 목차 캡슐(↑·↓)이 목차 글자를 덮지 않도록
+   — 목차가 흐르는 창(.sidewrap)을 캡슐 위에서 끊고, 그 아래는
+     목차와 같은 색이 이어지는 빈 자리(.sidefoot)로 비워 둔다.
+     · 그래서 어떤 스크롤 자리에서도 글자가 캡슐 뒤로 지나가지 않는다
+     · 목차 끝은 44px 흐림 띠로 부드럽게 마무리
+     · 캡슐 자체(한 알약·50px·모바일 bottom 90px)는 그대로 둔다
+   ══════════════════════════════════════════════════════════════════ */
+@media (min-width:1025px){
+  aside.side{display:flex;flex-direction:column;overflow:hidden;padding:0}
+  aside.side .sidewrap{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;
+    padding:20px 16px 38px;overscroll-behavior:contain}
+  aside.side .sidewrap::after{content:"";display:block;position:sticky;bottom:-1px;height:44px;
+    margin:-44px -16px 0 -16px;pointer-events:none;
+    background:linear-gradient(180deg,rgba(213,222,247,0) 0%,rgba(213,222,247,.66) 56%,#d5def7 100%)}
+  aside.side .sidefoot{display:block;flex:0 0 auto;height:190px}
+}
+aside.side .sidefoot{display:none}
+@media (min-width:1025px){ aside.side .sidefoot{display:block} }
+
+/* ══════════════════════════════════════════════════════════════════
+   15차 ④: 휴대폰·태블릿 본문 ↑·↓ 캡슐을 2/3 크기로
+   — 50×102px → 34×34px(전체 약 69px), 모서리 18px, 아이콘 16px
+     PC 캡슐(50×102px)과 위치(right 14px · bottom 90px)는 그대로 둔다.
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width:1024px){
+  #goMain{width:34px;border-radius:18px;box-shadow:0 6px 16px rgba(22,101,52,.24)}
+  #goMain .gobtn{height:34px}
+  #goMain .ticon{width:16px;height:16px}
+}
+
 /* ── 아카이브 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
 .jh-foot{--jh-line:var(--line,#d5dfe9);--jh-body:var(--muted,var(--ink3,#46586d));
   --jh-strong:var(--navy2,var(--accent-d,var(--accent2,#1d3a5c)));--jh-link:var(--navy3,var(--accent,#24466c));
@@ -1475,7 +1536,9 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
 </div>
 
 
-<aside class="side">
+<aside class="side" id="sideNav">
+  <div class="drawer-head"><b>목차 · 검색</b><button type="button" class="drawer-close" id="drawerClose" aria-label="목차 닫기">닫기 ✕</button></div>
+  <div class="sidewrap">
   <div class="brandbox" data-home="1" role="button" tabindex="0" title="Home — 맨 위로">
     <b>성경주석 아카이브 · 모세오경</b>
     <span>Bible Commentary Archive</span>
@@ -1515,10 +1578,15 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
   <div id="tagBox"></div>
   <div class="section-label chips-label">목차</div>
   <ul class="toc" id="toc"></ul>
+</div>
+  <div class="sidefoot" aria-hidden="true"></div>
 </aside>
+<div class="drawer-veil" id="drawerVeil" aria-hidden="true"></div>
 <main>
   <div class="topbar">
     <button type="button" class="homefab" id="homeFab" aria-label="Home — 맨 위로">Home</button>
+    <button type="button" class="navbtn" id="navBtn" aria-controls="sideNav"
+      aria-expanded="false" title="목차 · 검색창 열기 (태블릿·휴대폰)"><span aria-hidden="true">☰</span> 목차</button>
     <span class="grow"></span>
     <span class="small muted kbhint">키보드: <b>/</b> 검색 · <b>← →</b> 이동 · <b>Esc</b> Home</span>
     <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 아카이브 소개와 메뉴 설명서">만든 이야기</button>
@@ -1529,7 +1597,14 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
   <div class="cover-inner">
     <div class="kicker">Bible Commentary Archive</div>
     <div class="cover-subjects" style="margin-top:.1em;font-size:2.0em;line-height:1.18">구약1. 모세오경</div>
-    <div style="margin:.34em 0 .1em;font-size:1.02em;font-weight:800;letter-spacing:-.01em;color:var(--ink)">창세기 · 출애굽기 · 레위기 · 민수기 · 신명기</div>
+        <div class="cover-books" role="group" aria-label="모세오경 다섯 권 — 책 이름을 누르면 그 책 1장이 열립니다">
+      <button type="button" class="cbpill" data-book="gen" title="창세기 1장 — 누르면 오른쪽 본문이 창세기 1장으로 열립니다">창세기</button>
+      <button type="button" class="cbpill" data-book="exo" title="출애굽기 1장 — 누르면 오른쪽 본문이 출애굽기 1장으로 열립니다">출애굽기</button>
+      <button type="button" class="cbpill" data-book="lev" title="레위기 1장 — 누르면 오른쪽 본문이 레위기 1장으로 열립니다">레위기</button>
+      <button type="button" class="cbpill" data-book="num" title="민수기 1장 — 누르면 오른쪽 본문이 민수기 1장으로 열립니다">민수기</button>
+      <button type="button" class="cbpill" data-book="deu" title="신명기 1장 — 누르면 오른쪽 본문이 신명기 1장으로 열립니다">신명기</button>
+    </div>
+    <div class="cover-bookhint small muted">책 이름을 누르면 <b>오른쪽 본문이 그 책 1장</b>으로 바로 열립니다. 왼쪽 탐색창의 <b>창세기 · 출애굽기 · 레위기 · 민수기 · 신명기</b> 단추와 방식이 같습니다.</div>
     <div class="small muted" style="margin:0 0 .4em">187장 · 5,852절 전체 · 188단락 · 히브리어 원문 + 개역한글</div>
     <div class="section-label hublabel">여섯 갈래 — 누르면 그 자리로 갑니다</div>
     <div class="hub">
@@ -1621,7 +1696,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
       인용 표기에서는 저자 개인의 이름을 쓰지 않고 자료의 성격(예: 개혁주의 창세기 주해, 성경신학적 신약주해)으로 밝혔습니다.
       키아즘·평행 구조는 학계에서 공개된 분석과 본문에서 직접 확인되는 형태만 적었고, 확인되지 않은 구조는 지어내지 않았습니다.</p>
     </details>
-    <div class="foot small muted">정성헌 목사님을 위한 PC·태블릿·휴대폰 겸용판 · 구약1. 모세오경 (14차) · 완전 오프라인 동작 ·
+    <div class="foot small muted">정성헌 목사님을 위한 PC·태블릿·휴대폰 겸용판 · 구약1. 모세오경 (15차) · 완전 오프라인 동작 ·
     이 파일 하나가 세 화면에 맞춰집니다. 14차에서는 PC 양쪽 창에 <b>↑↓</b> 화살표를 두고(휴대폰은 본문만), 책 탭을 누르면 목차가 그 책 첫 장으로 따라가며, 설교문·설교 포인트 문장 끝의 <b>관주</b> 박스를 누르면 구절 본문이 열리고, <b>인명·지명·사건</b>을 누르면 좌표 지도를 포함한 상세 창이 열립니다. 13차에서는 <b>설교문</b>을 단락마다 한 편씩 세우고, <b>하나님의 세 가지 강조</b>(반복 · 사인 ‘아니 야훼’ · 주동사)를 주해와 설교에 함께 넣었습니다. 12차에서는 <b>신약성취연결</b> 박스 글씨를 왼쪽 절 범위 배지(<code>1:1~</code>)와 같은 크기로 되돌리고,
     팝업에서 <b>그 책·그 장의 본문</b>을 모두 빼어 관주·성취 연결만 남겼습니다.
     <b>설교 개요</b>는 3대지 틀을 풀어 장마다 2~5대지로 다시 세우고 <b>그리스도·구속사 연결</b>을 붙였으며,
@@ -1697,7 +1772,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
     히브리어·헬라어 원문과 <strong>개혁주의 해석</strong>을 뼈대로, 복음주의 해석과 Jewish · Rabbinic (유대인·랍비) · Messianic Jewish (메시아닉 유대인) 해석을
     함께 세운 설교자용 주석 아카이브입니다. 유대인·랍비·메시아닉 유대인 해석을 함께 실은 까닭은, 나누고 쪼개어 분석하는 헬라적 사변에서 벗어나 통전(統全·Wholeness)·통합(統合·Harmony)·통섭(統攝·Consilience)의 삼통(三通·Embodiment)을 아우르는 히브리적 폭넓은 사고로 성경과 세계를 하나로 꿰어, 머리의 지식을 넘어 삶으로 말씀을 체현하기 위함입니다. 3차 업그레이드에서 단락마다 <b>키아즘 입체 도표</b>를 세우고,
     구약 단락에는 <b>신약성취연결</b>, 신약 단락에는 <b>구약언약연결</b> 표를 달아 누르면
-    <b>창세기부터 요한계시록까지</b> 연결 구절의 개역한글 본문이 한 창에 열리도록 했습니다. 8차 업그레이드에서는 신앙고백과 설교 자리에 신조학(사도신경 · 니케아 · 칼케돈 · 하이델베르크 · 벨직 · 웨스트민스터 · 12신조 · 바르멘)과 현대 개혁주의 설교의 통찰을 대폭 더했습니다. 11차에서는 IVP 성경주석(구약) 다섯 권을 정확히 분리해 2순위로 반영하고, 칼빈 모세오경 주석을 12순위로 더했으며, 문서설·비평주의를 비판하고 반박하는 단락을 세웠습니다. 12차에서는 신약성취연결 팝업에서 그 책·그 장의 본문을 빼고, 배지 글씨를 왼쪽 절 범위 배지와 같게 맞추었으며, 설교 개요를 3대지 틀에서 풀어 본문의 흐름대로 다시 세우고 장마다 그리스도·구속사 연결을 붙였습니다. 옥스퍼드 원어 성경 대전(구약1)도 12순위로 받아 장마다 요지를 더했습니다. 13차에서는 단락마다 설교문을 한 편씩 세우고, 하나님의 세 가지 강조(반복·사인 ‘아니 야훼’·주동사)를 주해와 설교에 함께 넣었습니다. 14차에서는 PC 양쪽 창에 위아래 화살표를 두고, 책 탭을 누르면 목차가 그 책 첫 장으로 따라가게 했으며, 설교문과 설교자 문장의 문장 끝마다 <b>관주</b> 박스를 달아 구절 본문을 바로 열고 복사하게 했습니다. 그리고 인명·지명·사건을 누르면 원어와 행적·연대기·좌표 지도가 담긴 상세 창이 열립니다. 10차에서는 구약1. 모세오경 187장을 한 파일에 담고, 신약성취연결 박스를 한 줄로 키우고, 설교 자리를 시범판의 두 배 이상으로 넓혔습니다. 9차에서는 이 파일 하나를 PC·태블릿·휴대폰 세 화면에 맞추고, 연결 표의 이름을 구약언약연결·신약성취연결로 바꾸었습니다.
+    <b>창세기부터 요한계시록까지</b> 연결 구절의 개역한글 본문이 한 창에 열리도록 했습니다. 8차 업그레이드에서는 신앙고백과 설교 자리에 신조학(사도신경 · 니케아 · 칼케돈 · 하이델베르크 · 벨직 · 웨스트민스터 · 12신조 · 바르멘)과 현대 개혁주의 설교의 통찰을 대폭 더했습니다. 11차에서는 IVP 성경주석(구약) 다섯 권을 정확히 분리해 2순위로 반영하고, 칼빈 모세오경 주석을 12순위로 더했으며, 문서설·비평주의를 비판하고 반박하는 단락을 세웠습니다. 12차에서는 신약성취연결 팝업에서 그 책·그 장의 본문을 빼고, 배지 글씨를 왼쪽 절 범위 배지와 같게 맞추었으며, 설교 개요를 3대지 틀에서 풀어 본문의 흐름대로 다시 세우고 장마다 그리스도·구속사 연결을 붙였습니다. 옥스퍼드 원어 성경 대전(구약1)도 12순위로 받아 장마다 요지를 더했습니다. 13차에서는 단락마다 설교문을 한 편씩 세우고, 하나님의 세 가지 강조(반복·사인 ‘아니 야훼’·주동사)를 주해와 설교에 함께 넣었습니다. 14차에서는 PC 양쪽 창에 위아래 화살표를 두고, 책 탭을 누르면 목차가 그 책 첫 장으로 따라가게 했으며, 설교문과 설교자 문장의 문장 끝마다 <b>관주</b> 박스를 달아 구절 본문을 바로 열고 복사하게 했습니다. 그리고 인명·지명·사건을 누르면 원어와 행적·연대기·좌표 지도가 담긴 상세 창이 열립니다. 15차에서는 왼쪽 책 단추와 표지의 책 이름 알약 단추를 누르면 그 책 1장이 본문에 바로 열리도록 했습니다. 10차에서는 구약1. 모세오경 187장을 한 파일에 담고, 신약성취연결 박스를 한 줄로 키우고, 설교 자리를 시범판의 두 배 이상으로 넓혔습니다. 9차에서는 이 파일 하나를 PC·태블릿·휴대폰 세 화면에 맞추고, 연결 표의 이름을 구약언약연결·신약성취연결로 바꾸었습니다.
   </p>
 
   <div class="creed">
@@ -1721,7 +1796,8 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
   </div>
 
   <div class="newbox">
-    <div><span class="n">NEW 14</span><b>위아래 화살표 · 목차 따라가기</b><span>PC에서는 왼쪽 목차창과 본문창 양쪽에 <b>↑·↓</b> 알약 캡슐이 하나씩 있어 각 창의 맨 위·맨 아래로 부드럽게 이동합니다. 휴대폰에서는 본문 쪽 캡슐 하나만 보이며(다음 앱 자체 ↑ 단추 위쪽), 화살표는 스크롤 위치와 상관없이 늘 떠 있습니다. 위쪽 <b>창·출·레·민·신</b> 단추를 누르면 왼쪽 목차가 그 책의 첫 장으로 따라 내려갑니다.</span></div>
+    <div><span class="n">NEW 15</span><b>책 단추 → 그 책 1장 바로 열기</b><span>왼쪽 <b>창세기·출애굽기·레위기·민수기·신명기</b> 단추와 표지의 같은 이름 <b>알약 단추</b>를 누르면, 오른쪽 본문이 그 책 <b>1장</b>으로 바로 열리고 왼쪽 목차도 그 책 첫 장으로 따라갑니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 목차 아래 <b>↑·↓</b> 캡슐은 목차 글자를 덮지 않도록 그 아래를 부드럽게 흐리게 두었습니다.</span></div>
+    <div><span class="n">NEW 14</span><b>위아래 화살표 · 목차 따라가기</b><span>PC에서는 왼쪽 목차창과 본문창 양쪽에 <b>↑·↓</b> 알약 캡슐이 하나씩 있어 각 창의 맨 위·맨 아래로 부드럽게 이동합니다. 휴대폰에서는 본문 쪽 캡슐 하나만 보이며(다음 앱 자체 ↑ 단추 위쪽), 화살표는 스크롤 위치와 상관없이 늘 떠 있습니다. 위쪽 <b>창·출·레·민·신</b> 단추를 누르면 본문이 그 책 1장으로 열리고, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다.</span></div>
     <div><span class="n">NEW 14</span><b>문장 끝 관주 · 인명·지명·사건 상세</b><span>「설교문」과 「설교자 문장」 문장 끝에 <b>관주 창1:1</b> 같은 작은 박스가 붙습니다. 누르면 개역한글 본문·연결 이유·<b>📋 복사</b>가 열립니다. 왼쪽 <b>인명·지명·사건</b>을 누르면 원어·뜻·행적·그리스도 예표·연대기가 열리고, 지명은 실제 좌표에 핀이 찍힌 <b>이스라엘·애굽·시나이 벡터 지도</b>(확대·축소·동선)와 함께 열립니다.</span></div>
     <div><span class="n">NEW 01</span><b>구약언약연결 · 신약성취연결 (관주 기능)</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
     <div><span class="n">NEW 02</span><b>키아즘 입체 도표</b><span>A – B – C(정점) – B′ – A′ 계단식 들여쓰기와 좌측 대칭 연결선, 정점 강조, 핵심어 표시를 한 도표에 담았습니다.</span></div>
@@ -1738,10 +1814,10 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
         <div class="mtx">
           <b>왼쪽 탐색창 — 검색 · 태그 필터 · 목차</b>
           <p>맨 위 검색창에 성구나 낱말을 넣으면 그 자리로 바로 갑니다. 책 단추와 <code>66권 확장 보기</code>로 책을 고르면
-          그 책의 인명·지명·사건 태그만 남습니다. 태블릿과 휴대폰에서는 이 창이 서랍으로 숨고, 위쪽 <b>☰ 목차</b> 단추로 엽니다. 단락을 고르면 서랍은 저절로 닫힙니다.</p>
+          오른쪽 본문이 그 책 1장으로 바로 열리고, 그 책의 인명·지명·사건 태그만 남습니다. 태블릿과 휴대폰에서는 이 창이 서랍으로 숨고, 위쪽 <b>☰ 목차</b> 단추로 엽니다. 단락을 고르면 서랍은 저절로 닫힙니다.</p>
           <ul>
             <li>검색 예 — <code>창 1:1</code>, <code>창 1;1</code>, <code>마 1:21</code>, <code>팔복</code>, <code>아브라함</code>, <code>언약</code>, <code>키아즘</code>, <code>원시복음</code> — 쌍점(<code>:</code>) 자리에 세미콜론(<code>;</code>)을 써도 같은 결과가 나옵니다.</li>
-            <li>책 고르기 — <code>전체</code>·<code>창세기</code>·<code>출애굽기</code>·<code>레위기</code>·<code>민수기</code>·<code>신명기</code> 단추. <code>66권 확장 보기</code>는 수록된 다섯 권을 먼저 보여 주고 나머지 권역은 9권 분류로 차례로 확장합니다.</li>
+            <li>책 고르기 — <code>전체</code>·<code>창세기</code>·<code>출애굽기</code>·<code>레위기</code>·<code>민수기</code>·<code>신명기</code> 단추. <code>66권 확장 보기</code>는 수록된 다섯 권을 먼저 보여 주고 나머지 권역은 9권 분류로 차례로 확장합니다. 책을 고르면 <b>그 책 1장이 오른쪽 본문에 바로 열립니다</b>(<code>전체</code>는 보던 본문 유지).</li>
             <li>태그 — 누르면 그 태그가 붙은 단락만 목차에 남고, 한 번 더 누르면 풀립니다.</li>
             <li>검색 결과를 누르면 그 낱말이 단락 본문 전체에 노란 블록으로 표시되고, 첫 번째 자리로 화면이 이동합니다. 목차로 열 때는 표시 없이 맨 위에서 시작합니다.</li>
             <li>목차 — 단락을 누르면 본문이 열립니다. 키보드 <code>←</code> <code>→</code> 로 이전·다음 단락을 넘깁니다.</li>
@@ -1777,7 +1853,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
             <li>개혁주의해석 — 원문 해석 → 개혁주의 신학 → 성경신학 → 언약신학 → 구속사적 해석의 다섯 층</li>
             <li>복음주의해석 — 같은 본문을 복음주의 진영은 어떻게 읽는지</li>
             <li>주석원문발췌 — 자료에 실제로 있는 문장만 골라 직접 인용·요약</li>
-            <li>Jewish · Rabbinic (유대인·랍비) — 랍비 전통의 읽기와 Messianic Jewish (메시아닉 유대인 해석) (배경·원어 참고용)</li>
+            <li>메시아닉 유대인 — Jewish · Rabbinic (유대인·랍비) 전통의 읽기와 Messianic Jewish (메시아닉 유대인 해석) (배경·원어 참고용)</li>
             <li>설교문 — 본문·주해·사인·반복·주동사를 엮은 한 편의 강해 설교문</li>
             <li>설교자 문장 — 구속사적 설교 포인트, 설교 개요(본문 흐름 + 그리스도 연결), 이단·비평 주의점, 교차 성구, 출처</li>
           </ul>
@@ -1800,7 +1876,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
         <div class="mnum">⑤</div>
         <div class="mtx">
           <b>단축키와 위·아래 ↑·↓ 단추, 그리고 이 페이지</b>
-          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다. 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 위나 아래 끝에 있어도 단추는 그대로 보입니다 — 맨 위에서도 <b>↓</b>가, 맨 아래에서도 <b>↑</b>가 있습니다.</p>
+          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다(휴대폰·태블릿에서는 2/3 크기로 줄어듭니다). 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 위나 아래 끝에 있어도 단추는 그대로 보입니다 — 맨 위에서도 <b>↓</b>가, 맨 아래에서도 <b>↑</b>가 있습니다.</p>
           <ul>
             <li><code>Home</code> — 왼쪽 위 빨간 동그라미, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 그리고 <code>Esc</code> 키로 표지에 돌아옵니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키나 아래 <code>Home으로 돌아가기</code> 단추로 나옵니다.</li>
@@ -1811,11 +1887,11 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
       <li class="mcard">
         <div class="mnum">⑦</div>
         <div class="mtx">
-          <b>위아래 화살표(↑↓) · 책 탭 목차 이동</b>
-          <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 알약(캡슐)</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 캡슐이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 캡슐은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다. 캡슐 너비는 50px, 위·아래 칸 높이도 각각 50px입니다. 다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 캡슐을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 한 벌을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>
+          <b>위아래 화살표(↑↓) · 책 탭 → 그 책 1장</b>
+          <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 알약(캡슐)</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 캡슐이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 캡슐은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다. PC에서 캡슐 너비는 50px, 위·아래 칸 높이도 각각 50px입니다. 휴대폰·태블릿에서는 2/3 크기(너비 34px · 칸 높이 34px · 모서리 18px · 아이콘 16px)로 작아집니다. 다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 캡슐을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 한 벌을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>
           <ul>
             <li>↑·↓는 스크롤 위치와 상관없이 <b>늘</b> 보입니다 — 맨 위에서도 <b>↓</b>, 맨 아래에서도 <b>↑</b>가 그대로 있습니다.</li>
-            <li>위쪽 <b>창·출·레·민·신</b> 단추를 누르면 본문 책이 바뀌고, <b>왼쪽 목차도 그 책의 첫 장으로 따라 내려갑니다</b>. 휴대폰에서는 <b>☰ 목차</b>를 열어 같은 방식으로 보시면 됩니다.</li>
+            <li>위쪽 <b>창·출·레·민·신</b> 단추를 누르면 <b>오른쪽 본문이 그 책 1장으로 바로 열리고</b>, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다. 표지의 다섯 책 이름 <b>알약 단추</b>도 똑같이 그 책 1장을 엽니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 휴대폰에서는 <b>☰ 목차</b>를 열어 같은 방식으로 보시면 됩니다.</li>
             <li>단락을 열면 목차에서 그 장이 자동으로 보이게 표시됩니다.</li>
           </ul>
         </div>
@@ -2066,6 +2142,15 @@ function renderToc(){
   if(!html) html = '<li class="small muted" style="padding:8px 4px;line-height:1.6">선택한 색인에 해당하는 단락이 없습니다.<br>다른 태그를 누르거나 책을 바꿔 보세요.</li>';
   host.innerHTML = html;
 }
+function firstChapter(b){
+  /* 그 책의 1장 단락 id — 서론 단락(ch 0)은 건너뛴다 */
+  let pick = null;
+  DATA.forEach(function(e){
+    if(e.book !== b || (e.ch || 0) < 1) return;
+    if(!pick || (e.ch || 0) < (pick.ch || 0)) pick = e;
+  });
+  return pick ? pick.id : null;
+}
 function setBook(b, silent){
   S.book = b; S.tag = null;
   $$('[data-book]').forEach(x=>x.classList.toggle('on', x.dataset.book===b));
@@ -2073,6 +2158,14 @@ function setBook(b, silent){
   renderTags(); renderToc();
   if(b!=='all') setTimeout(function(){ scrollTocToBook(b); }, 40);
   if(!silent){ const nl=$('#navLabel'); if(nl) nl.textContent = (b==='all' ? '모세오경 5권' : BOOKNAME[b]); }
+  /* 15차 ①: 책을 고르면 오른쪽 본문도 그 책 1장으로 바로 연다. '전체'는 보던 본문 그대로. */
+  if(b !== 'all' && !silent){
+    const id = firstChapter(b);
+    if(id && id !== S.cur){
+      showEntry(id, true);
+      setTimeout(function(){ scrollTocToBook(b); }, 60);
+    }
+  }
 }
 
 /* ---------- 본문 렌더 ---------- */
@@ -2326,8 +2419,14 @@ document.addEventListener('click', function(ev){
 }, true);
 
 /* ================= 14차 ②: 책 탭 → 목차 이동 ================= */
+function sideScroller(){
+  /* PC는 .sidewrap이 목차 창, 휴대폰은 aside(서랍)가 스크롤한다 */
+  const w = document.querySelector("aside.side .sidewrap");
+  if(w && getComputedStyle(w).overflowY !== "visible") return w;
+  return document.querySelector("aside.side") || document.querySelector("aside");
+}
 function scrollTocToBook(b){
-  const side = document.querySelector('aside.side') || document.querySelector('aside');
+  const side = sideScroller();
   if(!side) return;
   const links = Array.prototype.slice.call(document.querySelectorAll('#toc a[data-goto]'));
   const hit = links.filter(function(a){ return a.dataset.goto.indexOf(b) === 0; })[0];
@@ -3074,7 +3173,7 @@ document.addEventListener('click', function(ev){
 /* ---------- 15차 ①: ↑·↓ 한 벌 단추 — PC는 목차창·본문 양쪽, 휴대폰은 본문 한 벌 ---------- */
 (function(){
   function wire(){
-    const side = document.querySelector('aside.side') || document.querySelector('aside');
+    const side = sideScroller();
     const main = document.querySelector('main');
     const docH = () => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     const go = (el, top, fb) => { try{ el.scrollTo({top: top, behavior:'smooth'}); }catch(e){ fb(); } };
@@ -3114,7 +3213,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* ================= 4차: 단락 바로가기 바 ================= */
 const QSECTS = [['notes','본문구조'],['reformed','개혁주의해석'],['evangelical','복음주의해석'],
-                ['quotes','주석원문발췌'],['jewish','Jewish · Rabbinic (유대인·랍비)'],['ms','설교문'],['sermon','설교자 문장']];
+                ['quotes','주석원문발췌'],['jewish','메시아닉 유대인'],['ms','설교문'],['sermon','설교자 문장']];
 function quickBarHTML(){
   const nav = QSECTS.map(s =>
     '<button type="button" class="qnav" data-qsect="' + s[0] + '" title="' + s[1] + ' 섹션으로 이동">'
@@ -3178,7 +3277,7 @@ function showStory(){
   S.cur = null; S.story = true;
   const sb = $('#storyBtn'); if(sb) sb.classList.add('on');
   document.documentElement.setAttribute('data-story', '1');
-  const side = document.querySelector('aside.side') || document.querySelector('aside');
+  const side = sideScroller();
   if(side) side.scrollTop = 0;
   window.scrollTo(0, 0);
   try{ history.replaceState(null, '', '#story'); }catch(e){}
