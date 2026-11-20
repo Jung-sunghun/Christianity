@@ -1494,6 +1494,77 @@ aside.side .sidefoot{display:none}
   #goMain .ticon{width:16px;height:16px}
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   15차 ⑥: 인명·지명·사건 팝업 — 헤더의 ‘⛶ 전체 화면’과 팝업 안 ↑·↓ 캡슐
+   ══════════════════════════════════════════════════════════════════ */
+.tmodal .thd .tfull{margin-left:auto;display:inline-flex;align-items:center;gap:.34em;
+  border:1px solid #1c2e82;background:#fff;color:#1c2e82;
+  border-radius:10px;padding:.45em 1em;font-weight:900;font-family:inherit;font-size:inherit;
+  cursor:pointer;line-height:1.3}
+.tmodal .thd .tfull:hover{background:#1c2e82;color:#fff}
+.tmodal .thd .tfull .fico{width:17px;height:17px;flex:none}
+.tmodal .thd .tfull .fico path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tmodal .thd .tfull+.tclose{margin-left:6px}
+.tmodal .tcard.tbig{width:98vw;max-width:none;height:96vh;max-height:96vh;padding:16px 22px 18px;border-radius:10px}
+.tmodal .tcard.tbig .mapbox{height:min(70vh,760px)}
+.tmodal .tgopair{position:sticky;bottom:8px;display:flex;flex-direction:column;width:36px;
+  margin:10px 0 0 auto;border-radius:19px;overflow:hidden;border:1.5px solid var(--mintb);
+  background:var(--mint);box-shadow:0 8px 20px rgba(22,101,52,.26);z-index:4}
+.tmodal .tgopair .tgbtn{display:flex;align-items:center;justify-content:center;width:100%;height:34px;
+  border:0;background:transparent;color:var(--mintink);cursor:pointer;padding:0;font-size:0;line-height:0}
+.tmodal .tgopair .tgbtn.up{border-bottom:1px solid var(--mintb)}
+.tmodal .tgopair .tgbtn:hover{background:#b7e4c7}
+.tmodal .tgopair .ticon{width:16px;height:16px;display:block}
+.tmodal .tgopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+html[data-theme="dark"] .tmodal .tgopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] .tmodal .tgopair .tgbtn{color:#e8fff1}
+html[data-theme="dark"] .tmodal .thd .tfull{background:#20263c;border-color:#8fa8e6;color:#cdd9fb}
+
+/* 15차 ⑦: 팝업 안 주요 구절 — 누르면 그 자리에 개역한글만 펼쳐진다 */
+.tmodal .tvhint{font-size:.72em;font-weight:700;color:var(--muted,#5b6b7f);margin-left:.45em}
+.tmodal .tvs{display:flex;flex-wrap:wrap;align-items:center;gap:4px 2px}
+.tmodal .tvbtn{border:1px solid #9fb0d8;background:#f4f7ff;color:#1c2e82;border-radius:8px;
+  padding:.16em .5em;font-family:inherit;font-size:.95em;font-weight:800;cursor:pointer;line-height:1.55}
+.tmodal .tvbtn:hover{background:#e2eaff}
+.tmodal .tvbtn.on{background:#1c2e82;color:#fff;border-color:#1c2e82}
+.tmodal .tvsep{color:var(--muted,#8892a8)}
+.tmodal .tvplain{color:#5b6b7f}
+.tmodal .tvexp{flex:1 0 100%;margin:4px 0 8px;padding:10px 12px;border:1px solid #cfd9ee;
+  border-left:4px solid #1c2e82;border-radius:10px;background:#f8faff}
+.tmodal .tvexp .tvhd{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;font-size:.86em}
+.tmodal .tvexp .tvhd b{color:#1c2e82;font-weight:900}
+.tmodal .tvexp .tvhd span{color:#5b6b7f;font-size:.92em}
+.tmodal .tvexp .tvr{display:flex;gap:8px;padding:2px 0;line-height:1.72}
+.tmodal .tvrn{flex:none;min-width:1.6em;text-align:right;font-weight:800;color:#1c2e82;font-size:.86em}
+.tmodal .tvrt{flex:1}
+.tmodal .tvnone{font-size:.9em;color:#5b6b7f}
+html[data-theme="dark"] .tmodal .tvbtn{background:#20263c;border-color:#4a5f9e;color:#cdd9fb}
+html[data-theme="dark"] .tmodal .tvbtn.on{background:#41528f;color:#fff}
+html[data-theme="dark"] .tmodal .tvexp{background:#1d2233;border-color:#36436a;border-left-color:#8fa8e6}
+html[data-theme="dark"] .tmodal .tvexp .tvhd b,html[data-theme="dark"] .tmodal .tvrn{color:#a9bdf0}
+
+/* 15차 ⑦: ‘방금 보던 팝업으로 돌아가기’ 알약 */
+.termback{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:2147482000;display:none;
+  align-items:center;gap:2px;padding:5px 7px 5px 5px;border-radius:999px;max-width:calc(100vw - 140px);
+  background:var(--panel,#fff);border:1.5px solid var(--navy2,#1c2e82);box-shadow:0 10px 26px rgba(20,32,92,.3)}
+.termback.on{display:flex}
+.termback .tbgo{display:inline-flex;align-items:center;gap:.3em;max-width:100%;overflow:hidden;
+  border:0;background:transparent;color:var(--navy2,#1c2e82);font-family:inherit;font-weight:800;
+  font-size:.9em;letter-spacing:-.01em;cursor:pointer;padding:.5em .7em;border-radius:999px;
+  white-space:nowrap;text-overflow:ellipsis}
+.termback .tbgo b{font-weight:900}
+.termback .tbgo:hover{background:rgba(28,46,130,.09)}
+.termback .tbx{flex:none;width:26px;height:26px;border:0;border-radius:50%;padding:0;line-height:1;
+  background:transparent;color:var(--muted,#5b6b7f);font-size:.86em;font-weight:800;cursor:pointer}
+.termback .tbx:hover{background:rgba(0,0,0,.08)}
+html[data-theme="dark"] .termback{background:#20263c;border-color:#8fa8e6}
+html[data-theme="dark"] .termback .tbgo{color:#cdd9fb}
+@media (max-width:1024px){ .termback{bottom:calc(16px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 130px)} }
+@media (max-width:860px){
+  .tmodal .tcard.tbig{width:99vw;height:97vh;max-height:97vh;padding:12px 12px 14px}
+  .tmodal .thd .tfull{font-size:.88em;padding:.4em .7em}
+}
+
 /* ── 아카이브 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
 .jh-foot{--jh-line:var(--line,#d5dfe9);--jh-body:var(--muted,var(--ink3,#46586d));
   --jh-strong:var(--navy2,var(--accent-d,var(--accent2,#1d3a5c)));--jh-link:var(--navy3,var(--accent,#24466c));
@@ -1796,7 +1867,7 @@ aside.side .sidefoot{display:none}
   </div>
 
   <div class="newbox">
-    <div><span class="n">NEW 15</span><b>책 단추 → 그 책 1장 바로 열기</b><span>왼쪽 <b>창세기·출애굽기·레위기·민수기·신명기</b> 단추와 표지의 같은 이름 <b>알약 단추</b>를 누르면, 오른쪽 본문이 그 책 <b>1장</b>으로 바로 열리고 왼쪽 목차도 그 책 첫 장으로 따라갑니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 목차 아래 <b>↑·↓</b> 캡슐은 목차 글자를 덮지 않도록 그 아래를 부드럽게 흐리게 두었습니다.</span></div>
+    <div><span class="n">NEW 15</span><b>책 단추 → 그 책 1장 바로 열기</b><span>왼쪽 <b>창세기·출애굽기·레위기·민수기·신명기</b> 단추와 표지의 같은 이름 <b>알약 단추</b>를 누르면, 오른쪽 본문이 그 책 <b>1장</b>으로 바로 열리고 왼쪽 목차도 그 책 첫 장으로 따라갑니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 목차 아래 <b>↑·↓</b> 캡슐은 목차 글자를 덮지 않도록 그 아래를 부드럽게 흐리게 두었습니다. 휴대폰에서는 팝업 안 아무 데나 탭해도 닫히고, PC에서는 마우스 작업 중 클릭으로 창이 사라지지 않도록 <b>바깥·닫기·Esc</b>로만 닫힙니다. 인명·지명·사건 창에는 <b>전체 화면</b>·<b>창 안 ↑·↓</b>·<b>주요 구절 펼치기</b>·<b>↩ 팝업으로 돌아가기</b>가 더해졌습니다.</span></div>
     <div><span class="n">NEW 14</span><b>위아래 화살표 · 목차 따라가기</b><span>PC에서는 왼쪽 목차창과 본문창 양쪽에 <b>↑·↓</b> 알약 캡슐이 하나씩 있어 각 창의 맨 위·맨 아래로 부드럽게 이동합니다. 휴대폰에서는 본문 쪽 캡슐 하나만 보이며(다음 앱 자체 ↑ 단추 위쪽), 화살표는 스크롤 위치와 상관없이 늘 떠 있습니다. 위쪽 <b>창·출·레·민·신</b> 단추를 누르면 본문이 그 책 1장으로 열리고, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다.</span></div>
     <div><span class="n">NEW 14</span><b>문장 끝 관주 · 인명·지명·사건 상세</b><span>「설교문」과 「설교자 문장」 문장 끝에 <b>관주 창1:1</b> 같은 작은 박스가 붙습니다. 누르면 개역한글 본문·연결 이유·<b>📋 복사</b>가 열립니다. 왼쪽 <b>인명·지명·사건</b>을 누르면 원어·뜻·행적·그리스도 예표·연대기가 열리고, 지명은 실제 좌표에 핀이 찍힌 <b>이스라엘·애굽·시나이 벡터 지도</b>(확대·축소·동선)와 함께 열립니다.</span></div>
     <div><span class="n">NEW 01</span><b>구약언약연결 · 신약성취연결 (관주 기능)</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
@@ -1904,7 +1975,7 @@ aside.side .sidefoot{display:none}
           <ul>
             <li>박스를 누르면 창이 열려 <b>구절 표기 · 개역한글 본문 전체 · 연결 이유</b>가 나옵니다.</li>
             <li><b>📋 복사</b>를 누르면 “구절 표기 + 본문”이 클립보드에 복사되고 단추에 <b>복사됨 ✓</b>이 표시됩니다.</li>
-            <li>Esc 키나 바깥을 누르면 닫힙니다. 본문 복사·주석 전체 복사에는 이 표시가 섞이지 않습니다.</li>
+            <li>Esc 키나 <b>창 안 아무 곳(글자·머리·빈 자리)</b>을 눌러도 닫힙니다. 복사 단추를 누를 때는 닫히지 않고 복사만 됩니다. 본문 복사·주석 전체 복사에는 이 표시가 섞이지 않습니다.</li>
           </ul>
         </div>
       </li>
@@ -1917,7 +1988,10 @@ aside.side .sidefoot{display:none}
             <li><b>인명</b> — 히브리어 이름과 뜻 · 족보와 관계 · 핵심 행적 · <b>빛(믿음)과 그림자(연약함)</b> · 그리스도 예표와 구속사적 의의 · 주요 구절 · 이 책 안 장 바로가기.</li>
             <li><b>사건</b> — 시점·장소·등장인물 한눈 요약 · 배경과 경과 · <b>인간의 위기 vs 하나님의 개입(언약·‘아니 야훼’)</b> · 신학적 의의 · <b>신약 성취</b> · 강단 묵상 질문 한 줄 · 장 바로가기.</li>
             <li><b>지명</b> — 고대·현대의 자리와 좌표 신뢰도 · 지리적 특징 · <b>좌표 핀이 찍힌 벡터 지도</b>(확대·축소·끌어 옮기기, 출애굽·광야·족장의 동선 점선) · <b>기준점(예루살렘·고센·시내 산)에서의 거리</b> · <b>이 땅의 연대기</b> · 구글 지도 좌표 링크.</li>
-            <li>장 바로가기 단추를 누르면 창이 닫히고 그 장이 바로 열립니다.</li>
+            <li>장 바로가기 단추를 누르면 창이 닫히고 그 장이 바로 열립니다. 그때 화면 아래에 <b>↩ [항목명] 팝업으로 돌아가기</b> 알약이 떠서, 누르면 <b>보던 스크롤 위치와 전체 화면 상태 그대로</b> 팝업이 다시 열립니다(알약의 ✕로 닫을 수 있습니다).</li>
+            <li><b>헤더의 전체 화면 단추</b>로 창을 화면 가득 키우고(지도도 함께 커집니다) <b>원래 크기</b>로 되돌릴 수 있습니다. 창 오른쪽 아래 작은 <b>↑·↓</b> 캡슐은 창 안을 맨 위·맨 아래로 옮깁니다.</li>
+            <li><b>주요 구절</b>의 구절 표기(<code>출 3:14</code> 같은 단추)를 누르면 그 자리에 <b>개역한글 본문만</b> 펼쳐집니다 — 히브리어 원문은 넣지 않았습니다. 다시 누르면 접힙니다.</li>
+            <li>닫는 법 — PC에서는 <b>바깥</b>·<b>닫기 ✕</b>·<b>Esc</b>로 닫고 안쪽 클릭으로는 닫히지 않으며, 휴대폰·태블릿에서는 아무 데나 탭해도 닫힙니다. 지도 확대·축소·끌기는 그대로 동작합니다.</li>
           </ul>
         </div>
       </li>
@@ -2455,6 +2529,103 @@ function jumpList(d){
     + d.jump.map(function(j){ return '<button type="button" class="tjump" data-jump="' + esc(j[0]) + '">' + esc(j[1]) + '</button>'; }).join('')
     + '</div></div>';
 }
+
+/* ================= 15차 ⑦: 주요 구절 펼치기 · 팝업으로 돌아가기 ================= */
+const TBIG_ICON = '<svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 4h5v5"/><path d="M20 15v5h-5"/><path d="M4 15v5h5"/></svg>';
+const TSM_ICON = '<svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h5V4"/><path d="M20 9h-5V4"/><path d="M20 15h-5v5"/><path d="M4 15h5v5"/></svg>';
+let TERMBACK = null;
+
+function tvItems(str){
+  const out = [];
+  String(str || '').split(/\s*·\s*/).forEach(function(part){
+    const p = part.trim(); if(!p) return;
+    const m = /^([1-3]?\s*[가-힣]+)\s*(\d+)\s*:\s*([0-9][0-9,\-–~〜;\s]*)$/.exec(p);
+    if(!m){ out.push({ txt: p, plain: true }); return; }
+    const bk = m[1].replace(/\s+/g, ''), ch = m[2];
+    m[3].split(/[,;]/).forEach(function(seg){
+      seg = seg.trim(); if(!seg) return;
+      const r = /^(\d+)\s*(?:[-–~〜]\s*(\d+))?$/.exec(seg);
+      if(!r){ out.push({ txt: seg, plain: true }); return; }
+      out.push({ txt: bk + ' ' + ch + ':' + (r[2] ? r[1] + '-' + r[2] : r[1]) });
+    });
+  });
+  return out;
+}
+function tvsBlock(str, nameOnly){
+  if(!str) return '';
+  const tit = nameOnly ? '주요 등장 구절' : '주요 구절';
+  let h = '<div class="tsec"><div class="tsec-h">' + tit + ' <span class="tvhint">구절을 누르면 개역한글이 그 자리에 펼쳐집니다</span></div><div class="tvs">';
+  tvItems(str).forEach(function(it, i){
+    if(i) h += '<span class="tvsep"> · </span>';
+    if(it.plain) h += '<span class="tvplain">' + esc(it.txt) + '</span>';
+    else h += '<button type="button" class="tvbtn" data-ref="' + esc(it.txt) + '" title="' + esc(it.txt) + ' — 개역한글 본문 펼치기">' + esc(it.txt) + '</button>';
+  });
+  return h + '</div></div>';
+}
+function toggleTv(b){
+  const ref = b.dataset.ref;
+  const nx = b.nextElementSibling;
+  if(nx && nx.classList && nx.classList.contains('tvexp') && !nx.hidden){
+    nx.hidden = true; b.classList.remove('on'); return;
+  }
+  let panel = (nx && nx.classList && nx.classList.contains('tvexp')) ? nx : null;
+  if(!panel){ panel = document.createElement('div'); panel.className = 'tvexp'; b.insertAdjacentElement('afterend', panel); }
+  const p = parseFull(ref);
+  const rows = p ? vRows(p.num, p.ch, p.v1, p.v2) : [];
+  if(rows.length){
+    panel.innerHTML = '<div class="tvhd"><b>' + esc(ref) + '</b><span>개역한글</span></div><div class="tvrows">'
+      + rows.map(function(r){ return '<div class="tvr"><span class="tvrn">' + r[0] + '</span><span class="tvrt">' + esc(r[1]) + '</span></div>'; }).join('')
+      + '</div>';
+  } else {
+    panel.innerHTML = '<div class="tvhd"><b>' + esc(ref) + '</b></div><div class="tvnone">이 구절의 본문은 이 파일에 실려 있지 않습니다. 위의 <b>장 바로가기</b>로 장을 열어 보세요.</div>';
+  }
+  panel.hidden = false;
+  b.classList.add('on');
+}
+document.addEventListener('click', function(ev){
+  const b = ev.target && ev.target.closest ? ev.target.closest('.tvbtn') : null;
+  if(!b) return;
+  ev.preventDefault(); ev.stopPropagation();
+  toggleTv(b);
+}, true);
+
+/* 팝업으로 돌아가기 알약 */
+function termBackEl(){
+  let el = document.getElementById('termBack');
+  if(!el){
+    el = document.createElement('nav');
+    el.id = 'termBack';
+    el.className = 'termback';
+    el.setAttribute('aria-label', '방금 보던 팝업으로 돌아가기');
+    el.innerHTML = '<button type="button" class="tbgo"></button>'
+      + '<button type="button" class="tbx" aria-label="돌아가기 단추 닫기" title="닫기">✕</button>';
+    document.body.appendChild(el);
+    el.querySelector('.tbgo').addEventListener('click', function(ev){
+      ev.preventDefault(); ev.stopPropagation(); reopenTerm();
+    });
+    el.querySelector('.tbx').addEventListener('click', function(ev){
+      ev.preventDefault(); ev.stopPropagation(); TERMBACK = null; hideTermBack();
+    });
+  }
+  return el;
+}
+function showTermBack(){
+  if(!TERMBACK) return;
+  const el = termBackEl();
+  el.querySelector('.tbgo').innerHTML = '↩ <b>' + esc(TERMBACK.name) + '</b> 팝업으로 돌아가기';
+  el.classList.add('on');
+}
+function hideTermBack(){
+  const el = document.getElementById('termBack');
+  if(el) el.classList.remove('on');
+}
+function reopenTerm(){
+  const st = TERMBACK;
+  if(!st) return;
+  hideTermBack();
+  openTerm(st.name, { big: st.big, top: st.top });
+}
+
 function termHtml(n){
   const d = TERMD[n]; if(!d) return '';
   const cat = d.cat || '인명';
@@ -2462,7 +2633,8 @@ function termHtml(n){
   h += '<div class="thd"><span class="tcat tcat-' + cat + '">' + cat + '</span><span class="tname">' + esc(n) + '</span>';
   if(d.he) h += '<span class="theb" dir="rtl" lang="he">' + esc(d.he) + '</span>';
   if(d.rom) h += '<span class="trom">' + esc(d.rom) + '</span>';
-  h += '<button type="button" class="tclose">닫기 ✕</button></div>';
+  h += '<button type="button" class="tfull" title="팝업을 화면 전체로 키웁니다"><svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 4h5v5"/><path d="M20 15v5h-5"/><path d="M4 15v5h5"/></svg> 전체 화면</button>'
+    + '<button type="button" class="tclose">닫기 ✕</button></div>';
   if(d.mean) h += '<div class="tmean"><b>뜻</b> — ' + esc(d.mean) + '</div>';
 
   if(cat === '인명'){
@@ -2474,7 +2646,7 @@ function termHtml(n){
       + '<div class="tbox tlight"><div class="tb-h">빛 — 믿음과 순종</div><p>' + esc(d.light || '') + '</p></div>'
       + '<div class="tbox tshadow"><div class="tb-h">그림자 — 연약함과 실수</div><p>' + esc(d.shadow || '') + '</p></div></div>';
     if(d.christ) h += '<div class="tsec tchrist"><div class="tsec-h">그리스도 예표 · 구속사적 의의</div><p>' + esc(d.christ) + '</p></div>';
-    if(d.verses) h += '<div class="tsec"><div class="tsec-h">주요 등장 구절</div><p class="tvs">' + esc(d.verses) + '</p></div>';
+    if(d.verses) h += tvsBlock(d.verses, 1);
   } else if(cat === '사건'){
     if(d.quick) h += '<div class="tsec"><div class="tsec-h">한눈 요약</div><ul class="tquick">'
       + d.quick.map(q => '<li>' + esc(q) + '</li>').join('') + '</ul></div>';
@@ -2485,7 +2657,7 @@ function termHtml(n){
     if(d.meaning) h += '<div class="tsec"><div class="tsec-h">신학적 · 구속사적 의의</div><p>' + esc(d.meaning) + '</p></div>';
     if(d.nt) h += '<div class="tsec tchrist"><div class="tsec-h">신약 성취</div><p>' + esc(d.nt) + '</p></div>';
     if(d.q) h += '<div class="tsec tq"><div class="tsec-h">강단에서 성도에게 던질 묵상 질문</div><p>“' + esc(d.q) + '”</p></div>';
-    if(d.verses) h += '<div class="tsec"><div class="tsec-h">주요 구절</div><p class="tvs">' + esc(d.verses) + '</p></div>';
+    if(d.verses) h += tvsBlock(d.verses);
   } else {
     if(d.ancient || d.modern) h += '<div class="tsec"><div class="tsec-h">고대 · 현대의 자리</div>'
       + (d.ancient ? '<p><b>고대</b> — ' + esc(d.ancient) + '</p>' : '')
@@ -2507,15 +2679,16 @@ function termHtml(n){
     if(d.events) h += '<div class="tsec"><div class="tsec-h">이 땅에서 일어난 성경의 사건</div><p>' + esc(d.events) + '</p></div>';
     if(d.chron) h += '<div class="tsec"><div class="tsec-h">이 땅의 연대기 — 시대를 넘어 같은 자리에서</div><ul class="tchron">'
       + d.chron.map(c => '<li><span class="tcn">' + esc(c[0]) + '</span><span class="tct">' + esc(c[1]) + '</span></li>').join('') + '</ul></div>';
-    if(d.verses) h += '<div class="tsec"><div class="tsec-h">주요 구절</div><p class="tvs">' + esc(d.verses) + '</p></div>';
+    if(d.verses) h += tvsBlock(d.verses);
   }
   h += jumpList(d);
   h += '<div class="tsec"><div class="tsec-h">목차 걸러 보기</div><div class="tfilt">'
     + '<button type="button" class="tfilbtn" data-filter="' + esc(n) + '">이 항목이 나오는 단락만 목차에 남기기</button></div></div>';
+  h += '<nav class="tgopair" aria-label="팝업 안 위아래 이동"><button type="button" class="tgbtn up" aria-label="팝업 맨 위로" title="팝업 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="tgbtn dn" aria-label="팝업 맨 아래로" title="팝업 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>';
   h += '</div>';
   return h;
 }
-function openTerm(n){
+function openTerm(n, restore){
   if(!TERMD[n]) return;
   const m = tmodalHost();
   m.innerHTML = '<div class="tbk"></div>' + termHtml(n);
@@ -2524,9 +2697,27 @@ function openTerm(n){
   const card = m.querySelector('.tcard');
   m.querySelector('.tbk').onclick = closeTerm;
   m.querySelector('.tclose').onclick = closeTerm;
+  const tfb = m.querySelector('.tfull');
+  if(tfb) tfb.onclick = function(ev){
+    ev.preventDefault(); ev.stopPropagation();
+    const on = card.classList.toggle('tbig');
+    tfb.innerHTML = on ? '<svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h5V4"/><path d="M20 9h-5V4"/><path d="M20 15h-5v5"/><path d="M4 15h5v5"/></svg> 원래 크기' : '<svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 4h5v5"/><path d="M20 15v5h-5"/><path d="M4 15v5h5"/></svg> 전체 화면';
+  };
+  m.querySelectorAll('.tgopair .tgbtn').forEach(function(b){
+    b.onclick = function(ev){
+      ev.preventDefault(); ev.stopPropagation();
+      const up = b.classList.contains('up');
+      try{ card.scrollTo({top: up ? 0 : card.scrollHeight, behavior:'smooth'}); }
+      catch(e){ card.scrollTop = up ? 0 : card.scrollHeight; }
+    };
+  });
   m.querySelectorAll('.tjump').forEach(function(b){
-    b.onclick = function(ev){ ev.stopPropagation(); closeTerm(); if(typeof closeDrawer === 'function') closeDrawer();
-      showEntry(b.dataset.jump); window.scrollTo(0, 0); };
+    b.onclick = function(ev){ ev.stopPropagation();
+      /* 15차 ⑦: 이 팝업을 기억해 둔다 — 메인 창의 ‘돌아가기’ 알약으로 다시 연다 */
+      TERMBACK = { name: n, big: card.classList.contains('tbig'), top: Math.round(card.scrollTop) };
+      closeTerm(); if(typeof closeDrawer === 'function') closeDrawer();
+      showEntry(b.dataset.jump); window.scrollTo(0, 0);
+      showTermBack(); };
   });
   m.querySelectorAll('.tfilbtn').forEach(function(b){
     b.onclick = function(ev){ ev.stopPropagation(); S.tag = b.dataset.filter; renderTags(); renderToc(); closeTerm(); };
@@ -2534,7 +2725,17 @@ function openTerm(n){
   const box = m.querySelector('.mapbox');
   if(box) mapMount(box, parseFloat(box.dataset.lat), parseFloat(box.dataset.lon), box.dataset.name);
   setTimeout(function(){ document.addEventListener('keydown', termEsc, true); }, 0);
-  try{ card.scrollTop = 0; }catch(e){}
+  if(restore){
+    if(restore.big){
+      card.classList.add('tbig');
+      const fb2 = m.querySelector('.tfull');
+      if(fb2) fb2.innerHTML = TSM_ICON + ' 원래 크기';
+    }
+    setTimeout(function(){ try{ card.scrollTop = restore.top || 0; }catch(e){} }, 40);
+  } else {
+    TERMBACK = null; hideTermBack();
+    try{ card.scrollTop = 0; }catch(e){}
+  }
 }
 function closeTerm(){
   const m = document.getElementById('tm'); if(!m) return;
@@ -3103,10 +3304,18 @@ function escXAll(ev){ if(ev.key === 'Escape'){ ev.preventDefault(); ev.stopPropa
     return (el.classList.contains('open') || el.classList.contains('hpguide-on')) ? el : null;
   }
   const HOSTS = [['gm', 'closeGw'], ['xm2', 'closeXAll'], ['tm', 'closeTerm'], ['xmodal', 'closeXref']];
+  function selectedText(){
+    const sel = window.getSelection ? window.getSelection() : null;
+    return !!(sel && !sel.isCollapsed && String(sel).length > 0);
+  }
   document.addEventListener('click', function(ev){
+    /* PC(1025px 이상)에서는 팝업 안쪽 클릭으로 닫지 않는다 — 마우스 작업 중 클릭이 잦기 때문.
+       휴대폰·태블릿(1024px 이하)에서만 ‘아무 데나 탭하면 닫힘’을 쓴다. */
+    if(window.innerWidth > 1024) return;
     const t = ev.target;
     if(!t || !t.closest) return;
     if(t.closest(KEEP)) return;
+    if(selectedText()) return;
     for(let i = 0; i < HOSTS.length; i++){
       const el = openHost(HOSTS[i][0]);
       if(el && el.contains(t) && typeof window[HOSTS[i][1]] === 'function'){
@@ -3153,20 +3362,32 @@ function openXref(it){
     + '<button class="xclose" type="button">닫기 ✕</button></div>' + body
     + (why ? '<div class="xwhy"><b>연결 이유</b> — ' + esc(why) + '</div>' : '')
     + '<div class="xfoot"><button class="xcopy" type="button">본문 복사</button>'
-    + '<span class="small">아무 키나 누르거나 화면을 클릭하면 닫힙니다.</span></div></div>';
+    + '<span class="small">바깥을 누르거나 Esc 키로 닫힙니다.</span></div></div>';
   m.classList.add('open');
   const cp = m.querySelector('.xcopy');
   if(cp) cp.onclick = () => copy(ref + '\n' + (rows.length ? rows.map(r => r[0] + '. ' + r[1]).join('\n') : '(본문 미수록)'), cp);
   m.querySelectorAll('.xcopy1').forEach(b => { b.onclick = ev => { ev.stopPropagation(); copy(b.dataset.c, b); }; });
+  const xbk = m.querySelector('.xbk'); if(xbk) xbk.onclick = closeXref;
+  const xcl = m.querySelector('.xclose');
+  if(xcl) xcl.onclick = function(ev){ ev.preventDefault(); ev.stopPropagation(); closeXref(); };
   setTimeout(() => {
-    document.addEventListener('click', closeXref);
+    document.addEventListener('click', xrefAnyClose);
     document.addEventListener('keydown', closeXrefKey, true);
   }, 0);
+}
+function xrefAnyClose(ev){
+  /* 휴대폰·태블릿에서만: 팝업 안팎 아무 데나 탭해도 닫힌다(단추·링크·글자 선택은 제외) */
+  if(window.innerWidth > 1024) return;
+  const t = ev.target;
+  if(t && t.closest && t.closest('button, a, input, select, textarea')) return;
+  const sel = window.getSelection ? window.getSelection() : null;
+  if(sel && !sel.isCollapsed && String(sel).length > 0) return;
+  closeXref();
 }
 function closeXref(){
   const m = document.getElementById('xmodal'); if(!m) return;
   m.classList.remove('open'); m.innerHTML = '';
-  document.removeEventListener('click', closeXref);
+  document.removeEventListener('click', xrefAnyClose);
   document.removeEventListener('keydown', closeXrefKey, true);
 }
 function closeXrefKey(ev){ ev.preventDefault(); ev.stopPropagation(); closeXref(); }
