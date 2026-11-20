@@ -2398,6 +2398,19 @@ function firstChapter(b){
   });
   return pick ? pick.id : null;
 }
+var SIDE_TOP_LOCK = false;   /* 15차 ⑱: 책 단추로 고른 순간 — 왼쪽 목차 창을 맨 위에 둔다 */
+function sideTopZero(){
+  const s = sideScroller(); if(s && s.scrollTop) s.scrollTop = 0;
+  const a = document.querySelector('aside.side');
+  if(a && a !== s && a.scrollTop) a.scrollTop = 0;
+}
+function sideTopKeep(){
+  /* 목차를 다시 그리거나 본문을 바꾸면 브라우저가 스크롤을 건드릴 수 있어 몇 번 더 0으로 */
+  sideTopZero();
+  setTimeout(sideTopZero, 0);
+  setTimeout(sideTopZero, 60);
+  setTimeout(sideTopZero, 180);
+}
 function setBook(b, silent){
   S.book = b; S.tag = null;
   $$('[data-book]').forEach(x=>x.classList.toggle('on', x.dataset.book===b));
@@ -2410,10 +2423,12 @@ function setBook(b, silent){
   /* 15차 ①: 책을 고르면 오른쪽 본문도 그 책 1장으로 바로 연다. '전체'는 보던 본문 그대로. */
   if(b !== 'all' && !silent){
     const id = firstChapter(b);
+    /* 15차 ⑱: 오른쪽 본문만 그 책 1장으로 — 왼쪽 목차 창은 맨 위 그대로 */
     if(id && id !== S.cur){
-      showEntry(id, true);
-      setTimeout(function(){ scrollTocToBook(b); }, 60);
+      SIDE_TOP_LOCK = true;
+      try{ showEntry(id, true); } finally { SIDE_TOP_LOCK = false; }
     }
+    sideTopKeep();
   }
 }
 
@@ -3171,7 +3186,8 @@ function showEntry(id, push, hlq){
   setBook(e.book, true);
   $$('#toc a').forEach(a=>a.classList.toggle('on', a.dataset.goto===id));
   const act = $('.toc a.on');
-  if(act && act.scrollIntoView && !BOOT_TOP) act.scrollIntoView({block:'nearest'});
+  /* 15차 ⑱: 책 단추로 책을 고른 순간에는 목차를 내리지 않는다 */
+  if(act && act.scrollIntoView && !BOOT_TOP && !SIDE_TOP_LOCK) act.scrollIntoView({block:'nearest'});
   const nl=$('#navLabel'); if(nl) nl.textContent = e.label + ' · ' + e.title;
   const c=$('#crumbNow'); if(c) c.textContent = e.label;
   window.scrollTo(0,0);
