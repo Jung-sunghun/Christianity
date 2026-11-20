@@ -1888,7 +1888,7 @@ aside.side .sidefoot{display:none}
         <div class="mnum">⑦</div>
         <div class="mtx">
           <b>위아래 화살표(↑↓) · 책 탭 → 그 책 1장</b>
-          <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 알약(캡슐)</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 캡슐이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 캡슐은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다. PC에서 캡슐 너비는 50px, 위·아래 칸 높이도 각각 50px입니다. 휴대폰·태블릿에서는 2/3 크기(너비 34px · 칸 높이 34px · 모서리 18px · 아이콘 16px)로 작아집니다. 다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 캡슐을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 한 벌을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>
+          <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 알약(캡슐)</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 캡슐이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 캡슐은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다. PC에서 캡슐 너비는 50px, 위·아래 칸 높이도 각각 50px입니다. 휴대폰·태블릿에서는 2/3 크기(너비 34px · 칸 높이 34px · 모서리 18px · 아이콘 16px)로 작아집니다. 다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 캡슐을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>
           <ul>
             <li>↑·↓는 스크롤 위치와 상관없이 <b>늘</b> 보입니다 — 맨 위에서도 <b>↓</b>, 맨 아래에서도 <b>↑</b>가 그대로 있습니다.</li>
             <li>위쪽 <b>창·출·레·민·신</b> 단추를 누르면 <b>오른쪽 본문이 그 책 1장으로 바로 열리고</b>, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다. 표지의 다섯 책 이름 <b>알약 단추</b>도 똑같이 그 책 1장을 엽니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 휴대폰에서는 <b>☰ 목차</b>를 열어 같은 방식으로 보시면 됩니다.</li>
@@ -3092,6 +3092,35 @@ function closeXAll(){
   document.removeEventListener('keydown', escXAll, true);
 }
 function escXAll(ev){ if(ev.key === 'Escape'){ ev.preventDefault(); ev.stopPropagation(); closeXAll(); } }
+
+/* ================= 15차 ⑤: 팝업은 글자·머리·빈 곳 어디를 눌러도 닫힌다 ================= */
+(function(){
+  /* 이 안을 누를 때는 닫지 않는다 — 실제로 동작하는 것들 */
+  const KEEP = 'button, a, input, select, textarea, label, svg, .map-ctrl, .mapbox, .maplink, .no-close';
+  function openHost(id){
+    const el = document.getElementById(id);
+    if(!el) return null;
+    return (el.classList.contains('open') || el.classList.contains('hpguide-on')) ? el : null;
+  }
+  const HOSTS = [['gm', 'closeGw'], ['xm2', 'closeXAll'], ['tm', 'closeTerm'], ['xmodal', 'closeXref']];
+  document.addEventListener('click', function(ev){
+    const t = ev.target;
+    if(!t || !t.closest) return;
+    if(t.closest(KEEP)) return;
+    for(let i = 0; i < HOSTS.length; i++){
+      const el = openHost(HOSTS[i][0]);
+      if(el && el.contains(t) && typeof window[HOSTS[i][1]] === 'function'){
+        ev.preventDefault();
+        window[HOSTS[i][1]]();
+        return;
+      }
+    }
+    if(openHost('hpguideModal') && typeof window.hpguideClose === 'function'){
+      ev.preventDefault();
+      window.hpguideClose();
+    }
+  }, false);
+})();
 
 /* ---------- 한 구절 팝업(66권 본문) ---------- */
 function openXref(it){
