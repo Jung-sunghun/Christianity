@@ -2055,8 +2055,8 @@ html.solo .sm-quote{font-size:1.03em;line-height:1.95}
    아카이브 이동 단추(.solo-foot)와 만든이·후원 푸터(.jh-foot)를 모두 띄우지 않는다 */
 html.solo .solo-foot,html.solo-pre .solo-foot,
 html.solo .jh-foot,html.solo-pre .jh-foot{display:none!important}
-/* 링크 복사 안내 — 긴 문장도 화면 밖으로 넘치지 않게 */
-.hltoast{max-width:min(92vw,520px);white-space:normal;text-align:center}
+/* 링크 복사 안내 — 긴 문장도 화면 밖으로 넘치지 않게, 낱말은 중간에서 끊지 않게 */
+.hltoast{max-width:min(92vw,520px);white-space:normal;text-align:center;word-break:keep-all;overflow-wrap:anywhere}
 @media (max-width:520px){
   html.solo{--fs:18px}
   html.solo .content{padding:0 15px 60px}
