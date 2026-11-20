@@ -1312,6 +1312,29 @@ main{padding-bottom:150px}
   #goMain .ticon{width:16px;height:16px}
   main{padding-bottom:240px}
 }
+/* ══════════════════════════════════════════════════════════════════════
+   15차 ⑫: 휴대폰 목차 서랍(☰) 안 ↑·↓ 캡슐
+   — 서랍을 열면 목차 캡슐이 서랍 안 오른쪽 아래에 PC의 2/3 크기
+     (34px×34px 두 칸 = 약 69px, 모서리 18px, 아이콘 16px)로 나타나고,
+     닫으면 본문 캡슐만 남는다. 캡슐은 서랍이 닫히지 않게 서랍 밖에 있다.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width:1024px){
+  html.drawer-open .gopair.left{display:flex!important;visibility:visible;
+    opacity:1;pointer-events:auto;right:auto;
+    bottom:calc(22px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px;
+    box-shadow:0 6px 16px rgba(22,101,52,.28);z-index:151}
+  html.drawer-open #toTopLeft{display:flex!important;visibility:visible}
+  #drawerFade{display:none}
+  /* 캡슐 자리(bottom 0~132px)로 흘러든 목차 글자를 서랍 바탕색으로 부드럽게 지운다 */
+  html.drawer-open #drawerFade{display:block;position:fixed;left:0;bottom:0;width:0;height:132px;
+    z-index:149;pointer-events:none;
+    background:linear-gradient(180deg,transparent 0%,#ccd8f3 58%,#ccd8f3 100%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 46%);mask-image:linear-gradient(180deg,transparent 0%,#000 46%)}
+  html.drawer-open #goSide .gobtn{height:34px}
+  html.drawer-open #goSide .ticon{width:16px;height:16px}
+  /* 캡슐이 목차 마지막 줄을 가리지 않도록 서랍 아래를 캡슐 높이만큼 비운다 */
+  html.drawer-open aside.side,html.drawer-open aside{padding-bottom:132px}
+}
 @media print{ .gopair{display:none!important} }
 </style>
 </head>
@@ -2224,8 +2247,16 @@ function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){
   return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 function docById(id){ return DATA.filter(function(d){ return d.id===id; })[0]; }
 /* ── 태블릿·휴대폰 목차 서랍 ─────────────────── */
+/* 15차 ⑫: 목차 서랍을 열면 늘 맨 위(검색 · 책 선택)부터 보이게 하고,
+   서랍 안 ↑·↓ 캡슐을 서랍 오른쪽 아래로 옮긴다 */
+function resetDrawerTop(){
+  var a = document.getElementById('sideNav') || document.querySelector('aside.side') || document.querySelector('aside');
+  if(a){ a.scrollTop = 0; var w = a.querySelector('.sidewrap'); if(w) w.scrollTop = 0; }
+  if(window.placeDrawerGo) window.placeDrawerGo();
+}
 function openDrawer(){ document.documentElement.classList.add('drawer-open');
-  var b=$('#navBtn'); if(b) b.setAttribute('aria-expanded','true'); }
+  var b=$('#navBtn'); if(b) b.setAttribute('aria-expanded','true');
+  resetDrawerTop(); }
 function closeDrawer(){ document.documentElement.classList.remove('drawer-open');
   var b=$('#navBtn'); if(b) b.setAttribute('aria-expanded','false'); }
 function drawerOpen(){ return document.documentElement.classList.contains('drawer-open'); }
@@ -3111,6 +3142,26 @@ document.addEventListener('DOMContentLoaded', init);
     });
     click('#goSide .up', function(){ if(side) go(side, 0, function(){ side.scrollTop = 0; }); });
     click('#goSide .dn', function(){ if(side) go(side, side.scrollHeight, function(){ side.scrollTop = side.scrollHeight; }); });
+    /* 15차 ⑫: 서랍이 열리면 목차 캡슐이 서랍 안 오른쪽 아래로 들어온다 */
+    function placeDrawerGo(){
+      var g = document.getElementById('goSide');
+      if(!g) return;
+      var f = document.getElementById('drawerFade');
+      if(!f){ f = document.createElement('div'); f.id = 'drawerFade';
+        f.setAttribute('aria-hidden','true'); document.body.appendChild(f); }
+      if(window.innerWidth > 1024){ g.style.left = ''; g.style.right = ''; return; }
+      var a = side || document.querySelector('aside.side') || document.querySelector('aside');
+      var w = a ? a.getBoundingClientRect().width : 0;
+      if(!w) return;
+      g.style.right = 'auto';
+      g.style.left = Math.max(6, Math.round(w - 48)) + 'px';
+      f.style.width = Math.round(w) + 'px';
+    }
+    window.placeDrawerGo = placeDrawerGo;
+    window.addEventListener('resize', placeDrawerGo);
+    window.addEventListener('orientationchange', function(){ setTimeout(placeDrawerGo, 220); });
+    placeDrawerGo();
+
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
 })();
