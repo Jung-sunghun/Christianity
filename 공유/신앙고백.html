@@ -3057,11 +3057,17 @@ document.addEventListener('DOMContentLoaded', init);
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
   }
   openBtn.addEventListener('click',function(e){e.preventDefault();open();});
-  function onBackdrop(t){return t===modal||t===modal.querySelector('.hpguide-scroll')||(t.getAttribute&&t.getAttribute('data-hpguide-close'));}
+  /* 안내 창은 어디를 눌러도 닫힌다 — 안쪽 글자·빈 곳 포함. 기능 단추·입력칸만 제 일을 한다. */
   modal.addEventListener('click',function(e){
     var t=e.target;
-    if(onBackdrop(t)){ e.preventDefault(); close(); return; }
-    while(t&&t!==modal){ if(t.getAttribute&&t.getAttribute('data-hpguide-close')){e.preventDefault();close();return;} t=t.parentNode; }
+    if(t&&t.closest){
+      var fn=t.closest('button,a[href],input,select,textarea,label,summary');
+      if(fn){
+        if(fn.getAttribute&&fn.getAttribute('data-hpguide-close')){ e.preventDefault(); close(); }
+        return;
+      }
+    }
+    e.preventDefault(); close();
   });
   document.addEventListener('keydown',function(e){
     if(!isOpen()) return;
