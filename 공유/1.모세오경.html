@@ -2784,15 +2784,15 @@ function termHtml(n){
     if(d.verses) h += tvsBlock(d.verses);
   }
   if(cat === '인명'){
-    if(d.word) h += '<div class="tsec"><div class="tsec-h">원어 · 이름의 느낌</div><p>' + esc(d.word) + '</p></div>';
+    if(d.word) h += '<div class="tsec"><div class="tsec-h">원어 · 이름의 느낌</div><p>' + hebwrap(esc(d.word)) + '</p></div>';
     if(d.arch) h += '<div class="tsec"><div class="tsec-h">성경 밖 자료 · 고고학</div><p>' + esc(d.arch) + '</p></div>';
     if(d.conf) h += '<div class="tsec tchrist"><div class="tsec-h">신앙고백 · 개혁주의</div><p>' + esc(d.conf) + '</p></div>';
   } else if(cat === '사건'){
-    if(d.word) h += '<div class="tsec"><div class="tsec-h">핵심 원어</div><p>' + esc(d.word) + '</p></div>';
+    if(d.word) h += '<div class="tsec"><div class="tsec-h">핵심 원어</div><p>' + hebwrap(esc(d.word)) + '</p></div>';
     if(d.arch) h += '<div class="tsec"><div class="tsec-h">고대 근동 배경 · 고고학</div><p>' + esc(d.arch) + '</p></div>';
     if(d.conf) h += '<div class="tsec tchrist"><div class="tsec-h">신앙고백 · 개혁주의</div><p>' + esc(d.conf) + '</p></div>';
   } else {
-    if(d.word) h += '<div class="tsec"><div class="tsec-h">지명의 뜻 · 말놀이</div><p>' + esc(d.word) + '</p></div>';
+    if(d.word) h += '<div class="tsec"><div class="tsec-h">지명의 뜻 · 말놀이</div><p>' + hebwrap(esc(d.word)) + '</p></div>';
     if(d.arch) h += '<div class="tsec"><div class="tsec-h">발굴 · 유적 · 확인 경위</div><p>' + esc(d.arch) + '</p></div>';
     if(d.nt) h += '<div class="tsec tchrist"><div class="tsec-h">신약 연결</div><p>' + esc(d.nt) + '</p></div>';
   }
