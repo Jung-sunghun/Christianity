@@ -2041,7 +2041,7 @@ html.solo-pre #coverWrap,html.solo-pre #storyWrap{display:none!important}
 html.solo{--fs:19px}
 html.solo body{display:block;background:var(--bg)}
 html.solo aside,html.solo .topbar,html.solo #hpguideBar,html.solo .drawer-veil,
-html.solo .totop,html.solo #toTopLeft,html.solo #toTop,html.solo #toBot,html.solo #toBotLeft{display:none!important}
+html.solo .totop,html.solo .gopair{display:none!important}
 html.solo main{display:block;width:100%}
 html.solo .content{max-width:840px;padding:0 22px 70px}
 html.solo .sermonpage{padding:24px 0 8px}
@@ -2320,7 +2320,6 @@ function sermonHTML(tk,dk,solo){
     h.push('<div class="sm-endtools">');
     h.push('<button type="button" data-scopy="1">📋 이 설교 복사</button>');
     h.push('<button type="button" data-sprint="1">🖨️ PDF 인쇄</button>');
-    h.push(shareBtnsHTML(tk,dk));
     DPT_ORDER.forEach(function(k){ var x=dSermon(tk,k); if(!x) return;
       h.push('<button type="button" data-sermon="'+tk+'" data-dept="'+k+'"'+(k===dk?' style="opacity:.5"':'')+'>['+DPT[k]+'로 보기]</button>'); });
     h.push('<button type="button" data-home="1">표지로</button>');
