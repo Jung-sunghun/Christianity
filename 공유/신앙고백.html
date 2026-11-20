@@ -2116,10 +2116,6 @@ function siteURL(){
   }
   return SHARE_SITE;
 }
-function soloHomeHref(){
-  if(location.protocol==='http:'||location.protocol==='https:') return location.pathname;
-  return SHARE_SITE;
-}
 function shareURLOf(tk,dk){
   var t=dTopic(tk); if(!t) return siteURL();
   return siteURL()+'?sermon='+encodeURIComponent(t.no)+'&age='+(AGE_ALIAS[dk]||dk);
