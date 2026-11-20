@@ -2042,7 +2042,7 @@ html.solo{--fs:19px}
 html.solo body{display:block;background:var(--bg)}
 html.solo aside,html.solo .topbar,html.solo #hpguideBar,html.solo .drawer-veil,
 html.solo .totop,html.solo .gopair{display:none!important}
-html.solo main{display:block;width:100%}
+html.solo main{display:block;width:100%;padding-bottom:0}
 html.solo .content{max-width:840px;padding:0 22px 70px}
 html.solo .sermonpage{padding:24px 0 8px}
 html.solo .sm-title{font-size:2.02em;line-height:1.3}
@@ -2050,11 +2050,10 @@ html.solo .sm-sub{font-size:1.06em}
 html.solo .sm-p{font-size:1.07em;line-height:2.02}
 html.solo .sm-verse{font-size:1.03em}
 html.solo .sm-quote{font-size:1.03em;line-height:1.95}
-html.solo .solo-foot{margin:34px 0 0;padding:20px 0 0;border-top:1px solid var(--line);text-align:center}
-.solo-foot a{display:inline-block;font-family:'Malgun Gothic',sans-serif;font-size:.9em;font-weight:800;
-  color:var(--accent2);text-decoration:none;border:1px solid var(--line);border-radius:999px;
-  padding:.55em 1.2em;background:var(--panel)}
-.solo-foot a:hover{border-color:var(--accent2);background:var(--chip)}
+/* 단독 읽기 화면 하단은 설교 본문 끝에서 깔끔히 끊는다 —
+   아카이브 이동 단추(.solo-foot)와 만든이·후원 푸터(.jh-foot)를 모두 띄우지 않는다 */
+html.solo .solo-foot,html.solo-pre .solo-foot,
+html.solo .jh-foot,html.solo-pre .jh-foot{display:none!important}
 /* 링크 복사·보내기 안내 — 긴 문장도 화면 밖으로 넘치지 않게 */
 .hltoast{max-width:min(92vw,520px);white-space:normal;text-align:center}
 @media (max-width:520px){
@@ -2063,13 +2062,12 @@ html.solo .solo-foot{margin:34px 0 0;padding:20px 0 0;border-top:1px solid var(-
   html.solo .sm-title{font-size:1.62em}
   html.solo .sm-sub{font-size:1em}
   html.solo .sm-p{font-size:1.04em;line-height:1.96}
-  .solo-foot a{font-size:.86em}
 }
 
 /* 인쇄(PDF) — 설교문만 깨끗하게 */
 @media print{
   #hpguideBar,#sideNav,.drawer-veil,.topbar,#toTop,#toTopLeft,#hpguideModal,
-  .sm-tools,.sm-endtools,.solo-foot,.totop,.cover-search{display:none!important}
+  .sm-tools,.sm-endtools,.totop,.cover-search{display:none!important}
   html,body{background:#fff!important;color:#000!important;font-size:11.5pt!important}
   body{display:block!important}
   main{display:block!important;width:100%!important;max-width:none!important;margin:0!important}
@@ -2313,10 +2311,8 @@ function sermonHTML(tk,dk,solo){
   }
   h.push('<div class="sm-foot">성경 인용은 개역개정 전문이며 전건 기계 대조했습니다. '+
     '신앙고백 인용은 원문을 옮기지 않고 요지만 표시했습니다. 이 설교는 개혁주의·장로교 정통 신앙고백(웨스트민스터·하이델베르크·벨직·도르트) 안에서 작성되었습니다.</div>');
-  if(solo){
-    /* 단독 읽기 화면 — 맨 아래 작고 단정한 링크 하나 */
-    h.push('<div class="solo-foot"><a href="'+esc(soloHomeHref())+'">전체 신앙고백 아카이브 열기 →</a></div>');
-  } else {
+  if(!solo){
+    /* 일반 아카이브 화면에서만 도구줄을 붙인다 (단독 읽기 화면은 본문 끝에서 그대로 끝난다) */
     h.push('<div class="sm-endtools">');
     h.push('<button type="button" data-scopy="1">📋 이 설교 복사</button>');
     h.push('<button type="button" data-sprint="1">🖨️ PDF 인쇄</button>');
