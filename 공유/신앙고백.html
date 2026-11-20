@@ -1752,6 +1752,7 @@ html[data-theme="dark"] .scrollhint{color:#9fb0d6}
 
 
 
+
 <!-- ==== 교리 설교 (주제 1~3) : 자동 주입 구역 시작 ==== -->
 <style>
 /* ── 교리 설교 (신앙고백 1~3주제) ───────────────────────────────── */
@@ -1928,8 +1929,10 @@ html[data-theme="dark"] .sm-endtools button{background:#232b3c;border-color:#415
   #artWrap{display:block!important;width:100%!important;max-width:none!important}
   .sermonpage{padding:0!important;max-width:none!important}
   .sm-title{font-size:19pt}
-  .sm-block,.sm-her,.qa-item,.sm-conf,.sm-passage,.sm-parable,.sm-quote{break-inside:avoid}
-  .sm-block .sb-h{break-after:avoid}
+  .sm-her,.qa-item,.sm-conf,.sm-passage,.sm-parable,.sm-quote{break-inside:avoid}
+  .sm-block{break-inside:auto}
+  .sm-block .sb-h{break-after:avoid;break-inside:avoid}
+  .sm-p{orphans:2;widows:2}
   .sm-her{border-width:1.5pt;background:#fff!important}
   .sm-parable,.sm-conf,.sm-passage{background:#fff!important}
   .cf-chip,.qa-v,.sm-verse .vn{border:.5pt solid #999!important;background:#fff!important;color:#000!important}
