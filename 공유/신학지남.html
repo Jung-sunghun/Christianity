@@ -534,6 +534,42 @@ nav.pagenav .dim{color:var(--ink3)}
 .jh-foot.jh-inband{margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--jh-line);font-size:1em}
 @media (max-width:520px){.jh-foot{padding:22px 0 40px}}
 </style>
+<style id="gopairCSS">
+/* ══ 아카이브 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
+.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
+  margin:0;padding:0;overflow:hidden;border-radius:26px;
+  border:1.5px solid #6ec28e;background:#c8ebd4;
+  box-shadow:0 10px 26px rgba(22,101,52,.26);transition:opacity .16s ease,box-shadow .18s ease}
+.gopair.left{left:26px;right:auto}
+#goMain .gobtn,#goSide .gobtn{display:flex;align-items:center;justify-content:center;width:100%;height:50px;padding:0;
+  border:0;border-radius:0;background:transparent;color:#166534;cursor:pointer;
+  font-family:inherit;font-size:0;line-height:0;transition:background .18s ease}
+/* 두 화살표 사이 얇은 구분선 — 한 캡슐 안의 위 칸/아래 칸 */
+#goMain .gobtn.up,#goSide .gobtn.up{border-bottom:1px solid #6ec28e}
+#goMain .gobtn:hover,#goSide .gobtn:hover{background:#b7e4c7}
+#goMain .gobtn:active,#goSide .gobtn:active{background:#a9dcbd}
+#goMain .gobtn:focus-visible,#goSide .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:-3px}
+.gopair .ticon{display:block;width:24px;height:24px;overflow:visible;transition:transform .18s ease}
+.gopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.gopair .up:hover .ticon{transform:translateY(-2px)}
+.gopair .dn:hover .ticon{transform:translateY(2px)}
+html[data-theme="dark"] .gopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn,html[data-theme="dark"] #goSide .gobtn{color:#e8fff1}
+html[data-theme="dark"] #goMain .gobtn.up,html[data-theme="dark"] #goSide .gobtn.up{border-bottom-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn:hover,html[data-theme="dark"] #goSide .gobtn:hover{background:#348057}
+html.drawer-open .gopair{opacity:0;pointer-events:none}
+/* 캡슐에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
+main{padding-bottom:150px}
+@media (min-width:1025px){ aside,aside.side{padding-bottom:190px} }
+/* ── 휴대폰·태블릿: 목차 캡슐은 숨기고, 본문 캡슐은 다음(Daum) 앱 자체 ↑ 단추를 피해 위로 ──
+   앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
+@media (max-width:1024px){
+  .gopair.left{display:none!important}
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  main{padding-bottom:240px}
+}
+@media print{ .gopair{display:none!important} }
+</style>
 </head>
 <body data-page="index" data-mb="37.6">
 <a class="skip" href="#view">본문으로</a>
@@ -574,7 +610,7 @@ nav.pagenav .dim{color:var(--ink3)}
 <div class="drawer-veil" id="veil"></div>
 <main id="main"><div class="content" id="view"></div></main>
 </div>
-<button type="button" id="toTop" class="totop" title="맨 위로" aria-label="맨 위로">↑</button>
+<nav class="gopair" id="goMain" aria-label="본문 위아래 이동"><button type="button" class="gobtn up" id="toTop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBot" aria-label="본문 맨 아래로" title="본문 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav><nav class="gopair left" id="goSide" aria-label="목차 위아래 이동"><button type="button" class="gobtn up" id="toTopLeft" aria-label="목차 맨 위로" title="목차 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBotLeft" aria-label="목차 맨 아래로" title="목차 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>
 <footer class="foot"><div class="fin">
 신학지남 아카이브 · 1918–2011 · 통권 제1–309호 · 4,916편<br>
 <a href="#/">표지</a> · <a href="#/idx/all">전체 목록</a> · <a href="#/idx/authors">저자별</a> · <a href="#/idx/issues">통권별</a> · <a href="#/idx/topics">주제별</a> · <a href="#/story">만든 이야기</a>
@@ -1176,7 +1212,7 @@ window.LzmaWasm = lzma_wasm;
       '<div class="cc-item"><span class="cc-n">01</span><b>4,916편 · 통권 제1–309호 통합 검색</b><p>제목·저자·연도·통권을 한 칸에서 찾습니다. 찾은 낱말은 <b>노랗게</b> 표시되고 첫 자리로 이동합니다.</p></div>' +
       '<div class="cc-item"><span class="cc-n">02</span><b>94년 연대기</b><p>1918–1949 · 1950–1969 · 1970·80·90년대 · 2000–2011 여섯 갈래로 94년을 따라 읽습니다.</p></div>' +
       '<div class="cc-item"><span class="cc-n">03</span><b>통권·주제·저자 인덱스 연결</b><p>호수 ' + stN.ni + '개, 주제 12갈래, 저자 711명. 글에서 저자·호수·주제를 누르면 그 자리로 갑니다.</p></div>' +
-      '<div class="cc-item"><span class="cc-n">04</span><b>PC·태블릿·휴대폰 3기기 겸용</b><p>PC는 좌우 2단, 태블릿과 휴대폰은 목차 서랍 하나와 위로 단추 하나로 씁니다. 표가 넓어도 화면이 밀리지 않습니다.</p></div>' +
+      '<div class="cc-item"><span class="cc-n">04</span><b>PC·태블릿·휴대폰 3기기 겸용</b><p>PC는 좌우 2단이고 목차창·본문 양쪽에 위·아래(↑·↓) 알약 단추가 하나씩 있으며, 태블릿과 휴대폰은 목차 서랍 하나와 본문 쪽 단추 하나로 씁니다. 표가 넓어도 화면이 밀리지 않습니다.</p></div>' +
       '</div></div>' +
       '<section class="story-sec"><h2 id="principle">자료와 신학 — 지킨 기준</h2><ul class="principles">' +
       '<li><b>원문 그대로</b> — 드라이브 <code>신학지남</code> 폴더의 <code>.md</code> 원문 글자를 고치지 않고 그대로 옮겼습니다. 옛 표기·오탈자·OCR 흔적도 손대지 않았습니다.</li>' +
@@ -1204,7 +1240,7 @@ window.LzmaWasm = lzma_wasm;
       '<div class="mcard"><span class="mnum">3</span><div><b>☰ 목차 서랍</b><p>태블릿·휴대폰에서 위쪽 <b>☰ 목차</b>를 누르면 목차가 서랍으로 열립니다. 글을 고르면 서랍이 닫히고 그 글이 열립니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">4</span><div><b>연대별·통권별·주제별</b><p>표지의 핵심 바로가기에서 94년을 여섯 갈래로, ' + stN.ni + '개 호로, 12갈래 주제로 훑습니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">5</span><div><b>저자·이웃 글</b><p>글에서 저자를 누르면 저자별 인덱스의 그 이름으로, 통권을 누르면 그 호로 갑니다. 목차 창에는 같은 호·같은 저자의 글이 함께 뜹니다.</p></div></div>' +
-      '<div class="mcard"><span class="mnum">6</span><div><b>세 기기</b><p>PC는 좌우 2단과 ↑ 단추, 태블릿·휴대폰은 한 단과 ↑ 단추 하나. 넓은 표는 표 안에서만 옆으로 넘어갑니다.</p></div></div>' +
+      '<div class="mcard"><span class="mnum">6</span><div><b>세 기기</b><p>PC는 좌우 2단이고 목차창·본문 양쪽에 <b>↑·↓</b> 알약 단추가 하나씩 있습니다. 태블릿·휴대폰은 한 단에 본문 쪽 단추 하나뿐입니다. 넓은 표는 표 안에서만 옆으로 넘어갑니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">7</span><div><b>오프라인 보관</b><p>이 파일 하나를 PC·휴대폰에 두고 누르면 끝입니다. 인터넷 없이 그대로 보입니다.</p></div></div>' +
       '</div></section></div>';
     document.title = '만든 이야기 · 신학지남 아카이브';
@@ -1506,8 +1542,7 @@ window.LzmaWasm = lzma_wasm;
         e.preventDefault(); openDrawer(true);
       }
     });
-    var t2 = $('#toTop');
-    if (t2) t2.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    /* 위·아래 ↑·↓ 캡슐 단추는 공통 스크립트(#gopairJS)가 맡는다 */
     window.addEventListener('hashchange', route);
     route();
   }
@@ -1656,6 +1691,33 @@ window.LzmaWasm = lzma_wasm;
     }
   },true);
   window.hpguideOpen=open; window.hpguideClose=close;
+})();
+</script>
+<script id="gopairJS">
+/* ---------- 15차 ①: ↑·↓ 한 캡슐 단추 — PC는 목차창·본문 양쪽, 휴대폰은 본문 하나 ---------- */
+(function(){
+  function wire(){
+    var side = document.querySelector('aside.side') || document.querySelector('aside') || document.getElementById('toc');
+    var main = document.querySelector('main');
+    var docH = function(){ return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); };
+    var go = function(el, top, fb){ try{ el.scrollTo({top: top, behavior:'smooth'}); }catch(e){ fb(); } };
+    var click = function(sel, fn){
+      var el = document.querySelector(sel);
+      if(el) el.addEventListener('click', function(ev){ ev.preventDefault(); fn(); });
+    };
+    click('#goMain .up', function(){
+      go(window, 0, function(){ window.scrollTo(0, 0); });
+      if(main) go(main, 0, function(){ main.scrollTop = 0; });
+    });
+    click('#goMain .dn', function(){
+      var y = docH();
+      go(window, y, function(){ window.scrollTo(0, y); });
+      if(main) go(main, main.scrollHeight, function(){ main.scrollTop = main.scrollHeight; });
+    });
+    click('#goSide .up', function(){ if(side) go(side, 0, function(){ side.scrollTop = 0; }); });
+    click('#goSide .dn', function(){ if(side) go(side, side.scrollHeight, function(){ side.scrollTop = side.scrollHeight; }); });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
 })();
 </script>
 </body>

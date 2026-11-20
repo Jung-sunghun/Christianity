@@ -1184,6 +1184,42 @@ html[data-theme="dark"] .viewsEntry .vbtns button{background:#2a2340;border-colo
 @media (max-width:520px){.jh-foot{padding:22px 0 40px}}
 .jh-foot{--jh-strong:var(--accent,#7a3f22);--jh-link:var(--accent2,#245a4c)}
 </style>
+<style id="gopairCSS">
+/* ══ 아카이브 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
+.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
+  margin:0;padding:0;overflow:hidden;border-radius:26px;
+  border:1.5px solid #6ec28e;background:#c8ebd4;
+  box-shadow:0 10px 26px rgba(22,101,52,.26);transition:opacity .16s ease,box-shadow .18s ease}
+.gopair.left{left:26px;right:auto}
+#goMain .gobtn,#goSide .gobtn{display:flex;align-items:center;justify-content:center;width:100%;height:50px;padding:0;
+  border:0;border-radius:0;background:transparent;color:#166534;cursor:pointer;
+  font-family:inherit;font-size:0;line-height:0;transition:background .18s ease}
+/* 두 화살표 사이 얇은 구분선 — 한 캡슐 안의 위 칸/아래 칸 */
+#goMain .gobtn.up,#goSide .gobtn.up{border-bottom:1px solid #6ec28e}
+#goMain .gobtn:hover,#goSide .gobtn:hover{background:#b7e4c7}
+#goMain .gobtn:active,#goSide .gobtn:active{background:#a9dcbd}
+#goMain .gobtn:focus-visible,#goSide .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:-3px}
+.gopair .ticon{display:block;width:24px;height:24px;overflow:visible;transition:transform .18s ease}
+.gopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.gopair .up:hover .ticon{transform:translateY(-2px)}
+.gopair .dn:hover .ticon{transform:translateY(2px)}
+html[data-theme="dark"] .gopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn,html[data-theme="dark"] #goSide .gobtn{color:#e8fff1}
+html[data-theme="dark"] #goMain .gobtn.up,html[data-theme="dark"] #goSide .gobtn.up{border-bottom-color:#7dd3a6}
+html[data-theme="dark"] #goMain .gobtn:hover,html[data-theme="dark"] #goSide .gobtn:hover{background:#348057}
+html.drawer-open .gopair{opacity:0;pointer-events:none}
+/* 캡슐에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
+main{padding-bottom:150px}
+@media (min-width:1025px){ aside,aside.side{padding-bottom:190px} }
+/* ── 휴대폰·태블릿: 목차 캡슐은 숨기고, 본문 캡슐은 다음(Daum) 앱 자체 ↑ 단추를 피해 위로 ──
+   앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
+@media (max-width:1024px){
+  .gopair.left{display:none!important}
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  main{padding-bottom:240px}
+}
+@media print{ .gopair{display:none!important} }
+</style>
 </head>
 <body>
 <!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->
@@ -1467,7 +1503,7 @@ html[data-theme="dark"] .viewsEntry .vbtns button{background:#2a2340;border-colo
         <span class="cc-n">06</span>
         <b>PC · 태블릿 · 휴대폰 겸용</b>
         <p>이 파일 하나로 세 화면에 맞춰집니다. 태블릿과 휴대폰에서는 한 단으로 서고 목차는 위쪽
-        <b>☰ 목차</b>로 열며, <b>위로(↑)</b> 단추는 오른쪽 아래에 하나만 있습니다.</p>
+        <b>☰ 목차</b>로 열며, 본문 쪽에는 <b>위·아래(↑·↓)</b> 알약 단추 하나만 오른쪽 아래에 떠 있습니다.</p>
       </div>
     </div>
   </div>
@@ -1535,7 +1571,7 @@ html[data-theme="dark"] .viewsEntry .vbtns button{background:#2a2340;border-colo
   <div class="newbox">
     <div><span class="n">NEW 01</span><b>신약성취연결 · 구약언약연결</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
     <div><span class="n">NEW 02</span><b>키아즘 입체 도표</b><span>A – B – C(정점) – B′ – A′ 계단식 들여쓰기와 좌측 대칭 연결선, 정점 강조, 핵심어 표시를 한 도표에 담았습니다.</span></div>
-    <div><span class="n">NEW 03</span><b>Home 버튼 · 위로(↑) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. PC에서는 왼쪽 ↑가 왼쪽 창만, 오른쪽 ↑가 본문만 올리고, 태블릿·휴대폰에서는 오른쪽 ↑ 하나만 남습니다.</span></div>
+    <div><span class="n">NEW 03</span><b>Home 버튼 · 위·아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. PC에서는 왼쪽 캡슐(↑·↓)이 왼쪽 창만, 오른쪽 캡슐이 본문만 맨 위·맨 아래로 움직이고, 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다.</span></div>
   </div>
 
   <div class="story-sec">
@@ -1621,9 +1657,8 @@ html[data-theme="dark"] .viewsEntry .vbtns button{background:#2a2340;border-colo
       <li class="mcard">
         <div class="mnum">⑥</div>
         <div class="mtx">
-          <b>단축키와 좌우 ↑ 버튼, 그리고 이 페이지</b>
-          <p>화면 아래 양쪽에 40px 둥근 <b>↑</b> 단추가 있습니다. 왼쪽 단추는 왼쪽 탐색창만, 오른쪽 단추는 본문만 맨 위로
-          올립니다. 스크롤을 내리면 나타납니다.</p>
+          <b>단축키와 위·아래 ↑·↓ 단추, 그리고 이 페이지</b>
+          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다. 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 스크롤 위치와 상관없이 늘 보입니다.</p>
           <ul>
             <li><code>Home</code> — 왼쪽 위 빨간 동그라미, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 그리고 <code>Esc</code> 키로 표지에 돌아옵니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키나 아래 <code>Home으로 돌아가기</code> 단추로 나옵니다.</li>
@@ -1655,8 +1690,7 @@ html[data-theme="dark"] .viewsEntry .vbtns button{background:#2a2340;border-colo
     </footer>
   </div>
 </main>
-<button id="toTop" class="totop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button>
-<button id="toTopLeft" class="totop left" aria-label="왼쪽 창 맨 위로" title="왼쪽 창 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button>
+<nav class="gopair" id="goMain" aria-label="본문 위아래 이동"><button type="button" class="gobtn up" id="toTop" aria-label="본문 맨 위로" title="본문 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBot" aria-label="본문 맨 아래로" title="본문 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav><nav class="gopair left" id="goSide" aria-label="목차 위아래 이동"><button type="button" class="gobtn up" id="toTopLeft" aria-label="목차 맨 위로" title="목차 맨 위로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.6V5.4"/><path d="M5.2 12.2 12 5.4l6.8 6.8"/></svg></button><button type="button" class="gobtn dn" id="toBotLeft" aria-label="목차 맨 아래로" title="목차 맨 아래로"><svg class="ticon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.4v13.6"/><path d="M5.2 11.2 12 18l6.8-6.8"/></svg></button></nav>
 <div id="xmodal" class="xmodal" aria-live="polite"></div>
 <div id="xm2" class="xm2" aria-live="polite"></div>
 
@@ -2150,18 +2184,9 @@ function step(d){
   if(j>=0 && j<DATA.length) showEntry(DATA[j].id);
 }
 
-/* ---------- 상단 이동 ---------- */
-function bindToTop(){
-  const b = $('#toTop'); if(!b) return;
-  b.onclick = ()=>{ try{ window.scrollTo({top:0, behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); } };
-}
-function watchScroll(){
-  const b = $('#toTop'); if(!b) return;
-  const upd = ()=>{ const y = window.scrollY || (document.documentElement && document.documentElement.scrollTop) || 0;
-    if(y > 40) b.classList.add('show'); else b.classList.remove('show'); };
-  window.addEventListener('scroll', upd, {passive:true});
-  upd();
-}
+/* ---------- 상단 이동: ↑·↓ 캡슐 단추는 공통 스크립트(#gopairJS)가 맡는다 ---------- */
+function bindToTop(){ /* 옛 단독 ↑ 배선은 쓰지 않는다 */ }
+function watchScroll(){ /* 옛 단독 ↑ 배선은 쓰지 않는다 */ }
 
 /* ---------- 설정 ---------- */
 function setFS(n){
@@ -2522,38 +2547,7 @@ document.addEventListener('click', function(ev){
   }
 }, true);
 
-/* ---------- 좌·우 ↑ 버튼: 왼쪽은 사이드바만, 오른쪽은 본문만 ---------- */
-(function(){
-  function wire(){
-    const r = document.getElementById('toTop');
-    const l = document.getElementById('toTopLeft');
-    const side = document.querySelector('aside.side') || document.querySelector('aside');
-    const main = document.querySelector('main');
-    const go = (el, fb) => { try{ el.scrollTo({top:0, behavior:'smooth'}); }catch(e){ fb(); } };
-    if(r) r.onclick = () => {
-      go(window, () => window.scrollTo(0,0));
-      if(main) go(main, () => { main.scrollTop = 0; });
-    };
-    if(l) l.onclick = () => {
-      if(!side) return;
-      go(side, () => { side.scrollTop = 0; });
-    };
-    const upd = () => {
-      const wy = window.scrollY || (document.documentElement && document.documentElement.scrollTop) || 0;
-      const sy = side ? side.scrollTop : 0;
-      if(r){ if(wy > 40) r.classList.add('show'); else r.classList.remove('show'); }
-      if(l){ if(sy > 40) l.classList.add('show'); else l.classList.remove('show'); }
-    };
-    window.addEventListener('scroll', upd, {passive:true});
-    if(side) side.addEventListener('scroll', upd, {passive:true});
-    upd();
-    // Home 동그라미
-    document.querySelectorAll('.homefab').forEach(b => {
-      b.onclick = ev => { ev.preventDefault(); closeXAll(); showCover(); side && go(side, () => { side.scrollTop = 0; }); };
-    });
-  }
-  document.addEventListener('DOMContentLoaded', wire);
-})();
+/* ---------- 옛 단독 ↑ 배선은 공통 스크립트(#gopairJS)로 대체되었다 ---------- */
 
 /* ---------- 구조 도표 다시 그리기 ---------- */
 function redrawChi(){ requestAnimationFrame(() => { drawChiAll(); setTimeout(drawChiAll, 120); }); }
@@ -2983,6 +2977,33 @@ document.addEventListener('DOMContentLoaded', init);
     }
   },true);
   window.hpguideOpen=open; window.hpguideClose=close;
+})();
+</script>
+<script id="gopairJS">
+/* ---------- 15차 ①: ↑·↓ 한 캡슐 단추 — PC는 목차창·본문 양쪽, 휴대폰은 본문 하나 ---------- */
+(function(){
+  function wire(){
+    var side = document.querySelector('aside.side') || document.querySelector('aside') || document.getElementById('toc');
+    var main = document.querySelector('main');
+    var docH = function(){ return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); };
+    var go = function(el, top, fb){ try{ el.scrollTo({top: top, behavior:'smooth'}); }catch(e){ fb(); } };
+    var click = function(sel, fn){
+      var el = document.querySelector(sel);
+      if(el) el.addEventListener('click', function(ev){ ev.preventDefault(); fn(); });
+    };
+    click('#goMain .up', function(){
+      go(window, 0, function(){ window.scrollTo(0, 0); });
+      if(main) go(main, 0, function(){ main.scrollTop = 0; });
+    });
+    click('#goMain .dn', function(){
+      var y = docH();
+      go(window, y, function(){ window.scrollTo(0, y); });
+      if(main) go(main, main.scrollHeight, function(){ main.scrollTop = main.scrollHeight; });
+    });
+    click('#goSide .up', function(){ if(side) go(side, 0, function(){ side.scrollTop = 0; }); });
+    click('#goSide .dn', function(){ if(side) go(side, side.scrollHeight, function(){ side.scrollTop = side.scrollHeight; }); });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
 })();
 </script>
 </body>
