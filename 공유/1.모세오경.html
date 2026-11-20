@@ -1232,33 +1232,39 @@ html[data-theme="dark"] .msdoc-p{color:#d7d4de}
   .emph-row{padding:10px 11px}
 }
 
-/* ══ 15차 ①: ↑·↓ 한 벌 단추 — PC 목차창·본문 양쪽, 휴대폰 본문 한 벌, 늘 보임 ══ */
-.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;gap:10px;
-  margin:0;padding:0;border:0;background:none;transition:opacity .16s ease}
+/* ══ 15차 ③: ↑·↓를 한 알약(캡슐) 단추로 — PC 본문·목차창 양쪽, 휴대폰 본문 하나 ══ */
+.gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
+  margin:0;padding:0;overflow:hidden;border-radius:26px;
+  border:1.5px solid var(--mintb);background:var(--mint);
+  box-shadow:0 10px 26px rgba(22,101,52,.26);transition:opacity .16s ease,box-shadow .18s ease}
 .gopair.left{left:26px;right:auto}
-.gopair .gobtn{display:flex;align-items:center;justify-content:center;width:50px;height:50px;padding:0;
-  border-radius:50%;border:1.5px solid var(--mintb);background:var(--mint);color:var(--mintink);
-  box-shadow:0 8px 22px rgba(22,101,52,.24);cursor:pointer;font-size:0;line-height:0;
-  transition:background .18s,border-color .18s,box-shadow .18s,transform .14s}
-.gopair .gobtn:hover{background:#b7e4c7;border-color:#4fa975;box-shadow:0 12px 26px rgba(22,101,52,.32)}
-.gopair .gobtn:active{transform:translateY(1px)}
-.gopair .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:2px}
+.gopair .gobtn{display:flex;align-items:center;justify-content:center;width:100%;height:50px;padding:0;
+  border:0;border-radius:0;background:transparent;color:var(--mintink);cursor:pointer;font-size:0;line-height:0;
+  transition:background .18s ease}
+/* 두 화살표 사이 얇은 구분선 — 한 캡슐 안의 위 칸/아래 칸 */
+.gopair .gobtn.up{border-bottom:1px solid var(--mintb)}
+.gopair .gobtn:hover{background:#b7e4c7}
+.gopair .gobtn:active{background:#a9dcbd}
+.gopair .gobtn:focus-visible{outline:3px solid #ffe08a;outline-offset:-3px}
 .gopair .ticon{display:block;width:24px;height:24px;overflow:visible;transition:transform .18s ease}
 .gopair .ticon path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .gopair .up:hover .ticon{transform:translateY(-2px)}
 .gopair .dn:hover .ticon{transform:translateY(2px)}
-html[data-theme="dark"] .gopair .gobtn{background:#2a6b4a;border-color:#7dd3a6;color:#e8fff1}
-html[data-theme="dark"] .gopair .gobtn:hover{background:#348057;border-color:#9fe4bf}
+html[data-theme="dark"] .gopair{background:#2a6b4a;border-color:#7dd3a6}
+html[data-theme="dark"] .gopair .gobtn{color:#e8fff1}
+html[data-theme="dark"] .gopair .gobtn.up{border-bottom-color:#7dd3a6}
+html[data-theme="dark"] .gopair .gobtn:hover{background:#348057}
 html.drawer-open .gopair{opacity:0;pointer-events:none}
-/* 단추에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
+/* 캡슐에 본문·목차 마지막 줄이 영영 가리지 않도록 아래 여백을 준다 */
 main{padding-bottom:150px}
-@media (min-width:1025px){ aside.side{padding-bottom:180px} }
-@media (max-width:1024px){ .gopair.left{display:none!important} }
-@media (max-width:860px){
-  .gopair{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));gap:8px}
-  .gopair .gobtn{width:50px;height:50px}
+@media (min-width:1025px){ aside.side{padding-bottom:190px} }
+/* ── 휴대폰·태블릿: 목차 쪽 캡슐은 숨기고, 본문 캡슐은 다음(Daum) 앱 자체 ↑ 단추를 피해 위로 ──
+   앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
+@media (max-width:1024px){
+  .gopair.left{display:none!important}
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  main{padding-bottom:240px}
 }
-
 /* ══ 14차 ③: 인라인 관주 ══ */
 .gw{display:inline-block;margin:0 .18em;padding:.04em .42em .08em;border-radius:7px;
   border:1px solid #b6c6e6;background:#eef3ff;color:#1c2e82;font-size:.74em;font-weight:800;
@@ -1715,7 +1721,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
   </div>
 
   <div class="newbox">
-    <div><span class="n">NEW 14</span><b>위아래 화살표 · 목차 따라가기</b><span>PC에서는 왼쪽 목차창과 본문창 양쪽에 <b>↑·↓</b> 한 벌씩 있어 각 창의 맨 위·맨 아래로 부드럽게 이동합니다. 휴대폰에서는 본문 쪽 한 벌만 보이며, 화살표는 스크롤 위치와 상관없이 늘 떠 있습니다. 위쪽 <b>창·출·레·민·신</b> 단추를 누르면 왼쪽 목차가 그 책의 첫 장으로 따라 내려갑니다.</span></div>
+    <div><span class="n">NEW 14</span><b>위아래 화살표 · 목차 따라가기</b><span>PC에서는 왼쪽 목차창과 본문창 양쪽에 <b>↑·↓</b> 알약 캡슐이 하나씩 있어 각 창의 맨 위·맨 아래로 부드럽게 이동합니다. 휴대폰에서는 본문 쪽 캡슐 하나만 보이며(다음 앱 자체 ↑ 단추 위쪽), 화살표는 스크롤 위치와 상관없이 늘 떠 있습니다. 위쪽 <b>창·출·레·민·신</b> 단추를 누르면 왼쪽 목차가 그 책의 첫 장으로 따라 내려갑니다.</span></div>
     <div><span class="n">NEW 14</span><b>문장 끝 관주 · 인명·지명·사건 상세</b><span>「설교문」과 「설교자 문장」 문장 끝에 <b>관주 창1:1</b> 같은 작은 박스가 붙습니다. 누르면 개역한글 본문·연결 이유·<b>📋 복사</b>가 열립니다. 왼쪽 <b>인명·지명·사건</b>을 누르면 원어·뜻·행적·그리스도 예표·연대기가 열리고, 지명은 실제 좌표에 핀이 찍힌 <b>이스라엘·애굽·시나이 벡터 지도</b>(확대·축소·동선)와 함께 열립니다.</span></div>
     <div><span class="n">NEW 01</span><b>구약언약연결 · 신약성취연결 (관주 기능)</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
     <div><span class="n">NEW 02</span><b>키아즘 입체 도표</b><span>A – B – C(정점) – B′ – A′ 계단식 들여쓰기와 좌측 대칭 연결선, 정점 강조, 핵심어 표시를 한 도표에 담았습니다.</span></div>
@@ -1794,7 +1800,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
         <div class="mnum">⑤</div>
         <div class="mtx">
           <b>단축키와 위·아래 ↑·↓ 단추, 그리고 이 페이지</b>
-          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b> 단추가 <b>한 벌씩</b>(지름 50px 둥근 단추 두 개) 떠 있습니다. 왼쪽 한 벌은 왼쪽 탐색창만, 오른쪽 한 벌은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 위나 아래 끝에 있어도 단추는 그대로 보입니다 — 맨 위에서도 <b>↓</b>가, 맨 아래에서도 <b>↑</b>가 있습니다.</p>
+          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다. 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 위나 아래 끝에 있어도 단추는 그대로 보입니다 — 맨 위에서도 <b>↓</b>가, 맨 아래에서도 <b>↑</b>가 있습니다.</p>
           <ul>
             <li><code>Home</code> — 왼쪽 위 빨간 동그라미, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 그리고 <code>Esc</code> 키로 표지에 돌아옵니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키나 아래 <code>Home으로 돌아가기</code> 단추로 나옵니다.</li>
@@ -1806,7 +1812,7 @@ html[data-theme="dark"] .tmodal .tjump{background:#20263c;border-color:#4a5f9e;c
         <div class="mnum">⑦</div>
         <div class="mtx">
           <b>위아래 화살표(↑↓) · 책 탭 목차 이동</b>
-          <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 벌</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 한 벌이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 한 벌은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 한 벌만 남습니다. 크기는 예전 첫 화살표와 같은 50px입니다.</p>
+          <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 알약(캡슐)</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 캡슐이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 캡슐은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다. 캡슐 너비는 50px, 위·아래 칸 높이도 각각 50px입니다. 다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 캡슐을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 한 벌을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>
           <ul>
             <li>↑·↓는 스크롤 위치와 상관없이 <b>늘</b> 보입니다 — 맨 위에서도 <b>↓</b>, 맨 아래에서도 <b>↑</b>가 그대로 있습니다.</li>
             <li>위쪽 <b>창·출·레·민·신</b> 단추를 누르면 본문 책이 바뀌고, <b>왼쪽 목차도 그 책의 첫 장으로 따라 내려갑니다</b>. 휴대폰에서는 <b>☰ 목차</b>를 열어 같은 방식으로 보시면 됩니다.</li>
