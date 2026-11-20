@@ -2464,11 +2464,17 @@ function openXAll(id){
   if(ac) ac.onclick = ev => { ev.stopPropagation(); copy(e.xlabel + ' — ' + e.label + '\n\n' + XC.join('\n'), ac); };
   m.querySelectorAll('.xclose2, .xclose2b').forEach(b => { b.onclick = ev => { ev.stopPropagation(); closeXAll(); }; });
   m.querySelector('.xbk2').onclick = closeXAll;
-  /* 창-계 연결구절 팝업도 어디를 눌러도 닫힌다 — 복사 같은 기능 단추만 제 일을 한다. */
+  /* PC는 안쪽 구절·글자를 눌러도 창이 남는다(복사·드래그). 바깥 어두운 배경·닫기·Esc만 닫는다.
+     휴대폰은 기능 단추가 아닌 곳이면 안팎 어디를 눌러도 닫힌다. */
   m.onclick = ev => {
     const t = ev.target;
-    const fn = t && t.closest ? t.closest('button,a[href],input,select,textarea') : null;
-    if(fn){ if(fn.classList.contains('xclose2') || fn.classList.contains('xclose2b')){ ev.preventDefault(); closeXAll(); } return; }
+    const fn = t && t.closest ? t.closest('button,a[href],input,select,textarea,label,summary') : null;
+    if(fn){
+      if(fn.classList.contains('xclose2') || fn.classList.contains('xclose2b')){ ev.preventDefault(); closeXAll(); }
+      return;
+    }
+    const out = !t || t === m || (t.classList && t.classList.contains('xbk2'));
+    if(window.innerWidth > 1024 && !out) return;
     ev.preventDefault(); closeXAll();
   };
   setTimeout(() => document.addEventListener('keydown', escXAll, true), 0);
@@ -2511,20 +2517,31 @@ function openXref(it){
     + '<button class="xclose" type="button">닫기 ✕</button></div>' + body
     + (why ? '<div class="xwhy"><b>연결 이유</b> — ' + esc(why) + '</div>' : '')
     + '<div class="xfoot"><button class="xcopy" type="button">본문 복사</button>'
-    + '<span class="small">아무 키나 누르거나 화면을 클릭하면 닫힙니다.</span></div></div>';
+    + '<span class="small">바깥 어두운 배경·닫기 단추·Esc 키로 닫힙니다.</span></div></div>';
   m.classList.add('open');
   const cp = m.querySelector('.xcopy');
   if(cp) cp.onclick = () => copy(ref + '\n' + (rows.length ? rows.map(r => r[0] + '. ' + r[1]).join('\n') : '(본문 미수록)'), cp);
   m.querySelectorAll('.xcopy1').forEach(b => { b.onclick = ev => { ev.stopPropagation(); copy(b.dataset.c, b); }; });
   setTimeout(() => {
-    document.addEventListener('click', closeXref);
+    /* PC는 안쪽 구절·글자를 눌러도 창이 남는다(복사·드래그). 바깥 어두운 배경·닫기·Esc만 닫는다.
+       휴대폰은 기능 단추가 아닌 곳이면 안팎 어디를 눌러도 닫힌다. */
+    m.onclick = ev => {
+      const t = ev.target;
+      const fn = t && t.closest ? t.closest('button,a[href],input,select,textarea,label,summary') : null;
+      if(fn){
+        if(fn.classList.contains('xclose')){ ev.preventDefault(); closeXref(); }
+        return;
+      }
+      const out = !t || t === m || (t.classList && t.classList.contains('xbk'));
+      if(window.innerWidth > 1024 && !out) return;
+      ev.preventDefault(); closeXref();
+    };
     document.addEventListener('keydown', closeXrefKey, true);
   }, 0);
 }
 function closeXref(){
   const m = document.getElementById('xmodal'); if(!m) return;
-  m.classList.remove('open'); m.innerHTML = '';
-  document.removeEventListener('click', closeXref);
+  m.classList.remove('open'); m.innerHTML = ''; m.onclick = null;
   document.removeEventListener('keydown', closeXrefKey, true);
 }
 function closeXrefKey(ev){ ev.preventDefault(); ev.stopPropagation(); closeXref(); }
@@ -2965,16 +2982,17 @@ document.addEventListener('DOMContentLoaded', init);
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
   }
   openBtn.addEventListener('click',function(e){e.preventDefault();open();});
-  /* 안내 창은 어디를 눌러도 닫힌다 — 안쪽 글자·빈 곳 포함. 기능 단추·입력칸만 제 일을 한다. */
+  /* PC는 안쪽 글자·빈 곳을 눌러도 창이 그대로 남는다(글자 선택·드래그). 닫는 길은 바깥 어두운 배경·✕·닫기·Esc뿐. */
+  /* 휴대폰은 지금처럼 기능 단추·입력칸이 아닌 곳이면 안팎 어디를 눌러도 닫힌다. */
   modal.addEventListener('click',function(e){
     var t=e.target;
-    if(t&&t.closest){
-      var fn=t.closest('button,a[href],input,select,textarea,label,summary');
-      if(fn){
-        if(fn.getAttribute&&fn.getAttribute('data-hpguide-close')){ e.preventDefault(); close(); }
-        return;
-      }
+    var fn=(t&&t.closest)?t.closest('button,a[href],input,select,textarea,label,summary'):null;
+    if(fn){
+      if(fn.getAttribute&&fn.getAttribute('data-hpguide-close')){ e.preventDefault(); close(); }
+      return;
     }
+    var out=!t||t===modal||(t.classList&&(t.classList.contains('hpguide-veil')||t.classList.contains('hpguide-scroll')));
+    if(window.innerWidth>1024&&!out) return;
     e.preventDefault(); close();
   });
   document.addEventListener('keydown',function(e){

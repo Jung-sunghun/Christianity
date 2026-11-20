@@ -3100,16 +3100,17 @@ main{padding-bottom:150px}
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
   }
   openBtn.addEventListener('click',function(e){e.preventDefault();open();});
-  /* 안내 창은 어디를 눌러도 닫힌다 — 안쪽 글자·빈 곳 포함. 기능 단추·입력칸만 제 일을 한다. */
+  /* PC는 안쪽 글자·빈 곳을 눌러도 창이 그대로 남는다(글자 선택·드래그). 닫는 길은 바깥 어두운 배경·✕·닫기·Esc뿐. */
+  /* 휴대폰은 지금처럼 기능 단추·입력칸이 아닌 곳이면 안팎 어디를 눌러도 닫힌다. */
   modal.addEventListener('click',function(e){
     var t=e.target;
-    if(t&&t.closest){
-      var fn=t.closest('button,a[href],input,select,textarea,label,summary');
-      if(fn){
-        if(fn.getAttribute&&fn.getAttribute('data-hpguide-close')){ e.preventDefault(); close(); }
-        return;
-      }
+    var fn=(t&&t.closest)?t.closest('button,a[href],input,select,textarea,label,summary'):null;
+    if(fn){
+      if(fn.getAttribute&&fn.getAttribute('data-hpguide-close')){ e.preventDefault(); close(); }
+      return;
     }
+    var out=!t||t===modal||(t.classList&&(t.classList.contains('hpguide-veil')||t.classList.contains('hpguide-scroll')));
+    if(window.innerWidth>1024&&!out) return;
     e.preventDefault(); close();
   });
   document.addEventListener('keydown',function(e){
