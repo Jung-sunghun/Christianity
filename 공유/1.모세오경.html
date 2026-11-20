@@ -1632,13 +1632,15 @@ html[data-theme="dark"] .tmodal .mapbar .gmaps{background:#20263c;border-color:#
 .tmodal .tclose:focus-visible{outline:3px solid #ffe08a;outline-offset:2px}
 html[data-theme="dark"] .tmodal .tclose{background:#dc2626;border-color:#b91c1c;color:#fff}
 html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
-.tmodal .tfoot{display:flex;justify-content:center;margin:20px 0 14px;padding-top:16px;
+.tmodal .tfoot{position:relative;z-index:6;display:flex;justify-content:flex-end;
+  margin:20px 0 14px;padding-top:16px;background:transparent;
   border-top:1px solid var(--line,#e2e8f0)}
-.tmodal .tfoot .tclose-bot{min-width:12em;padding:.72em 2.4em;font-size:1em;border-radius:12px}
+/* 15차 ⑭: 하단 닫기도 상단과 같은 오른쪽 끝·같은 크기(폭 100%·가운데 정렬 해제) */
+.tmodal .tfoot .tclose-bot{min-width:0;width:auto;flex:0 0 auto;padding:.45em 1em;font-size:.86em;border-radius:10px}
 @media (max-width:640px){
   /* 팝업 안 ↑·↓ 캡슐(아래 8px·높이 70px)이 닫기 단추를 덮지 않게 아래를 비운다 */
-  .tmodal .tfoot{margin:16px 0 calc(96px + env(safe-area-inset-bottom,0px));padding-top:14px}
-  .tmodal .tfoot .tclose-bot{min-width:0;width:100%;padding:.9em 1em;font-size:1.02em;border-radius:12px}
+  .tmodal .tfoot{margin:16px 0 calc(14px + env(safe-area-inset-bottom,0px));padding-top:14px}
+  .tmodal .tfoot .tclose-bot{min-width:0;width:auto;flex:0 0 auto;padding:.5em .85em;font-size:.82em;border-radius:10px}
   .tmodal .tclose{padding:.5em .85em;font-size:.82em}
 }
 
@@ -1665,6 +1667,27 @@ html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
     z-index:149;pointer-events:none;
     background:linear-gradient(180deg,transparent 0%,#ccd8f3 58%,#ccd8f3 100%);
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 46%);mask-image:linear-gradient(180deg,transparent 0%,#000 46%)}
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   15차 ⑮: 휴대폰 목차 서랍(☰) 닫기 — 빨간 바탕 흰 글씨,
+   서랍 맨 아래에도 같은 오른쪽 끝에 빨간 「닫기」 하나 더
+   ══════════════════════════════════════════════════════════════════════ */
+.drawer-head .drawer-close{border:1px solid #b91c1c;background:#dc2626;color:#fff;
+  font-weight:900;box-shadow:0 2px 6px rgba(180,24,24,.24)}
+.drawer-head .drawer-close:hover,.drawer-head .drawer-close:active{background:#b91c1c;border-color:#991b1b;color:#fff}
+html[data-theme="dark"] .drawer-head .drawer-close{background:#dc2626;border-color:#b91c1c;color:#fff}
+.drawerfoot{display:none}
+@media (max-width:1024px){
+  /* 16px 아래에 서원 서랍 ↑·↓ 캡슐(높이 70px·아래 22px)이 들어올 자리를 비원다 */
+  .drawerfoot{display:flex;justify-content:flex-end;align-items:center;
+    margin:18px 0 calc(26px + env(safe-area-inset-bottom,0px));padding:14px 0 0;
+    border-top:1px solid var(--line,#e2e8f0)}
+  .drawerfoot .drawer-close-bot{border:1px solid #b91c1c;background:#dc2626;color:#fff;
+    border-radius:10px;padding:.5em .95em;font-family:inherit;font-weight:900;font-size:.86em;
+    line-height:1.3;letter-spacing:-.01em;cursor:pointer;box-shadow:0 2px 6px rgba(180,24,24,.24)}
+  .drawerfoot .drawer-close-bot:hover,.drawerfoot .drawer-close-bot:active{background:#b91c1c;border-color:#991b1b;color:#fff}
+  .drawerfoot .drawer-close-bot:focus-visible{outline:3px solid #ffe08a;outline-offset:2px}
 }
 
 /* ── 아카이브 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
@@ -1729,15 +1752,14 @@ html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
     <button data-home="1">Home</button>
   </div>
   <div class="bookbar">
-    <button data-book="all" class="on">전체</button>
-    <button data-book="gen">창세기</button>
+    <button data-book="gen" class="on">창세기</button>
     <button data-book="exo">출애굽기</button>
     <button data-book="lev">레위기</button>
     <button data-book="num">민수기</button>
     <button data-book="deu">신명기</button>
   </div>
   <select id="book66" class="bookselect" title="66권 확장 보기">
-    <option value="">구약1. 모세오경 — 5권 수록</option>
+    <option value="" disabled>구약1. 모세오경 — 5권 수록</option>
     <option value="gen">창세기 (수록)</option>
     <option value="exo">출애굽기 (수록)</option>
     <option value="lev">레위기 (수록)</option>
@@ -1752,6 +1774,7 @@ html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
   <div id="tagBox"></div>
   <div class="section-label chips-label">목차</div>
   <ul class="toc" id="toc"></ul>
+  <div class="drawerfoot"><button type="button" class="drawer-close-bot" id="drawerCloseBot" aria-label="목차 닫기">닫기</button></div>
 </div>
   <div class="sidefoot" aria-hidden="true"></div>
 </aside>
@@ -1975,7 +1998,7 @@ html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
   </div>
 
   <div class="newbox">
-    <div><span class="n">NEW 15</span><b>책 단추 → 그 책 1장 바로 열기</b><span>왼쪽 <b>창세기·출애굽기·레위기·민수기·신명기</b> 단추와 표지의 같은 이름 <b>알약 단추</b>를 누르면, 오른쪽 본문이 그 책 <b>1장</b>으로 바로 열리고 왼쪽 목차도 그 책 첫 장으로 따라갑니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 목차 아래 <b>↑·↓</b> 캡슐은 목차 글자를 덮지 않도록 그 아래를 부드럽게 흐리게 두었습니다. 휴대폰에서는 팝업 안 아무 데나 탭해도 닫히고, PC에서는 마우스 작업 중 클릭으로 창이 사라지지 않도록 <b>바깥·닫기·Esc</b>로만 닫힙니다. 인명·지명·사건 창에는 <b>전체 화면</b>·<b>창 안 ↑·↓</b>·<b>주요 구절 펼치기</b>·<b>↩ 팝업으로 돌아가기</b>가 더해졌습니다.</span></div>
+    <div><span class="n">NEW 15</span><b>책 단추 → 그 책 1장 바로 열기</b><span>왼쪽 <b>창세기·출애굽기·레위기·민수기·신명기</b> 단추와 표지의 같은 이름 <b>알약 단추</b>를 누르면, 오른쪽 본문이 그 책 <b>1장</b>으로 바로 열리고 왼쪽 목차도 그 책 첫 장으로 따라갑니다. 책은 다섯 권 가운데 하나만 골라 봅니다(처음에는 창세기). 목차 아래 <b>↑·↓</b> 캡슐은 목차 글자를 덮지 않도록 그 아래를 부드럽게 흐리게 두었습니다. 휴대폰에서는 팝업 안 아무 데나 탭해도 닫히고, PC에서는 마우스 작업 중 클릭으로 창이 사라지지 않도록 <b>바깥·닫기·Esc</b>로만 닫힙니다. 인명·지명·사건 창에는 <b>전체 화면</b>·<b>창 안 ↑·↓</b>·<b>주요 구절 펼치기</b>·<b>↩ 팝업으로 돌아가기</b>가 더해졌습니다. 팝업의 빨간 <b>닫기</b>는 위·아래 모두 <b>오른쪽 끝</b>에, 휴대폰 <b>☰ 목차</b> 서랍의 닫기도 위·아래 두 곳 빨간 단추로 맞추었습니다.</span></div>
     <div><span class="n">NEW 14</span><b>위아래 화살표 · 목차 따라가기</b><span>PC에서는 왼쪽 목차창과 본문창 양쪽에 <b>↑·↓</b> 알약 캡슐이 하나씩 있어 각 창의 맨 위·맨 아래로 부드럽게 이동합니다. 휴대폰에서는 본문 쪽 캡슐 하나만 보이며(다음 앱 자체 ↑ 단추 위쪽), 화살표는 스크롤 위치와 상관없이 늘 떠 있습니다. 위쪽 <b>창·출·레·민·신</b> 단추를 누르면 본문이 그 책 1장으로 열리고, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다.</span></div>
     <div><span class="n">NEW 14</span><b>문장 끝 관주 · 인명·지명·사건 상세</b><span>「설교문」과 「설교자 문장」 문장 끝에 <b>관주 창1:1</b> 같은 작은 박스가 붙습니다. 누르면 개역한글 본문·연결 이유·<b>📋 복사</b>가 열립니다. 왼쪽 <b>인명·지명·사건</b>을 누르면 원어·뜻·행적·그리스도 예표·연대기가 열리고, 지명은 실제 좌표에 핀이 찍힌 <b>이스라엘·애굽·시나이 벡터 지도</b>(확대·축소·동선)와 함께 열립니다.</span></div>
     <div><span class="n">NEW 01</span><b>구약언약연결 · 신약성취연결 (관주 기능)</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
@@ -1996,7 +2019,7 @@ html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
           오른쪽 본문이 그 책 1장으로 바로 열리고, 그 책의 인명·지명·사건 태그만 남습니다. 태블릿과 휴대폰에서는 이 창이 서랍으로 숨고, 위쪽 <b>☰ 목차</b> 단추로 엽니다. 단락을 고르면 서랍은 저절로 닫힙니다.</p>
           <ul>
             <li>검색 예 — <code>창 1:1</code>, <code>창 1;1</code>, <code>마 1:21</code>, <code>팔복</code>, <code>아브라함</code>, <code>언약</code>, <code>키아즘</code>, <code>원시복음</code> — 쌍점(<code>:</code>) 자리에 세미콜론(<code>;</code>)을 써도 같은 결과가 나옵니다.</li>
-            <li>책 고르기 — <code>전체</code>·<code>창세기</code>·<code>출애굽기</code>·<code>레위기</code>·<code>민수기</code>·<code>신명기</code> 단추. <code>66권 확장 보기</code>는 수록된 다섯 권을 먼저 보여 주고 나머지 권역은 9권 분류로 차례로 확장합니다. 책을 고르면 <b>그 책 1장이 오른쪽 본문에 바로 열립니다</b>(<code>전체</code>는 보던 본문 유지).</li>
+            <li>책 고르기 — <code>창세기</code>·<code>출애굽기</code>·<code>레위기</code>·<code>민수기</code>·<code>신명기</code> 단추. <code>66권 확장 보기</code>는 수록된 다섯 권을 먼저 보여 주고 나머지 권역은 9권 분류로 차례로 확장합니다. 책을 고르면 <b>그 책 1장이 오른쪽 본문에 바로 열립니다</b>.</li>
             <li>태그 — 누르면 그 태그가 붙은 단락만 목차에 남고, 한 번 더 누르면 풀립니다.</li>
             <li>검색 결과를 누르면 그 낱말이 단락 본문 전체에 노란 블록으로 표시되고, 첫 번째 자리로 화면이 이동합니다. 목차로 열 때는 표시 없이 맨 위에서 시작합니다.</li>
             <li>목차 — 단락을 누르면 본문이 열립니다. 키보드 <code>←</code> <code>→</code> 로 이전·다음 단락을 넘깁니다.</li>
@@ -2070,7 +2093,7 @@ html[data-theme="dark"] .tmodal .tclose:hover{background:#b91c1c}
           <p>화면 아래 오른쪽에 <b>↑</b>와 <b>↓</b>가 <b>한 알약(캡슐)</b>로 붙어 있습니다. PC에서는 <b>왼쪽 목차창</b>에도 같은 캡슐이 있어 그 창만 맨 위·맨 아래로 움직이고, 오른쪽 캡슐은 본문만 움직입니다. 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다. PC에서 캡슐 너비는 50px, 위·아래 칸 높이도 각각 50px입니다. 휴대폰·태블릿에서는 2/3 크기(너비 34px · 칸 높이 34px · 모서리 18px · 아이콘 16px)로 작아집니다. 다음(Daum) 앱처럼 화면 오른쪽 맨 아래에 앱 자체 <b>↑</b> 단추를 띄우는 앱 안에서도 겹치지 않도록, 휴대폰·태블릿에서는 캡슐을 그 단추가 있는 자리에서 넉넉히 위로 비켜 띄워 둡니다.</p>
           <ul>
             <li>↑·↓는 스크롤 위치와 상관없이 <b>늘</b> 보입니다 — 맨 위에서도 <b>↓</b>, 맨 아래에서도 <b>↑</b>가 그대로 있습니다.</li>
-            <li>위쪽 <b>창·출·레·민·신</b> 단추를 누르면 <b>오른쪽 본문이 그 책 1장으로 바로 열리고</b>, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다. 표지의 다섯 책 이름 <b>알약 단추</b>도 똑같이 그 책 1장을 엽니다. <code>전체</code>는 보던 본문을 그대로 둡니다. 휴대폰에서는 <b>☰ 목차</b>를 열어 같은 방식으로 보시면 됩니다.</li>
+            <li>위쪽 <b>창·출·레·민·신</b> 단추를 누르면 <b>오른쪽 본문이 그 책 1장으로 바로 열리고</b>, 왼쪽 목차도 그 책 첫 장으로 따라 내려갑니다. 표지의 다섯 책 이름 <b>알약 단추</b>도 똑같이 그 책 1장을 엽니다. 휴대폰에서는 <b>☰ 목차</b>를 열어 같은 방식으로 보시면 됩니다. 목차 서랍은 위·아래 두 곳의 빨간 <b>닫기</b> 단추로 닫습니다.</li>
             <li>단락을 열면 목차에서 그 장이 자동으로 보이게 표시됩니다.</li>
           </ul>
         </div>
@@ -2341,9 +2364,11 @@ function firstChapter(b){
 function setBook(b, silent){
   S.book = b; S.tag = null;
   $$('[data-book]').forEach(x=>x.classList.toggle('on', x.dataset.book===b));
-  const sel = $('#book66'); if(sel && b!=='all'){ sel.value = b; } else if(sel){ sel.value=''; }
+  const sel = $('#book66');
+  if(sel){ const op = sel.querySelector('option[value="'+b+'"]'); if(op && !op.disabled) sel.value = b; }
   renderTags(); renderToc();
-  if(b!=='all') setTimeout(function(){ scrollTocToBook(b); }, 40);
+  /* 15차 ⑭: 책을 고르면 목차 창은 그 책 첫머리(맨 위)부터 보여 준다 */
+  if(!silent) setTimeout(function(){ const s = sideScroller(); if(s) s.scrollTop = 0; }, 40);
   if(!silent){ const nl=$('#navLabel'); if(nl) nl.textContent = (b==='all' ? '모세오경 5권' : BOOKNAME[b]); }
   /* 15차 ①: 책을 고르면 오른쪽 본문도 그 책 1장으로 바로 연다. '전체'는 보던 본문 그대로. */
   if(b !== 'all' && !silent){
@@ -2652,6 +2677,8 @@ function toggleTagSheet(){
 function scrollTocToBook(b){
   const side = sideScroller();
   if(!side) return;
+  /* 15차 ⑭: 첫 화면에서는 목차 창을 내리지 않는다 */
+  if(BOOT_TOP){ side.scrollTop = 0; return; }
   const links = Array.prototype.slice.call(document.querySelectorAll('#toc a[data-goto]'));
   const hit = links.filter(function(a){ return a.dataset.goto.indexOf(b) === 0; })[0];
   if(!hit) return;
@@ -3061,6 +3088,7 @@ function showCover(){
   window.scrollTo(0,0);
   history.replaceState(null,'','#');
 }
+var BOOT_TOP = true;   /* 15차 ⑭: 첫 화면 — 왼쪽 목차 창을 맨 위에 둔다 */
 function showEntry(id, push, hlq){
   const e = DATA.find(x=>x.id===id);
   if(!e) return;
@@ -3073,7 +3101,7 @@ function showEntry(id, push, hlq){
   setBook(e.book, true);
   $$('#toc a').forEach(a=>a.classList.toggle('on', a.dataset.goto===id));
   const act = $('.toc a.on');
-  if(act && act.scrollIntoView) act.scrollIntoView({block:'nearest'});
+  if(act && act.scrollIntoView && !BOOT_TOP) act.scrollIntoView({block:'nearest'});
   const nl=$('#navLabel'); if(nl) nl.textContent = e.label + ' · ' + e.title;
   const c=$('#crumbNow'); if(c) c.textContent = e.label;
   window.scrollTo(0,0);
@@ -3248,7 +3276,8 @@ function bindGlobal(){
   const sel = $('#book66');
   if(sel){
     sel.onchange = ()=>{
-      if(!sel.value){ setBook('all'); return; }
+      /* 15차 ⑭: 「전체」 항목이 없으므로 책만 바꾼다 */
+      if(!sel.value){ sel.value = S.book; return; }
       setBook(sel.value);
       sel.blur();
     };
@@ -3279,7 +3308,7 @@ function init(){
     if(f!==null) setFS(parseInt(f,10)); else setFS(1);
   }catch(e){ setTheme('white'); setFS(1); }
   bindGlobal();
-  setBook('all', true);
+  setBook('gen', true);
   const boot = ()=>{
     const id = location.hash.replace('#','');
     if(id && DATA.find(x=>x.id===id)){ showEntry(id,false); return; }
@@ -3290,6 +3319,15 @@ function init(){
       if(!first || (e.ch || 0) < (first.ch || 0)) first = e;
     });
     if(first) showEntry(first.id, false); else showCover();
+    /* 15차 ⑭: 첫 화면 직후 왼쪽 목차 창은 늘 맨 위 — 잠깐 뒤 풀어 준다 */
+    const keepTop = function(){
+      const sw = document.querySelector('aside.side .sidewrap');
+      if(sw) sw.scrollTop = 0;
+    };
+    keepTop();
+    setTimeout(keepTop, 60);
+    setTimeout(keepTop, 180);
+    setTimeout(function(){ keepTop(); BOOT_TOP = false; }, 420);
   };
   let fp = null;
   try{ if(document.fonts && document.fonts.load) fp = document.fonts.load('16px ArchiveHebrew'); }catch(e){}
@@ -3914,6 +3952,9 @@ function bindDrawer(){
   });
   const dc = document.getElementById('drawerClose');
   if(dc) dc.addEventListener('click', function(ev){ ev.preventDefault(); closeDrawer(); });
+  /* 15차 ⑮: 서랍 맨 아래 빨간 닫기도 같은 일을 한다 */
+  const dcb = document.getElementById('drawerCloseBot');
+  if(dcb) dcb.addEventListener('click', function(ev){ ev.preventDefault(); closeDrawer(); });
   const dv = document.getElementById('drawerVeil');
   if(dv) dv.addEventListener('click', function(){ closeDrawer(); });
   const side = document.getElementById('sideNav');
