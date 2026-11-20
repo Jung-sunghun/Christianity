@@ -1215,7 +1215,10 @@ main{padding-bottom:150px}
    앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
 @media (max-width:1024px){
   .gopair.left{display:none!important}
-  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  /* 휴대폰·태블릿: 캡슐을 PC(50px×102px)의 2/3 크기로 — 너비 34px · 칸 높이 34px(합 69px) · 모서리 18px · 아이콘 16px */
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px}
+  #goMain .gobtn{height:34px}
+  #goMain .ticon{width:16px;height:16px}
   main{padding-bottom:240px}
 }
 @media print{ .gopair{display:none!important} }
@@ -1658,7 +1661,7 @@ main{padding-bottom:150px}
         <div class="mnum">⑥</div>
         <div class="mtx">
           <b>단축키와 위·아래 ↑·↓ 단추, 그리고 이 페이지</b>
-          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다. 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 스크롤 위치와 상관없이 늘 보입니다.</p>
+          <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다(휴대폰·태블릿에서는 2/3 크기로 줄어듭니다). 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 스크롤 위치와 상관없이 늘 보입니다.</p>
           <ul>
             <li><code>Home</code> — 왼쪽 위 빨간 동그라미, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 그리고 <code>Esc</code> 키로 표지에 돌아옵니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키나 아래 <code>Home으로 돌아가기</code> 단추로 나옵니다.</li>

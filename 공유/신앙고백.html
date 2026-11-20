@@ -1306,7 +1306,10 @@ main{padding-bottom:150px}
    앱이 오른쪽 맨 아래(bottom 16~24px, 지름 ~44px)에 흰 원형 ↑를 띄우므로 그 위 90px에 둔다. */
 @media (max-width:1024px){
   .gopair.left{display:none!important}
-  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  /* 휴대폰·태블릿: 캡슐을 PC(50px×102px)의 2/3 크기로 — 너비 34px · 칸 높이 34px(합 69px) · 모서리 18px · 아이콘 16px */
+  #goMain{right:14px;bottom:calc(90px + env(safe-area-inset-bottom,0px));width:34px;border-radius:18px}
+  #goMain .gobtn{height:34px}
+  #goMain .ticon{width:16px;height:16px}
   main{padding-bottom:240px}
 }
 @media print{ .gopair{display:none!important} }
