@@ -75,7 +75,8 @@ h1,h2,h3,h4,p,ul,ol,table{margin:0;padding:0}
 .coverbtn:focus-visible{outline:3px solid #ffd9c0;outline-offset:2px}
 a.homefab{text-decoration:none}
 @media (max-width:767px){
-  .coverbtn{height:44px;font-size:.82em;padding:0 13px;border-radius:9px;letter-spacing:.04em}
+  .coverbtn{height:44px;font-size:.82em;padding:0 13px;border-radius:9px;letter-spacing:.04em;
+    order:1;margin-left:auto}
 }
 @media (max-width:430px){
   .coverbtn{height:42px;font-size:.8em;padding:0 12px}
@@ -752,8 +753,8 @@ main{padding-bottom:150px}
       <input type="search" id="qTop" placeholder="낱말·구문 검색  예: 삼위일체 / &quot;다른 보혜사&quot;" aria-label="검색어">
       <button type="submit">찾기</button>
     </form>
+    <button class="coverbtn" id="coverBtn" aria-label="이 서고의 첫 페이지(표지)로" title="이 서고의 첫 페이지(표지)로">UP</button>
     <div class="tb-actions">
-      <button class="coverbtn" id="coverBtn" aria-label="이 서고의 첫 페이지(표지)로" title="이 서고의 첫 페이지(표지)로">UP</button>
       <button class="navbtn" id="navBtn" aria-label="목차 열기"><span class="lbl-full">☰ 목차</span><span class="lbl-short">☰</span></button>
       <button class="storybtn" id="storyBtn"><span class="lbl-full">만든 이야기</span><span class="lbl-short">이야기</span></button>
     </div>
