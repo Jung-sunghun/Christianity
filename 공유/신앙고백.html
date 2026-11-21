@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>신앙고백 아카이브 — 개혁주의·장로교 정통 신앙고백 연도순 전문과 주제 비교</title>
+<title>신앙고백서고(書庫) — 개혁주의·장로교 정통 신앙고백 연도순 전문과 주제 비교</title>
 <style>:root,html[data-theme="white"]{--fs:17px;--bg:#ffffff;--panel:#ffffff;--ink:#1b1b1d;--muted:#6c6c74;--line:#e6e6ea;
 --accent:#7a3f22;--accent2:#245a4c;--gold:#9a7426;--chip:#f3f3f5;--shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05)}
 html[data-theme="light"]{--fs:17px;--bg:#fbf8f2;--panel:#fffdf8;--ink:#26221c;--muted:#6f6657;--line:#e2d9c8;
@@ -773,7 +773,7 @@ html[data-theme="dark"] #artWrap .catc,html[data-theme="dark"] #artWrap .kelc,
 html[data-theme="dark"] #artWrap .extq{background:#1e2124;border-color:#2f3438}
 html[data-theme="dark"] #artWrap .catn{color:#c3d0ff;background:#242b45;border-color:#38436b}
 
-/* ===== 신앙고백 아카이브 — 본문 부품 ===== */
+/* ===== 신앙고백서고 — 본문 부품 ===== */
 .qb{display:block;margin:2px 0 22px;padding:9px 12px}
 .qb .qb-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .qb .qb-row+.qb-row{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.16)}
@@ -964,14 +964,14 @@ html[data-theme="dark"] .bg-title{background:#2b3a92;color:#fff}
 html[data-theme="dark"] .bglist dd{color:#e7e2d6}
 html[data-theme="dark"] .cmpgo{color:#c8d2ea}
 /* ======================================================================
-   신앙고백 아카이브 — 04 겸용판 추가 스타일 (css10.css)
+   신앙고백서고 — 04 겸용판 추가 스타일 (css10.css)
    · css9.css 위에 마지막으로 덧대는 한 층입니다. css9.css 는 손대지 않았습니다.
    · 1025px 이상 : 아무 규칙도 바꾸지 않습니다 → PC 화면은 -03 과 똑같습니다.
    · 768~1024px  : 한 단 + 왼쪽 목차 서랍(☰ 목차)
    · 767px 이하  : 한 단 + 목차 서랍 + '위로(↑)' 단추 하나만
    ====================================================================== */
 
-/* ── 0. 만든 이야기 — 이 아카이브의 핵심 기능 강조 박스 (모든 화면) ── */
+/* ── 0. 만든 이야기 — 이 서고의 핵심 기능 강조 박스 (모든 화면) ── */
 .corecallout{
   position:relative;margin:1.7em 0 1.9em;padding:22px 24px 24px;
   border:1px solid #bcccea;border-left:7px solid #1c2e82;border-radius:16px;
@@ -1257,7 +1257,7 @@ html[data-theme="dark"] .makerbox .mk-v{color:#e7e2d6}
 
 /* 다크 테마 — 표 넘김 안내 */
 html[data-theme="dark"] .scrollhint{color:#9fb0d6}
-/* ── 아카이브 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
+/* ── 서고 공통 꼬리말 (만든이 · 자원후원 안내) ───────────────── */
 .jh-foot{--jh-line:var(--line,#d5dfe9);--jh-body:var(--muted,var(--ink3,#46586d));
   --jh-strong:var(--navy2,var(--accent-d,var(--accent2,#1d3a5c)));--jh-link:var(--navy3,var(--accent,#24466c));
   margin:40px 0 0;padding:28px 0 48px;border-top:1px solid var(--jh-line);
@@ -1276,7 +1276,7 @@ html[data-theme="dark"] .scrollhint{color:#9fb0d6}
 .jh-foot{--jh-strong:var(--accent,#7a3f22);--jh-link:var(--accent2,#245a4c)}
 </style>
 <style id="gopairCSS">
-/* ══ 아카이브 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
+/* ══ 서고 공통: ↑·↓ 한 알약(캡슐) 단추 — 1.모세오경 최신 규격(15차) ══ */
 .gopair{position:fixed;right:26px;bottom:26px;z-index:150;display:flex;flex-direction:column;width:50px;
   margin:0;padding:0;overflow:hidden;border-radius:26px;
   border:1.5px solid #6ec28e;background:#c8ebd4;
@@ -1337,7 +1337,7 @@ main{padding-bottom:150px}
 }
 @media print{ .gopair{display:none!important} }
 </style>
-<script>/* ?sermon=…&age=… 단독 공유 화면 — 본문이 그려지기 전에 아카이브를 미리 감춘다 */
+<script>/* ?sermon=…&age=… 단독 공유 화면 — 본문이 그려지기 전에 서고를 미리 감춘다 */
 (function(){try{ if(/[?&](sermon|view|topic|age|dept)=/i.test(location.search||'')) document.documentElement.classList.add('solo-pre'); }catch(e){}})();
 /* 휴대폰 판별 — 첫 화면부터 맞는 단추·안내문이 그려지도록 <html>에 is-mobile 을 곧바로 붙인다.
    휴대폰: UA에 Android·iPhone·iPad·iPod 이 있거나, 손가락 입력(pointer:coarse)이면서 화면 폭 820px 이하 */
@@ -1389,7 +1389,7 @@ main{padding-bottom:150px}
 <aside class="side" id="sideNav" aria-label="목차와 검색">
   <div class="drawer-head"><b>목차 · 검색</b><button type="button" class="drawer-close" id="drawerClose" aria-label="목차 닫기">닫기 ✕</button></div>
   <div class="brandbox" data-home="1" role="button" tabindex="0" title="Home — 표지로 돌아가기">
-    <b>신앙고백 아카이브</b>
+    <b>신앙고백서고(書庫)</b>
     <span>Reformed Confessions Archive</span>
     <div class="bstmt">개혁주의 신학에 바탕을 둔 장로교 정통 신앙고백을 지향합니다.</div>
   </div>
@@ -1416,7 +1416,7 @@ main{padding-bottom:150px}
   </div>
   <p class="taghint">단추를 누르면 그 시대의 신조만 목차에 남고, 그 시대의 첫 신조가 오른쪽 본문에 바로 열립니다.
   <b>전체</b>를 누르면 표지로 돌아가 23종 전체 연대기를 보여 줍니다. 아래 <b>주제</b>를 누르면 그 주제를 고백한 신조가
-  <b>연도순</b>으로 한 화면에 늘어섭니다 — 같은 주제를 한눈에 보는 것이 이 아카이브의 핵심 기능입니다.</p>
+  <b>연도순</b>으로 한 화면에 늘어섭니다 — 같은 주제를 한눈에 보는 것이 이 서고의 핵심 기능입니다.</p>
   <div id="tagBox" class="tagcloud"></div>
   <div class="section-label chips-label">연도별 목차</div>
   <ul class="toc" id="toc"></ul>
@@ -1429,14 +1429,14 @@ main{padding-bottom:150px}
     <span class="grow"></span>
     <span class="small muted kbhint">키보드: <b>/</b> 검색 · <b>← →</b> 이동 · <b>Esc</b> Home</span>
     <button type="button" class="storybtn" id="docBtn" title="교리 설교 — 1~3번 주제 장년·청년·소년부 9편">교리 설교</button>
-    <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 아카이브 소개와 메뉴 설명서">만든 이야기</button>
+    <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 서고 소개와 메뉴 설명서">만든 이야기</button>
   </div>
   <div class="content">
     <div id="coverWrap">
 <section class="cover">
   <div class="cover-inner">
     <div class="kicker">Reformed Confessions Archive <span class="k-sub">· PC · Tablet · Mobile</span></div>
-    <h1 class="cover-title">신앙고백 아카이브</h1>
+    <h1 class="cover-title">신앙고백서고(書庫)</h1>
     <div class="cover-subjects">사도신경에서 웨스트민스터까지 · 연도순 전문 · 주제 비교</div>
     <p class="cover-lede">개혁주의 신학에 바탕을 둔 <b>장로교 정통 신앙고백</b>을 연도순으로 세우고,
     신조마다 <b>[역사적 배경]</b>과 <b>전문(Full Text)</b>을 온전히 실었습니다. 검색창에 신학적 주제를 넣으면
@@ -1529,7 +1529,7 @@ main{padding-bottom:150px}
     </div>
 
     <div class="card scope">
-      <div class="section-label">이 아카이브가 지향하는 것</div>
+      <div class="section-label">이 서고가 지향하는 것</div>
       <p class="cover-note">개혁주의 신학에 바탕을 둔 <b>장로교 정통 신앙고백</b>을 지향합니다. 신조는 연도순으로 서고,
       각 신조의 전문 앞에는 반드시 <b>[역사적 배경]</b>이 놓입니다 — 작성 연도·장소·기초자·맞서 싸운 이단·채택 경위·
       개혁주의에서의 자리. 이 배경 없이 전문만 읽으면 신조는 문장이 되고, 배경과 함께 읽으면 신조는 싸움의 기록이 됩니다.</p>
@@ -1577,7 +1577,7 @@ main{padding-bottom:150px}
 
     </details>
 
-    <div class="foot small muted">정성헌 목사님을 위한 신앙고백 아카이브 겸용판(PC·태블릿·휴대폰) · 완전 오프라인 단일 파일 ·
+    <div class="foot small muted">정성헌 목사님을 위한 신앙고백서고 겸용판(PC·태블릿·휴대폰) · 완전 오프라인 단일 파일 ·
     수록 신조 23종 · 주제 27개 · 조항·문답 921개 · 교리 설교 9편</div>
   </div>
 </section>
@@ -1587,7 +1587,7 @@ main{padding-bottom:150px}
   <div class="story-head">
     <div class="story-head-main">
       <div class="story-kicker">만든 이야기</div>
-      <h2 class="story-title">이 아카이브를 만든 이야기</h2>
+      <h2 class="story-title">이 서고를 만든 이야기</h2>
     </div>
     <div class="makerbox" id="makerBox" aria-label="만든이 안내">
       <div class="mk-row"><span class="mk-k">만든이:</span><span class="mk-v">정성헌목사</span></div>
@@ -1597,18 +1597,18 @@ main{padding-bottom:150px}
     </div>
   </div>
   <p class="story-intro">설교와 연구의 자리에서 신조의 전문과 그 신조가 태어난 자리를 한 화면 안에서 오가며 읽고자
-  이 아카이브를 만들었습니다. 이 페이지에는 그 목적과 신학 기준, 각 메뉴와 기능의 설명서, 그리고 수록 자료의 연혁을
+  이 서고를 만들었습니다. 이 페이지에는 그 목적과 신학 기준, 각 메뉴와 기능의 설명서, 그리고 수록 자료의 연혁을
   순서대로 실었습니다.</p>
 
   <p class="cover-lede">
     <strong>개혁주의·장로교 정통</strong>의 계보를 뼈대로, 고대 보편신조에서 20세기 한국 장로교 신조까지를
-    <b>연도순</b>으로 세운 신앙고백 아카이브입니다. 신조마다 <b>[역사적 배경]</b>을 전문 바로 앞에 놓아,
-    그 신조가 어떤 이단과 싸우며 태어났는지를 먼저 읽고 전문을 읽도록 했습니다. 그리고 이 아카이브의 핵심 기능은
+    <b>연도순</b>으로 세운 신앙고백서고입니다. 신조마다 <b>[역사적 배경]</b>을 전문 바로 앞에 놓아,
+    그 신조가 어떤 이단과 싸우며 태어났는지를 먼저 읽고 전문을 읽도록 했습니다. 그리고 이 서고의 핵심 기능은
     <b>신조 주제 비교</b>입니다 — 같은 주제를 고백한 모든 신조의 조항이 연도순으로 한 화면에 배열됩니다.
   </p>
 
   <div class="corecallout" id="coreFeature">
-    <div class="cc-badge">이 아카이브의 핵심 기능</div>
+    <div class="cc-badge">이 서고의 핵심 기능</div>
     <h3 class="cc-title">검색어 하나로, 여러 신조의 같은 고백을 한 화면에</h3>
     <p class="cc-lede">연도를 외우지 않아도 됩니다. 주제 하나를 넣으면 그 주제를 고백한 모든 신조의 조항이
     <b>연도순</b>으로 늘어서고, 어디서 함께 고백하고 어디서 갈라지는지가 그 자리에서 드러납니다.
@@ -1649,8 +1649,8 @@ main{padding-bottom:150px}
   </div>
 
   <div class="principles">
-    <div class="section-label">해석 원칙 — 이 아카이브가 지키는 선</div>
-    <div class="pt">개혁주의 신학을 바탕으로 하는 <b>장로교 전통</b>을 따릅니다. 아래 다섯 가지는 이 아카이브가 쓰지 않는 해석입니다.</div>
+    <div class="section-label">해석 원칙 — 이 서고가 지키는 선</div>
+    <div class="pt">개혁주의 신학을 바탕으로 하는 <b>장로교 전통</b>을 따릅니다. 아래 다섯 가지는 이 서고가 쓰지 않는 해석입니다.</div>
     <ul>
       <li><b>근본주의</b> — 신조가 선 포인트를 지우고 교리 명제만 남겨, 문서가 놓인 역사적 자리를 없애는 읽기</li>
       <li><b>문자주의</b> — 상징과 비유를 물리적 기술로 확정하고, 신조가 말하지 않는 결론을 끌어오는 읽기</li>
@@ -1670,7 +1670,7 @@ main{padding-bottom:150px}
 
   <div class="story-sec">
     <div class="section-label">메뉴 설명서 · 기능 설명서</div>
-    <h3 class="manual-title">이 아카이브를 쓰는 법</h3>
+    <h3 class="manual-title">이 서고를 쓰는 법</h3>
     <p class="manual-sub muted">화면에 보이는 자리와 이름을 그대로 적었습니다. 위에서부터 순서대로 읽으면 됩니다.</p>
     <ol class="mgrid">
       <li class="mcard">
@@ -1721,7 +1721,7 @@ main{padding-bottom:150px}
       <li class="mcard">
         <div class="mnum">④</div>
         <div class="mtx">
-          <b>신조 주제 비교 뷰 — 이 아카이브의 핵심</b>
+          <b>신조 주제 비교 뷰 — 이 서고의 핵심</b>
           <p>검색창에 주제를 넣고 <b>Enter</b>를 누르면 오른쪽 본문 창에 <b>[신조 주제 비교 뷰]</b>가 열립니다.
           그 주제를 고백한 모든 신조가 <b>연도순</b>으로 늘어서고, 신조마다 해당 조항의 원문이 그대로 실립니다.
           위쪽에는 그 주제에 대한 <b>공통점과 차이점 요약</b>, 그 아래에는 <b>한눈 요약표</b>(연도·신조·조항·요지)가 붙습니다.</p>
@@ -1750,7 +1750,7 @@ main{padding-bottom:150px}
         <div class="mtx">
           <b>만든 이야기 — 이 페이지</b>
           <p>표지 아래 오른쪽 위 흰 배지 <code>만든 이야기</code>를 누르면 이 페이지가 열립니다.
-          아카이브의 목적과 신학 기준, 메뉴 설명서, 그리고 <b>신조 자료 연혁</b>이 여기 있습니다.
+          서고의 목적과 신학 기준, 메뉴 설명서, 그리고 <b>신조 자료 연혁</b>이 여기 있습니다.
           오른쪽 위 빨간 원형 <code>Home</code>은 언제나 표지로 돌아옵니다.</p>
         </div>
       </li>
@@ -1759,7 +1759,7 @@ main{padding-bottom:150px}
         <div class="mtx">
           <b>표지 상단 핵심 바로가기 — 열두 칸</b>
           <p>표지 첫 화면에는 <b>핵심 바로가기 열두 칸</b>이 있습니다. 앞의 여섯 칸은 신조의 계보와 시대를 열고,
-          뒤의 여섯 칸은 이 아카이브의 도구를 곧바로 엽니다.</p>
+          뒤의 여섯 칸은 이 서고의 도구를 곧바로 엽니다.</p>
           <ul>
             <li>연도별 전체 목차 · 고대 보편신조 · 개혁파 신조 · 웨스트민스터 표준문서 · 근현대·한국 신조 · [비교 참고] 타 교파 — 누르면 그 갈래의 첫 신조가 열립니다.</li>
             <li><code>직접 비교표</code> — 2~4개 신조를 골라 주제별로 나란히 보는 표가 바로 열립니다.</li>
@@ -1782,7 +1782,7 @@ main{padding-bottom:150px}
           <ul>
             <li>설교문마다 — 본문(개역개정 전문) · <b>📜 신앙고백 원문 연결</b>(웨스트민스터·하이델베르크·벨직 몇 장 몇 문에 근거했는지) · <b>⚠️ 이단·오류 경계선</b>(양태론·아리우스·성경가감처럼 이단이 비트는 지점과 강단 안전장치) · <b>소그룹 나눔 Q&amp;A 6가지</b>(질문 + 핵심 나눔 가이드 + 함께 읽을 말씀)가 붙습니다.</li>
             <li><code>📋 복사</code> — 설교문 전체를 글로 복사합니다. 문서에 붙여 넣어 쓰십시오.</li>
-            <li><code>🔗 링크복사</code><span class="mob-only"> · <code>📤 보내기</code></span> — 지금 열려 있는 세대(장년부·청년부·소년부)의 설교 <b>한 편만</b> 열리는 주소를 <span class="pc-only">복사합니다.</span><span class="mob-only">복사하거나 그 자리에서 바로 보냅니다.</span> 받은 사람은 아카이브 전체 화면 없이 그 설교(제목·본문·삽화 세 컷·나눔 Q&amp;A)만 큰 글씨로 읽고, 그 화면은 설교 본문 끝에서 깔끔하게 끝납니다. <span class="pc-only">복사한 링크는 카톡·문자에 <code>Ctrl+V</code>(휴대폰은 길게 눌러 붙여넣기)로 붙여넣어 보내면 됩니다.</span><span class="mob-only">휴대폰에서 <code>📤 보내기</code>를 누르면 카카오톡·문자 등 기기 공유 창이 열려 바로 보낼 수 있고, <code>🔗 링크복사</code>는 링크만 복사해 길게 눌러 붙여넣을 때 씁니다. 공유 창이 없는 인앱 브라우저에서는 링크가 복사되고 안내가 뜹니다.</span></li>
+            <li><code>🔗 링크복사</code><span class="mob-only"> · <code>📤 보내기</code></span> — 지금 열려 있는 세대(장년부·청년부·소년부)의 설교 <b>한 편만</b> 열리는 주소를 <span class="pc-only">복사합니다.</span><span class="mob-only">복사하거나 그 자리에서 바로 보냅니다.</span> 받은 사람은 서고 전체 화면 없이 그 설교(제목·본문·삽화 세 컷·나눔 Q&amp;A)만 큰 글씨로 읽고, 그 화면은 설교 본문 끝에서 깔끔하게 끝납니다. <span class="pc-only">복사한 링크는 카톡·문자에 <code>Ctrl+V</code>(휴대폰은 길게 눌러 붙여넣기)로 붙여넣어 보내면 됩니다.</span><span class="mob-only">휴대폰에서 <code>📤 보내기</code>를 누르면 카카오톡·문자 등 기기 공유 창이 열려 바로 보낼 수 있고, <code>🔗 링크복사</code>는 링크만 복사해 길게 눌러 붙여넣을 때 씁니다. 공유 창이 없는 인앱 브라우저에서는 링크가 복사되고 안내가 뜹니다.</span></li>
             <li><code>🖨️ PDF 인쇄</code> — 인쇄 창이 열립니다. PDF로 저장하거나 종이로 인쇄하면 왼쪽 탐색창·단추를 지우고 설교문만 깨끗하게 나옵니다.</li>
             <li>소년부 설교에는 맨 위에 <b>🖍️ 오늘의 비유 그림</b> 한 컷이 있고, 본문 중간중간에 이야기 장면을 그린 <b>삽화 두 컷</b>이 더 들어 있어 한 편에 그림이 모두 세 컷입니다. 어린이들이 글을 읽다가 그림으로 장면을 한 번 더 머릿속에 그리게 됩니다.</li>
           </ul>
@@ -1794,7 +1794,7 @@ main{padding-bottom:150px}
   <div class="story-sec">
     <div class="section-label">신조 자료 연혁</div>
     <h3 class="manual-title">가장 오래된 고백에서 가장 최근의 연구까지</h3>
-    <p class="manual-sub muted">이 아카이브가 담은 자료를 저작·채택 연도 순으로 세웠습니다. 왼쪽이 연도, 오른쪽이 자료입니다.</p>
+    <p class="manual-sub muted">이 서고가 담은 자료를 저작·채택 연도 순으로 세웠습니다. 왼쪽이 연도, 오른쪽이 자료입니다.</p>
     <ul class="annual">
       <li><span class="ay">2세기</span><span><b>사도신경</b> — 초대교회 세례 문답에서 형성. 기독교 신앙 고백 가운데 가장 오래된 형태.</span></li>
       <li><span class="ay">325년</span><span><b>니케아 신조</b> — 제1차 니케아 공의회. 교회가 공적으로 반포한 첫 신조.</span></li>
@@ -1818,15 +1818,15 @@ main{padding-bottom:150px}
       <li><span class="ay">1689년</span><span><b>런던 침례교 신앙고백 32장</b> <em>[비교 참고]</em> — 웨스트민스터를 침례교 관점에서 수정.</span></li>
       <li><span class="ay">1907년</span><span><b>대한예수교장로회 12신조</b> — 조선예수교장로회 독노회 채택. 한국 장로교회의 첫 공식 신앙고백.</span></li>
       <li><span class="ay">1934년</span><span><b>바르멘 신학적 선언 6개 명제</b> — 독일 교회가 국가권력의 교회 장악에 맞선 고백.</span></li>
-      <li><span class="ay">2015·2017년</span><span><b>한국 개혁주의 신학 연구</b> — 하이델베르크 요리문답 판본 계량서지학(2015), 웨스트민스터 1장 6절의 ‘바르고 필연적인 귀결’ 연구(2017) 등이 이 아카이브의 해설에 반영됨.</span></li>
-      <li><span class="ay">2025년</span><span><b>OPC 현대영어 연구판(MESV)</b> — 정통장로교회 제91차 총회에 제출된 신앙고백서·대소요리문답 현대영어 연구판. 이 아카이브가 대조한 <b>가장 최근의 자료</b>.</span></li>
+      <li><span class="ay">2015·2017년</span><span><b>한국 개혁주의 신학 연구</b> — 하이델베르크 요리문답 판본 계량서지학(2015), 웨스트민스터 1장 6절의 ‘바르고 필연적인 귀결’ 연구(2017) 등이 이 서고의 해설에 반영됨.</span></li>
+      <li><span class="ay">2025년</span><span><b>OPC 현대영어 연구판(MESV)</b> — 정통장로교회 제91차 총회에 제출된 신앙고백서·대소요리문답 현대영어 연구판. 이 서고가 대조한 <b>가장 최근의 자료</b>.</span></li>
     </ul>
   </div>
 
   <div class="story-sec">
     <div class="section-label">자료를 읽는 방식</div>
     <h3 class="manual-title">한국인 인명 미표기 원칙</h3>
-    <p>이 아카이브의 해설과 본문에는 표지와 헌정을 빼고 <b>한국인 저자·설교자의 인명을 넣지 않았습니다</b>.
+    <p>이 서고의 해설과 본문에는 표지와 헌정을 빼고 <b>한국인 저자·설교자의 인명을 넣지 않았습니다</b>.
     해설은 자료 자체의 언어와 개혁주의 신학의 공적 언어로만 썼습니다. 대상과 목적을 좁히고,
     읽는 이가 사람의 이름이 아니라 고백의 내용을 붙들도록 하기 위해서입니다.</p>
     <p>또한 문자주의·근본주의·율법주의·알레고리 해석과 이단·사이비 주장은 일절 배제했습니다.
@@ -2083,7 +2083,7 @@ html.solo .sm-p{font-size:1.07em;line-height:2.02}
 html.solo .sm-verse{font-size:1.03em}
 html.solo .sm-quote{font-size:1.03em;line-height:1.95}
 /* 단독 읽기 화면 하단은 설교 본문 끝에서 깔끔히 끊는다 —
-   아카이브 이동 단추(.solo-foot)와 만든이·후원 푸터(.jh-foot)를 모두 띄우지 않는다 */
+   서고 이동 단추(.solo-foot)와 만든이·후원 푸터(.jh-foot)를 모두 띄우지 않는다 */
 html.solo .solo-foot,html.solo-pre .solo-foot,
 html.solo .jh-foot,html.solo-pre .jh-foot{display:none!important}
 /* 링크 복사 안내 — 긴 문장도 화면 밖으로 넘치지 않게, 낱말은 중간에서 끊지 않게 */
@@ -2349,7 +2349,7 @@ function sermonHTML(tk,dk,solo){
   h.push('<div class="sm-foot">성경 인용은 개역개정 전문이며 전건 기계 대조했습니다. '+
     '신앙고백 인용은 원문을 옮기지 않고 요지만 표시했습니다. 이 설교는 개혁주의·장로교 정통 신앙고백(웨스트민스터·하이델베르크·벨직·도르트) 안에서 작성되었습니다.</div>');
   if(!solo){
-    /* 일반 아카이브 화면에서만 도구줄을 붙인다 (단독 읽기 화면은 본문 끝에서 그대로 끝난다) */
+    /* 일반 서고 화면에서만 도구줄을 붙인다 (단독 읽기 화면은 본문 끝에서 그대로 끝난다) */
     h.push('<div class="sm-endtools">');
     h.push('<button type="button" data-scopy="1">📋 이 설교 복사</button>');
     h.push('<button type="button" data-sprint="1">🖨️ PDF 인쇄</button>');
@@ -2411,7 +2411,7 @@ function plainSermon(tk,dk){
     });
     L.push('');
   }
-  L.push('— 신앙고백 아카이브 · 교리 설교 · '+t.name+' '+t.no+'번 주제');
+  L.push('— 신앙고백서고 · 교리 설교 · '+t.name+' '+t.no+'번 주제');
   return L.join('\n');
 }
 
@@ -2423,7 +2423,7 @@ function showSermon(tk,dk,push){
   art.style.display='block';
   $('#coverWrap').style.display='none';
   var sw=$('#storyWrap'); if(sw) sw.style.display='none';
-  document.title=t.name+' 교리 설교 · '+DPT[dk]+' — '+s.title+' — 신앙고백 아카이브';
+  document.title=t.name+' 교리 설교 · '+DPT[dk]+' — '+s.title+' — 신앙고백서고';
   window.scrollTo(0,0);
   if(push!==false) history.replaceState(null,'','#sermon/'+tk+'/'+dk);
   if(typeof markToc==='function') markToc();
@@ -2833,7 +2833,7 @@ function showEntry(id, push){
   art.innerHTML=articleHTML(d);
   art.style.display='block';
   $('#coverWrap').style.display='none'; $('#storyWrap').style.display='none';
-  document.title=d.title+' — 신앙고백 아카이브';
+  document.title=d.title+' — 신앙고백서고';
   window.scrollTo(0,0);
   if(push!==false) history.replaceState(null,'','#'+id);
   markToc();
@@ -3005,7 +3005,7 @@ function showCover(){
   if(typeof SOLO!=='undefined' && SOLO) return;   /* 단독 공유 화면에서는 표지로 돌아가지 않는다 */
   S.cur=null;
   $('#coverWrap').style.display='block'; $('#storyWrap').style.display='none'; $('#artWrap').style.display='none';
-  document.title='신앙고백 아카이브 — 개혁주의·장로교 정통 신앙고백 연도순 전문과 주제 비교';
+  document.title='신앙고백서고(書庫) — 개혁주의·장로교 정통 신앙고백 연도순 전문과 주제 비교';
   window.scrollTo(0,0); markToc(); history.replaceState(null,'','#home');
 }
 function showStory(){
@@ -3013,7 +3013,7 @@ function showStory(){
   S.cur=null;
   $('#coverWrap').style.display='none'; $('#storyWrap').style.display='block'; $('#artWrap').style.display='none';
   $('#storyBtn').classList.add('on');
-  document.title='만든 이야기 — 신앙고백 아카이브';
+  document.title='만든 이야기 — 신앙고백서고';
   window.scrollTo(0,0); markToc(); history.replaceState(null,'','#story');
 }
 
@@ -3036,7 +3036,7 @@ function plainOf(d, all){
     L.push(''); L.push('[신조 비교]'); L.push(d.compare);
     L.push(''); L.push('[설교 적용]'); L.push(d.sermon);
   }
-  L.push(''); L.push('— 신앙고백 아카이브, '+d.year_label);
+  L.push(''); L.push('— 신앙고백서고, '+d.year_label);
   return L.join('\n');
 }
 function copyText(txt){
