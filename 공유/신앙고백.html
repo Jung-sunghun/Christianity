@@ -3202,7 +3202,7 @@ function buildTags(){
   var h=[];
   TOPICS.forEach(function(t){
     h.push('<span class="tag'+(dTopic(t.id)?' hasdoc':'')+'" data-topic="'+t.id+'"'+
-      (dTopic(t.id)?' title="'+esc(t.name)+' — 교리 설교 3편(장년·청년·소년) 있습니다"':'')+'>'+esc(t.name)+'</span>');
+      (dTopic(t.id)?' title="'+esc(t.name)+' — 교리 설교 4편(장년·청년·소년부 부모용·어린이) 있습니다"':'')+'>'+esc(t.name)+'</span>');
   });
   $('#tagBox').innerHTML=h.join('');
   var c=$('#coverTopics');
