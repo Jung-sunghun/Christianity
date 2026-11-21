@@ -1283,10 +1283,23 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
 .jh-nav>button:disabled{opacity:.35;cursor:default}
 @media (max-width:1120px){.jh-nav{height:32px}.jh-nav>button{font-size:.78em;padding:0 8px}}
 @media (max-width:767px){.jh-nav{height:32px}.jh-nav>button{font-size:.76em;padding:0 7px}}
-@media (max-width:430px){.jh-nav{height:30px}.jh-nav>button{font-size:.72em;padding:0 5px}}
+@media (max-width:430px){.jh-nav{height:28px}.jh-nav>button{font-size:.66em;padding:0 4px}}
 /* '만든 이야기' 앞에 바짝 — 넓은 화면에서만 (좁은 화면 규칙은 건드리지 않는다) */
 @media (min-width:901px){.topbar .jh-nav+.storybtn{margin-left:10px}}
 @media print{.jh-nav{display:none!important}}
+</style>
+<style id="jhbackCSS2">
+/* ══ 2026-11-21: 휴대폰(430px 이하) 상단 바를 한 줄로 — 단추를 조금씩 줄여 가로 넘침을 없앤다 ══ */
+@media (max-width:430px){
+  .topbar{gap:4px!important;padding:7px 7px!important}
+  .topbar .homefab{width:34px!important;height:34px!important;min-width:34px!important;font-size:.54em!important;border-width:1.5px!important}
+  .topbar .navbtn{min-height:34px!important;min-width:0!important;padding:0 .5em!important;font-size:.74em!important;gap:.2em!important}
+  .topbar .storybtn{min-height:34px!important;min-width:0!important;padding:0 .5em!important;font-size:.7em!important;letter-spacing:0!important;border-width:1.5px!important}
+  .topbar .upbtn,header .upbtn{min-height:34px!important;min-width:0!important;padding:0 6px!important;font-size:.7em!important;letter-spacing:.02em!important;border-width:1.5px!important}
+  .topbar .guidebtn{height:34px!important;min-width:0!important;padding:0 .5em!important;font-size:.7em!important;border-width:1.5px!important}
+  .topbar .tagfab{min-height:34px!important;min-width:0!important;padding:0 .45em!important;font-size:.68em!important}
+  .topbar .tagfab .tf-short,.topbar .tagfab .tf-full{font-size:1em!important}
+}
 </style>
 </head>
 <body>
