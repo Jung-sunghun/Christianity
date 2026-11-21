@@ -1361,6 +1361,26 @@ main{padding-bottom:150px}
   window.addEventListener('resize', markShareMode);
   window.addEventListener('orientationchange', markShareMode);
 })();</script>
+
+<style id="vaultnavCSS">
+/* ══ 서고 이동 단추 (2026-11-21): 빨간 Home = 한 단계 위(서고 대문) · 맨 오른쪽 금색 UP = 이 서고 첫 페이지 ══ */
+a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
+.topbar .upbtn,header .upbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 17px;border-radius:12px;
+  border:2px solid rgba(255,255,255,.86);
+  background:linear-gradient(180deg,#ffe889 0%,#f3c53a 52%,#cf9a12 100%);
+  color:#4a3200;font-family:inherit;font-size:.95em;font-weight:900;
+  letter-spacing:.13em;line-height:1;cursor:pointer;white-space:nowrap;text-decoration:none;border-bottom:none;
+  box-shadow:0 4px 14px rgba(96,64,0,.38),inset 0 2px 4px rgba(255,255,255,.55);
+  transition:transform .14s ease,filter .14s ease,box-shadow .14s ease}
+.topbar .upbtn:hover,header .upbtn:hover{filter:brightness(1.07);transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(96,64,0,.44)}
+.topbar .upbtn:active,header .upbtn:active{transform:translateY(0) scale(.97)}
+.topbar .upbtn:focus-visible,header .upbtn:focus-visible{outline:3px solid #fff4bd;outline-offset:2px}
+@media (min-width:768px) and (max-width:1024px){.topbar .upbtn,header .upbtn{min-height:44px;padding:0 14px;font-size:.88em}}
+@media (max-width:767px){.topbar .upbtn,header .upbtn{min-height:42px;padding:0 13px;font-size:.84em;border-radius:10px}}
+@media (max-width:400px){.topbar .upbtn,header .upbtn{min-height:40px;padding:0 11px;font-size:.78em}}
+</style>
 </head>
 <body>
 <!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->
@@ -1425,11 +1445,12 @@ main{padding-bottom:150px}
 <main>
   <div class="topbar">
     <button type="button" class="navbtn" id="navBtn" aria-controls="sideNav" aria-expanded="false" aria-label="목차와 검색 열기"><span class="nb-ic" aria-hidden="true">☰</span> 목차</button>
-    <button type="button" class="homefab" id="homeFab" aria-label="Home — 표지로">Home</button>
+    <a class="homefab" id="homeFab" href="./" aria-label="Home — 한 단계 위 공유 자료실(서고 대문)로" title="Home — 공유 자료실(서고 대문)으로 올라갑니다">Home</a>
     <span class="grow"></span>
     <span class="small muted kbhint">키보드: <b>/</b> 검색 · <b>← →</b> 이동 · <b>Esc</b> Home</span>
     <button type="button" class="storybtn" id="docBtn" title="교리 설교 — 1~3번 주제 장년·청년·소년부 9편">교리 설교</button>
     <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 서고 소개와 메뉴 설명서">만든 이야기</button>
+    <button type="button" class="upbtn" id="upBtn" aria-label="UP — 이 서고 표지로" title="UP — 이 서고 표지로">UP</button>
   </div>
   <div class="content">
     <div id="coverWrap">
@@ -1751,7 +1772,7 @@ main{padding-bottom:150px}
           <b>만든 이야기 — 이 페이지</b>
           <p>표지 아래 오른쪽 위 흰 배지 <code>만든 이야기</code>를 누르면 이 페이지가 열립니다.
           서고의 목적과 신학 기준, 메뉴 설명서, 그리고 <b>신조 자료 연혁</b>이 여기 있습니다.
-          오른쪽 위 빨간 원형 <code>Home</code>은 언제나 표지로 돌아옵니다.</p>
+          오른쪽 위 빨간 원형 <code>Home</code>은 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라가고, 맨 오른쪽 금색 <code>UP</code>은 이 서고 표지로 돌아옵니다.</p>
         </div>
       </li>
       <li class="mcard">
@@ -3081,7 +3102,8 @@ function init(){
       var i=THEMES.indexOf(cur); setTheme(THEMES[(i+1)%THEMES.length]); return; }
     if(el.closest('#docBtn')){ ev.preventDefault(); showCover(); var dbx=$('#docBox'); if(dbx) smoothTo(dbx); return; }
     if(el.closest('#storyBtn')){ showStory(); return; }
-    if(el.closest('#homeFab')||el.closest('#brandBox')){ showCover(); return; }
+    if(el.closest('#upBtn')){ ev.preventDefault(); showCover(); return; }
+    if(el.closest('#brandBox')){ showCover(); return; }
     var lay=el.closest('[data-layout]');
     if(lay){ S.layout=lay.dataset.layout;
       $$('[data-layout]').forEach(function(b){ b.classList.toggle('on', b===lay); });

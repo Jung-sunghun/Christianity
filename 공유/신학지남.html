@@ -596,6 +596,26 @@ main{padding-bottom:150px}
 }
 @media print{ .gopair{display:none!important} }
 </style>
+
+<style id="vaultnavCSS">
+/* ══ 서고 이동 단추 (2026-11-21): 빨간 Home = 한 단계 위(서고 대문) · 맨 오른쪽 금색 UP = 이 서고 첫 페이지 ══ */
+a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
+.topbar .upbtn,header .upbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 17px;border-radius:12px;
+  border:2px solid rgba(255,255,255,.86);
+  background:linear-gradient(180deg,#ffe889 0%,#f3c53a 52%,#cf9a12 100%);
+  color:#4a3200;font-family:inherit;font-size:.95em;font-weight:900;
+  letter-spacing:.13em;line-height:1;cursor:pointer;white-space:nowrap;text-decoration:none;border-bottom:none;
+  box-shadow:0 4px 14px rgba(96,64,0,.38),inset 0 2px 4px rgba(255,255,255,.55);
+  transition:transform .14s ease,filter .14s ease,box-shadow .14s ease}
+.topbar .upbtn:hover,header .upbtn:hover{filter:brightness(1.07);transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(96,64,0,.44)}
+.topbar .upbtn:active,header .upbtn:active{transform:translateY(0) scale(.97)}
+.topbar .upbtn:focus-visible,header .upbtn:focus-visible{outline:3px solid #fff4bd;outline-offset:2px}
+@media (min-width:768px) and (max-width:1024px){.topbar .upbtn,header .upbtn{min-height:44px;padding:0 14px;font-size:.88em}}
+@media (max-width:767px){.topbar .upbtn,header .upbtn{min-height:42px;padding:0 13px;font-size:.84em;border-radius:10px}}
+@media (max-width:400px){.topbar .upbtn,header .upbtn{min-height:40px;padding:0 11px;font-size:.78em}}
+</style>
 </head>
 <body data-page="index" data-mb="37.6">
 <a class="skip" href="#view">본문으로</a>
@@ -625,10 +645,11 @@ main{padding-bottom:150px}
 <header class="topbar"><div class="tb-in">
 <button type="button" class="navbtn" id="navBtn" aria-controls="side" aria-expanded="false" aria-label="목차 서랍 열기"><span class="nb-ic">☰</span> 목차</button>
 <a class="brand" href="#/">신학지남 <span class="bsub">서고 1918–2011</span></a>
-<a class="homebtn" href="#/" title="표지(홈)으로" aria-label="표지(홈)으로">HOME</a>
+<a class="homebtn" href="./" title="Home — 공유 자료실(서고 대문)으로 올라갑니다" aria-label="Home — 한 단계 위 공유 자료실(서고 대문)로">HOME</a>
 <span class="tb-spacer"></span>
 <button type="button" class="srchbtn" id="srchBtn" aria-label="검색 열기">🔍</button>
 <nav class="tblinks" aria-label="주요 목차"><a href="#/idx/issues">통권별</a><a href="#/idx/topics">주제별</a><a href="#/idx/all">전체 목록</a><a href="#/story">만든 이야기</a></nav>
+<a class="upbtn" id="upBtn" href="#/" aria-label="UP — 이 서고 표지로" title="UP — 이 서고 표지로">UP</a>
 <nav class="pager" id="pager" aria-label="이전·다음 글" style="display:none"><a class="pgprev" id="pgPrev" href="#/"><span class="pt">← 이전 글</span><span class="pa">←</span></a><a class="pgnext" id="pgNext" href="#/"><span class="pt">다음 글 →</span><span class="pa">→</span></a></nav>
 </div></header>
 <div class="layout">

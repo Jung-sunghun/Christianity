@@ -1742,6 +1742,26 @@ html[data-theme="dark"] .topbar .guidebtn{background:linear-gradient(180deg,#12b
 .jh-foot .jh-acct{color:var(--jh-strong);font-weight:700}
 @media (max-width:520px){.jh-foot{padding:22px 0 40px}}
 </style>
+
+<style id="vaultnavCSS">
+/* ══ 서고 이동 단추 (2026-11-21): 빨간 Home = 한 단계 위(서고 대문) · 맨 오른쪽 금색 UP = 이 서고 첫 페이지 ══ */
+a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
+.topbar .upbtn,header .upbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 17px;border-radius:12px;
+  border:2px solid rgba(255,255,255,.86);
+  background:linear-gradient(180deg,#ffe889 0%,#f3c53a 52%,#cf9a12 100%);
+  color:#4a3200;font-family:inherit;font-size:.95em;font-weight:900;
+  letter-spacing:.13em;line-height:1;cursor:pointer;white-space:nowrap;text-decoration:none;border-bottom:none;
+  box-shadow:0 4px 14px rgba(96,64,0,.38),inset 0 2px 4px rgba(255,255,255,.55);
+  transition:transform .14s ease,filter .14s ease,box-shadow .14s ease}
+.topbar .upbtn:hover,header .upbtn:hover{filter:brightness(1.07);transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(96,64,0,.44)}
+.topbar .upbtn:active,header .upbtn:active{transform:translateY(0) scale(.97)}
+.topbar .upbtn:focus-visible,header .upbtn:focus-visible{outline:3px solid #fff4bd;outline-offset:2px}
+@media (min-width:768px) and (max-width:1024px){.topbar .upbtn,header .upbtn{min-height:44px;padding:0 14px;font-size:.88em}}
+@media (max-width:767px){.topbar .upbtn,header .upbtn{min-height:42px;padding:0 13px;font-size:.84em;border-radius:10px}}
+@media (max-width:400px){.topbar .upbtn,header .upbtn{min-height:40px;padding:0 11px;font-size:.78em}}
+</style>
 </head>
 <body>
 
@@ -1816,7 +1836,7 @@ html[data-theme="dark"] .topbar .guidebtn{background:linear-gradient(180deg,#12b
 <div class="drawer-veil" id="drawerVeil" aria-hidden="true"></div>
 <main>
   <div class="topbar">
-    <button type="button" class="homefab" id="homeFab" aria-label="Home — 창세기 1장(이 서고 첫 화면)으로 돌아갑니다" title="Home — 창세기 1장으로 돌아갑니다">Home</button>
+    <a class="homefab" id="homeFab" href="./" aria-label="Home — 한 단계 위 공유 자료실(서고 대문)로" title="Home — 공유 자료실(서고 대문)으로 올라갑니다">Home</a>
     <button type="button" class="guidebtn" id="guideBtn" aria-label="사용안내 — 이 서고를 만든 이야기와 쓰는 법(가이드 화면)을 엽니다" title="사용안내 — 만든 이야기와 쓰는 법(가이드 화면)을 엽니다">사용안내</button>
     <button type="button" class="navbtn" id="navBtn" aria-controls="sideNav"
       aria-expanded="false" title="목차 · 검색창 열기 (태블릿·휴대폰)"><span aria-hidden="true">☰</span> 목차</button>
@@ -1824,6 +1844,7 @@ html[data-theme="dark"] .topbar .guidebtn{background:linear-gradient(180deg,#12b
     <span class="grow"></span>
     <span class="small muted kbhint">키보드: <b>/</b> 검색 · <b>← →</b> 이동 · <b>Esc</b> Home</span>
     <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 서고 소개와 메뉴 설명서">만든 이야기</button>
+    <button type="button" class="upbtn" id="upBtn" aria-label="UP — 이 서고 첫 페이지(창세기 1장)로" title="UP — 이 서고 첫 페이지(창세기 1장)로">UP</button>
   </div>
   <div class="tagsheet" id="tagSheet" hidden>
     <div class="tagsheet-hd"><b>인명 · 지명 · 사건</b><span class="tagsheet-book" id="tagSheetBook"></span><button type="button" class="tagsheet-x" id="tagSheetX" aria-label="인명·지명·사건 닫기">닫기 ✕</button></div>
@@ -2039,7 +2060,7 @@ html[data-theme="dark"] .topbar .guidebtn{background:linear-gradient(180deg,#12b
     <div><span class="n">NEW 14</span><b>문장 끝 관주 · 인명·지명·사건 상세</b><span>「설교문」과 「설교자 문장」 문장 끝에 <b>관주 창1:1</b> 같은 작은 박스가 붙습니다. 누르면 개역한글 본문·연결 이유·<b>📋 복사</b>가 열립니다. 왼쪽 <b>인명·지명·사건</b>을 누르면 원어·뜻·행적·그리스도 예표·연대기가 열리고, 지명은 실제 좌표에 핀이 찍힌 <b>이스라엘·애굽·시나이 벡터 지도</b>(확대·축소·동선)와 함께 열립니다.</span></div>
     <div><span class="n">NEW 01</span><b>구약언약연결 · 신약성취연결 (관주 기능)</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
     <div><span class="n">NEW 02</span><b>키아즘 입체 도표</b><span>A – B – C(정점) – B′ – A′ 계단식 들여쓰기와 좌측 대칭 연결선, 정점 강조, 핵심어 표시를 한 도표에 담았습니다.</span></div>
-    <div><span class="n">NEW 03</span><b>Home 버튼 · 위아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. 이 <b>Home</b>은 언제나 <b>창세기 1장</b>(이 서고 첫 화면)을 열고, 가이드 화면은 화면 맨 위 빨간 <b>Home</b> 옆 <b>사용안내</b> 단추로 엽니다. PC에서는 왼쪽 창과 본문 양쪽에 ↑·↓가 있어 각각 맨 위·맨 아래로 갑니다. 태블릿·휴대폰에서는 본문 쪽 ↑·↓만 남습니다.</span></div>
+    <div><span class="n">NEW 03</span><b>Home 버튼 · 위아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. 빨간 <b>Home</b>은 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라가고, 맨 오른쪽 금색 <b>UP</b> 단추가 이 서고 첫 화면인 <b>창세기 1장</b>을 엽니다. 가이드 화면은 화면 맨 위 빨간 <b>Home</b> 옆 <b>사용안내</b> 단추로 엽니다. PC에서는 왼쪽 창과 본문 양쪽에 ↑·↓가 있어 각각 맨 위·맨 아래로 갑니다. 태블릿·휴대폰에서는 본문 쪽 ↑·↓만 남습니다.</span></div>
   </div>
 
   <div class="story-sec">
@@ -2116,7 +2137,7 @@ html[data-theme="dark"] .topbar .guidebtn{background:linear-gradient(180deg,#12b
           <b>단축키와 위·아래 ↑·↓ 단추, 그리고 이 페이지</b>
           <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다(휴대폰·태블릿에서는 2/3 크기로 줄어듭니다). 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 위나 아래 끝에 있어도 단추는 그대로 보입니다 — 맨 위에서도 <b>↓</b>가, 맨 아래에서도 <b>↑</b>가 있습니다.</p>
           <ul>
-            <li><code>Home</code> — 왼쪽 위 빨간 동그라미, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 그리고 <code>Esc</code> 키로 <b>이 서고 첫 화면인 창세기 1장</b>으로 돌아옵니다. 왼쪽 목차도 <b>창세기</b>로 돌아가 맨 위부터 보입니다.</li>
+            <li><code>Home</code> — 왼쪽 위 빨간 동그라미는 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라갑니다. 이 서고 첫 화면인 창세기 1장으로 오려면 맨 오른쪽 금색 <code>UP</code> 단추, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 또는 <code>Esc</code> 키를 씁니다. 왼쪽 목차도 <b>창세기</b>로 돌아가 맨 위부터 보입니다.</li>
             <li><code>사용안내</code> — 화면 맨 위 보라색 띠의 빨간 <code>Home</code> 동그라미 <b>바로 옆</b>에 청록색 네모 단추로 있습니다(휴대폰에서도 늘 보입니다). 누르면 <b>이 가이드 화면</b>(표지 · 만든 이야기 · 여섯 갈래 바로가기)이 열립니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키를 누르거나 아래 <code>Home — 창세기 1장으로</code> 단추를 누르면 창세기 1장으로 나옵니다.</li>
             <li>찾아보기 순서 — 왼쪽에서 단락을 고르고(①), 머리의 연결 표를 펼쳐 보고(②), 바로가기 바 여섯 칸으로 훑고(③), 키아즘 도표로 구조를 잡은 뒤(④), 설교자 문장에서 설교 개요와 그리스도 연결을 뽑습니다.</li>
@@ -3764,9 +3785,8 @@ document.addEventListener('click', function(ev){
     window.addEventListener('resize', placeDrawerGo);
     window.addEventListener('orientationchange', () => setTimeout(placeDrawerGo, 220));
     placeDrawerGo();
-    document.querySelectorAll('.homefab').forEach(b => {
-      b.onclick = ev => { ev.preventDefault(); closeXAll(); homeGen1(); };
-    });
+    const _upBtn = document.getElementById('upBtn');
+    if(_upBtn){ _upBtn.onclick = ev => { ev.preventDefault(); closeXAll(); homeGen1(); }; }
   }
   document.addEventListener('DOMContentLoaded', wire);
 })();

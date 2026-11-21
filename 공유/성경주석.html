@@ -1246,6 +1246,26 @@ main{padding-bottom:150px}
 }
 @media print{ .gopair{display:none!important} }
 </style>
+
+<style id="vaultnavCSS">
+/* ══ 서고 이동 단추 (2026-11-21): 빨간 Home = 한 단계 위(서고 대문) · 맨 오른쪽 금색 UP = 이 서고 첫 페이지 ══ */
+a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
+.topbar .upbtn,header .upbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 17px;border-radius:12px;
+  border:2px solid rgba(255,255,255,.86);
+  background:linear-gradient(180deg,#ffe889 0%,#f3c53a 52%,#cf9a12 100%);
+  color:#4a3200;font-family:inherit;font-size:.95em;font-weight:900;
+  letter-spacing:.13em;line-height:1;cursor:pointer;white-space:nowrap;text-decoration:none;border-bottom:none;
+  box-shadow:0 4px 14px rgba(96,64,0,.38),inset 0 2px 4px rgba(255,255,255,.55);
+  transition:transform .14s ease,filter .14s ease,box-shadow .14s ease}
+.topbar .upbtn:hover,header .upbtn:hover{filter:brightness(1.07);transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(96,64,0,.44)}
+.topbar .upbtn:active,header .upbtn:active{transform:translateY(0) scale(.97)}
+.topbar .upbtn:focus-visible,header .upbtn:focus-visible{outline:3px solid #fff4bd;outline-offset:2px}
+@media (min-width:768px) and (max-width:1024px){.topbar .upbtn,header .upbtn{min-height:44px;padding:0 14px;font-size:.88em}}
+@media (max-width:767px){.topbar .upbtn,header .upbtn{min-height:42px;padding:0 13px;font-size:.84em;border-radius:10px}}
+@media (max-width:400px){.topbar .upbtn,header .upbtn{min-height:40px;padding:0 11px;font-size:.78em}}
+</style>
 </head>
 <body>
 <!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->
@@ -1313,11 +1333,12 @@ main{padding-bottom:150px}
 <div class="drawer-veil" id="drawerVeil" aria-hidden="true"></div>
 <main>
   <div class="topbar">
-    <button type="button" class="homefab" id="homeFab" aria-label="Home — 맨 위로">Home</button>
+    <a class="homefab" id="homeFab" href="./" aria-label="Home — 한 단계 위 공유 자료실(서고 대문)로" title="Home — 공유 자료실(서고 대문)으로 올라갑니다">Home</a>
     <button type="button" class="navbtn" id="navBtn" aria-controls="sideNav" aria-expanded="false" title="목차 · 검색창 열기 (태블릿·휴대폰)"><span aria-hidden="true">☰</span> 목차</button>
     <span class="grow"></span>
     <span class="small muted kbhint">키보드: <b>/</b> 검색 · <b>← →</b> 이동 · <b>Esc</b> Home</span>
     <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 서고 소개와 메뉴 설명서">만든 이야기</button>
+    <button type="button" class="upbtn" id="upBtn" aria-label="UP — 이 서고 표지로" title="UP — 이 서고 표지로">UP</button>
   </div>
   <div class="content">
     <div id="coverWrap">
@@ -1597,7 +1618,7 @@ main{padding-bottom:150px}
   <div class="newbox">
     <div><span class="n">NEW 01</span><b>신약성취연결 · 구약언약연결</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
     <div><span class="n">NEW 02</span><b>키아즘 입체 도표</b><span>A – B – C(정점) – B′ – A′ 계단식 들여쓰기와 좌측 대칭 연결선, 정점 강조, 핵심어 표시를 한 도표에 담았습니다.</span></div>
-    <div><span class="n">NEW 03</span><b>Home 버튼 · 위·아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. PC에서는 왼쪽 캡슐(↑·↓)이 왼쪽 창만, 오른쪽 캡슐이 본문만 맨 위·맨 아래로 움직이고, 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다.</span></div>
+    <div><span class="n">NEW 03</span><b>Home 버튼 · 위·아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. 빨간 <b>Home</b>은 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라가고, 맨 오른쪽 금색 <b>UP</b> 단추가 이 서고 표지로 돌아옵니다. PC에서는 왼쪽 캡슐(↑·↓)이 왼쪽 창만, 오른쪽 캡슐이 본문만 맨 위·맨 아래로 움직이고, 태블릿·휴대폰에서는 본문 쪽 캡슐 하나만 남습니다.</span></div>
   </div>
 
   <div class="story-sec">
@@ -1686,7 +1707,7 @@ main{padding-bottom:150px}
           <b>단축키와 위·아래 ↑·↓ 단추, 그리고 이 페이지</b>
           <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다(휴대폰·태블릿에서는 2/3 크기로 줄어듭니다). 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 스크롤 위치와 상관없이 늘 보입니다.</p>
           <ul>
-            <li><code>Home</code> — 왼쪽 위 빨간 동그라미, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 그리고 <code>Esc</code> 키로 표지에 돌아옵니다.</li>
+            <li><code>Home</code> — 왼쪽 위 빨간 동그라미는 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라갑니다. 표지로 돌아오려면 맨 오른쪽 금색 <code>UP</code> 단추, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 또는 <code>Esc</code> 키를 씁니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키나 아래 <code>Home으로 돌아가기</code> 단추로 나옵니다.</li>
             <li>찾아보기 순서 — 왼쪽에서 단락을 고르고(①), 머리의 연결 표를 펼쳐 보고(②), 바로가기 바 여섯 칸으로 훑고(③), 키아즘 도표로 구조를 잡은 뒤(④), 설교자 문장에서 3대지를 뽑습니다.</li>
           </ul>
@@ -2274,6 +2295,7 @@ function bindGlobal(){
   const tb = $('#themeBtn'); if(tb) tb.onclick = cycleTheme;
   $$('[data-fs]').forEach(b=>{ b.onclick = ()=> setFS(S.fs + parseInt(b.dataset.fs,10)); });
   const home = $$('[data-home]'); home.forEach(h=>{ h.onclick = (ev)=>{ ev.preventDefault(); showCover(); }; });
+  const upB = document.getElementById('upBtn'); if(upB){ upB.onclick = (ev)=>{ ev.preventDefault(); showCover(); }; }
   $$('[data-book]').forEach(b=>{ b.onclick = ()=> setBook(b.dataset.book, false, true); });
   const sel = $('#book66');
   if(sel){
