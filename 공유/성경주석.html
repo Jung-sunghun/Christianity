@@ -3246,7 +3246,7 @@ document.addEventListener('DOMContentLoaded', init);
       return {kind:'cover',id:''};
     },
     restore:function(st){
-      if(st.kind==='entry'){ showEntry(st.id,false); }
+      if(st.kind==='entry'){ showEntry(st.id,true); }
       else if(st.kind==='story'){ if(typeof showStory==='function') showStory(); else showCover(); }
       else { showCover(); }
     }
