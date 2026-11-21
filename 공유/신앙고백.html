@@ -261,6 +261,64 @@ aside::-webkit-scrollbar-thumb{background:#b3c2e6;border-radius:6px}
 .vlink{color:var(--navy3);text-decoration:none;border-bottom:1px dotted #8a9dd9;cursor:pointer;padding:0 1px}
 .vlink:hover{background:#e8edfc;border-bottom-color:var(--navy2)}
 
+/* ===== 읽을 말씀 — 우리말 역본 팝업 (1~3주제 소년부 두 판) ===== */
+.qa-v.wv-chip{display:inline-flex;align-items:center;gap:.34em;cursor:pointer;
+  border:1px solid #b7c6ea;background:#eef3ff;color:#1c2e82;font-family:'Malgun Gothic',sans-serif;
+  font-size:.76em;font-weight:800;border-radius:999px;padding:3px 11px;margin-top:.5em;line-height:1.55;
+  transition:background .15s,border-color .15s,box-shadow .15s}
+.qa-v.wv-chip:hover{background:#dfe7fb;border-color:#1c2e82;box-shadow:0 2px 8px rgba(28,46,130,.14)}
+.qa-v.wv-chip:active{transform:translateY(1px)}
+.qa-v.wv-chip:focus-visible{outline:3px solid #f0c33c;outline-offset:2px}
+html[data-theme="dark"] .qa-v.wv-chip{background:#242b45;border-color:#41506b;color:#c3d0ff}
+html[data-theme="dark"] .qa-v.wv-chip:hover{background:#2d3554;border-color:#6d86c9;color:#e6ecff}
+
+.wv-badge{display:inline-block;font-family:'Malgun Gothic',sans-serif;font-size:.7em;font-weight:900;
+  letter-spacing:.04em;color:#fff;background:#8a2e63;border-radius:999px;padding:.28em .74em;white-space:nowrap;
+  vertical-align:.12em}
+.wvbox{margin:26px 0 0;padding:16px 18px 15px;border:1px solid #c9d5ef;border-radius:16px;
+  background:linear-gradient(180deg,#fbfcff 0%,#f2f6fd 100%)}
+.wvbox .wv-h{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  font-family:"Noto Serif KR",serif;font-weight:800;font-size:1.06em;color:var(--navy2,#1c2e82)}
+.wvbox .wv-note{font-size:.83em;color:var(--muted,#5b6a86);line-height:1.72;margin:.45em 0 .85em}
+.wvbox .wv-list{display:flex;flex-wrap:wrap;gap:8px}
+.wv-rv{display:inline-flex;align-items:center;gap:.4em;min-height:40px;cursor:pointer;
+  font-family:'Malgun Gothic',sans-serif;font-size:.88em;font-weight:800;
+  border:1px solid #b7c6ea;background:#fff;color:#1c2e82;border-radius:999px;padding:.5em 1em;
+  transition:background .15s,border-color .15s,box-shadow .15s}
+.wv-rv:hover{background:#eaf0ff;border-color:#1c2e82;box-shadow:0 2px 8px rgba(28,46,130,.14)}
+.wv-rv:active{transform:translateY(1px)}
+.wv-rv:focus-visible{outline:3px solid #f0c33c;outline-offset:2px}
+.kidpage .wvbox{margin:32px 0 0;padding:20px 20px 18px;border:2px solid #efd6a4;border-radius:20px;
+  background:#fffdf6;text-align:center}
+.kidpage .wvbox .wv-h{justify-content:center;font-size:1.16em;color:#8a5410}
+.kidpage .wvbox .wv-note{color:#a97b3c;font-size:.92em}
+.kidpage .wvbox .wv-list{justify-content:center}
+.kidpage .wv-rv{font-size:1.02em;min-height:48px;padding:.6em 1.15em;
+  border:1px solid #e2c68e;background:#fff7e6;color:#8a5410}
+.kidpage .wv-rv:hover{background:#fbeece;border-color:#c9a25a}
+html[data-theme="dark"] .wvbox{background:linear-gradient(180deg,#232830 0%,#1d2229 100%);border-color:#38404c}
+html[data-theme="dark"] .wv-rv{background:#232a34;border-color:#41506b;color:#c3d0ff}
+html[data-theme="dark"] .wv-rv:hover{background:#2d3554;border-color:#6d86c9}
+html[data-theme="dark"] .kidpage .wvbox{background:#241f1a;border-color:#5a4a33}
+html[data-theme="dark"] .kidpage .wvbox .wv-h{color:#e6c08a}
+html[data-theme="dark"] .kidpage .wv-rv{background:#2e2721;border-color:#6b5638;color:#e6c08a}
+
+/* 팝업 카드 — 구절 제목 옆 우리말 역본 배지 */
+.xcard .wv-sub{font-size:.8em;color:var(--muted,#5b6a86);line-height:1.7;margin:.7em 0 0}
+.xcard .wv-foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--line,#e2e8f0)}
+.xcard .wv-near{border:1px solid #b91c1c;background:#dc2626;color:#fff;border-radius:10px;
+  padding:.45em 1.05em;font-family:'Malgun Gothic',sans-serif;font-weight:900;font-size:.86em;line-height:1.3;
+  cursor:pointer;box-shadow:0 2px 6px rgba(180,24,24,.24);margin-left:auto;
+  transition:background .15s,border-color .15s}
+.xcard .wv-near:hover{background:#b91c1c;border-color:#991b1b;color:#fff}
+.xcard .wv-near:active{transform:translateY(1px)}
+.xcard .wv-near:focus-visible{outline:3px solid #ffe08a;outline-offset:2px}
+@media (max-width:1024px){
+  .xcard{margin:7vh auto 0;max-height:82vh;padding:16px 16px 12px}
+  .xcard .wv-near{padding:.5em 1em;font-size:.84em}
+}
+
 @media (max-width:1080px){ body{grid-template-columns:290px minmax(0,1fr)} }
 @media (max-width:860px){ body{grid-template-columns:1fr} .totop{width:48px;height:48px;right:14px;bottom:14px}
  .totop.left{left:14px;right:auto} .cover-title{font-size:2.4em} }
@@ -1802,12 +1860,12 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
           <code>[소년부·부모용]</code> <code>[소년부·어린이]</code> 네 단추가 나란히 있습니다. 누르면 그 부서의 설교문이 바로 열리고,
           설교문 위에서 부서를 바꿔 읽을 수 있습니다. 주제 비교 뷰에서도 같은 네 단추가 주제 요약 위에 붙습니다.</p>
           <ul>
-            <li>설교문마다 — 본문(개역개정 전문) · <b>📜 신앙고백 원문 연결</b>(웨스트민스터·하이델베르크·벨직 몇 장 몇 문에 근거했는지) · <b>⚠️ 이단·오류 경계선</b>(양태론·아리우스·성경가감처럼 이단이 비트는 지점과 강단 안전장치) · <b>소그룹 나눔 Q&amp;A 6가지</b>(질문 + 핵심 나눔 가이드 + 함께 읽을 말씀)가 붙습니다.</li>
+            <li>설교문마다 — 본문(개역개정 전문) · <b>📜 신앙고백 원문 연결</b>(웨스트민스터·하이델베르크·벨직 몇 장 몇 문에 근거했는지) · <b>⚠️ 이단·오류 경계선</b>(양태론·아리우스·성경가감처럼 이단이 비트는 지점과 강단 안전장치) · <b>소그룹 나눔 Q&amp;A 6가지</b>(질문 + 핵심 나눔 가이드 + 함께 읽을 말씀)가 붙습니다. Q&amp;A 끝의 <b>함께 읽을 말씀</b> 구절은 단추라서, 누르면 <b>우리말 역본</b> 본문이 창으로 바로 열립니다.</li>
             <li><code>📋 복사</code> — 설교문 전체를 글로 복사합니다. 문서에 붙여 넣어 쓰십시오.</li>
             <li><code>🔗 링크복사</code><span class="mob-only"> · <code>📤 보내기</code></span> — 지금 열려 있는 세대(장년부·청년부·소년부)의 설교 <b>한 편만</b> 열리는 주소를 <span class="pc-only">복사합니다.</span><span class="mob-only">복사하거나 그 자리에서 바로 보냅니다.</span> 받은 사람은 서고 전체 화면 없이 그 설교(제목·본문·삽화 세 컷·나눔 Q&amp;A)만 큰 글씨로 읽고, 그 화면은 설교 본문 끝에서 깔끔하게 끝납니다. <span class="pc-only">복사한 링크는 카톡·문자에 <code>Ctrl+V</code>(휴대폰은 길게 눌러 붙여넣기)로 붙여넣어 보내면 됩니다.</span><span class="mob-only">휴대폰에서 <code>📤 보내기</code>를 누르면 카카오톡·문자 등 기기 공유 창이 열려 바로 보낼 수 있고, <code>🔗 링크복사</code>는 링크만 복사해 길게 눌러 붙여넣을 때 씁니다. 공유 창이 없는 인앱 브라우저에서는 링크가 복사되고 안내가 뜹니다.</span></li>
             <li><code>🖨️ PDF 인쇄</code> — 인쇄 창이 열립니다. PDF로 저장하거나 종이로 인쇄하면 왼쪽 탐색창·단추를 지우고 설교문만 깨끗하게 나옵니다.</li>
             <li><b>[소년부·부모용]</b> — 지금까지의 소년부 설교 그대로입니다. 신조 연결 딱지 · 이단 경계선 · 나눔 Q&amp;A 6문까지 있어 부모·교사가 먼저 읽고 아이에게 들려줄 때 씁니다. 본문 위에 <b>오늘의 비유 그림</b> 한 컷, 본문 중간에 <b>삽화 두 컷</b>이 들어 있습니다.</li>
-            <li><b>[소년부·어린이]</b> — 아이가 태블릿으로 직접 읽는 판입니다. 신조 연결 딱지 · 이단 경계선 · 어려운 신학 용어 해설 · 딱딱한 Q&amp;A를 모두 걷어 내고, <b>큰 글씨의 다정한 말씀과 수채화 그림 세 장</b>만 동화책처럼 펼칩니다. 이 단추에서 <code>🔗 링크복사</code><span class="mob-only"> · <code>📤 보내기</code></span>를 누르면 <code>?sermon=번호&amp;age=junior_kid</code> 단독 화면이 열려, 아이 태블릿에는 그림과 아이 눈높이 말씀만 딱 보입니다(서고 이동 단추·만든이 푸터 없음).</li>
+            <li><b>[소년부·어린이]</b> — 아이가 태블릿으로 직접 읽는 판입니다. 신조 연결 딱지 · 이단 경계선 · 어려운 신학 용어 해설 · 딱딱한 Q&amp;A를 모두 걷어 내고, <b>큰 글씨의 다정한 말씀과 수채화 그림 세 장</b>만 동화책처럼 펼칩니다. 말씀 끝에는 부모용과 <b>같은 읽을 말씀</b> 단추가 놓여, 누르면 <b>우리말 역본</b> 본문이 창으로 열립니다. 이 단추에서 <code>🔗 링크복사</code><span class="mob-only"> · <code>📤 보내기</code></span>를 누르면 <code>?sermon=번호&amp;age=junior_kid</code> 단독 화면이 열려, 아이 태블릿에는 그림과 아이 눈높이 말씀만 딱 보입니다(서고 이동 단추·만든이 푸터 없음).</li>
             <li><b>[소년부·부모용]</b>과 <b>[소년부·어린이]</b>는 같은 성경 본문·같은 그림 세 장을 씁니다. 아이에게 먼저 부모용으로 준비하고, 아이 손에는 어린이 판 링크를 보내면 됩니다.</li>
           </ul>
         </div>
@@ -2474,7 +2532,7 @@ function sermonHTML(tk,dk,solo){
     s.qna.forEach(function(q,i){
       h.push('<div class="qa-item"><div class="qa-q"><span class="qa-n">Q'+(i+1)+'</span>'+esc(q.q)+'</div>');
       h.push('<div class="qa-a"><b>핵심 나눔 가이드</b> — '+esc(q.guide)+'</div>');
-      if(q.verse) h.push('<span class="qa-v">함께 읽을 말씀 · '+esc(q.verse)+'</span>');
+      if(q.verse) h.push(WM[q.verse]!=null?wvChipHTML(q.verse):'<span class="qa-v">함께 읽을 말씀 · '+esc(q.verse)+'</span>');
       h.push('</div>');
     });
     h.push('</div>');
@@ -2545,6 +2603,7 @@ function kidSermonHTML(tk,dk,solo){
     h.push('<div class="kd-pray"><div class="kd-h">🙏 같이 기도해요</div><p>'+esc(s.prayer)+'</p></div>');
   }
   if(s.bless) h.push('<div class="kd-bless">'+esc(s.bless)+'</div>');
+  h.push(wvBoxHTML(tk));
   if(!solo){
     h.push('<div class="kd-end">');
     h.push('<button type="button" data-scopy="1">📋 이 말씀 복사</button>');
@@ -2663,6 +2722,122 @@ document.addEventListener('click', function(ev){
     return;
   }
   if(el.closest('[data-sprint]')){ ev.preventDefault(); window.print(); return; }
+}, false);
+
+/* ══════════════════════════════════════════════════════════════════
+   읽을 말씀 — 우리말 역본 팝업
+   · 지창고 「우리말성경(txt 파일)」(우리말구약전서·우리말신약전서)에서
+     구절 그대로를 옮겨 담았다. (인코딩 cp949 · 원문 표기 * 는 지움)
+   · 부모용은 Q&A 의 「함께 읽을 말씀」 구절이 단추가 되고,
+     어린이 판은 말씀 끝에 「읽을 말씀」 상자를 같은 구절로 붙인다.
+   ══════════════════════════════════════════════════════════════════ */
+var WM = {"마 28:19":{"book":"마태복음","ref":"마태복음 28:19","vs":[["19","그러므로 너희는 가서 모든 민족을 제자로 삼아 아버지와 아들과 성령의 이름으로 세례를 주고"]]},"마 3:17":{"book":"마태복음","ref":"마태복음 3:17","vs":[["17","그리고 하늘에서 소리가 들려왔습니다. “이는 내가 사랑하는 아들이다. 내가 그를 매우 기뻐한다.”"]]},"요 14:16~17":{"book":"요한복음","ref":"요한복음 14:16~17","vs":[["16","내가 아버지께 구할 것이니 아버지께서 너희에게 다른 보혜사를 보내셔서 너희와 영원히 함께 있도록 하실 것이다."],["17","그분은 진리의 영이시다. 세상은 그분을 볼 수도 없고 알 수도 없기 때문에 그분을 받아들일 수가 없다. 그러나 너희는 그분을 안다. 그분이 너희와 함께 계시고 또 너희 안에 계실 것이기 때문이다."]]},"마 3:16":{"book":"마태복음","ref":"마태복음 3:16","vs":[["16","예수께서 세례를 받으시고 물속에서 올라오셨습니다. 그때 예수께서는 하늘이 열리고 하나님의 영이 비둘기처럼 자신에게 내려오는 것을 보셨습니다."]]},"요 17:24":{"book":"요한복음","ref":"요한복음 17:24","vs":[["24","아버지여, 아버지께서 내게 주신 사람들이 내가 있는 곳에 나와 함께 있어 내 영광, 곧 아버지께서 세상이 창조되기 전부터 나를 사랑하셔서 내게 주신 영광을 그들도 보게 하소서."]]},"엡 2:18":{"book":"에베소서","ref":"에베소서 2:18","vs":[["18","이것은 그리스도를 통해 우리 모두 한 성령 안에서 아버지께 나아갈 수 있게 하기 위한 것입니다."]]},"히 1:1~2":{"book":"히브리서","ref":"히브리서 1:1~2","vs":[["1","옛날에 여러 차례 여러 모양으로 예언자들을 통해 조상들에게 말씀하신 하나님께서"],["2","이 마지막 날에 아들을 통해 우리에게 말씀하셨습니다. 하나님께서는 그 아들을 만물의 상속자로 세우시고 또한 그를 통해 모든 세상을 지으셨습니다."]]},"딤후 3:16":{"book":"디모데후서","ref":"디모데후서 3:16","vs":[["16","모든 성경은 하나님의 감동으로 된 것으로 교훈과 책망과 바르게 함과 의로 교육하기에 유익하니"]]},"요 5:39":{"book":"요한복음","ref":"요한복음 5:39","vs":[["39","너희가 성경 안에서 영생을 얻을 수 있다는 생각에 성경을 열심히 연구하는구나. 성경은 바로 나를 증언하고 있다."]]},"시 119:105":{"book":"시편","ref":"시편 119:105","vs":[["105","주의 말씀은 내 발의 등불이요, 내 길의 빛입니다."]]},"마 7:24~25":{"book":"마태복음","ref":"마태복음 7:24~25","vs":[["24","그러므로 내가 하는 말을 듣고 그대로 실천하는 사람은 바위 위에 집을 지은 지혜로운 사람과 같다."],["25","비가 내려 홍수가 나고 바람이 불어 세차게 내리쳐도 그 집은 무너지지 않았다. 바위 위에 기초를 세웠기 때문이다."]]},"출 34:6":{"book":"출애굽기","ref":"출애굽기 34:6","vs":[["6","그리고 주께서 모세 앞으로 지나가면서 선포하셨습니다. “여호와, 여호와, 긍휼하고 은혜로운 하나님, 오래 참고 선함과 진리가 풍성하며"]]},"시 103:13~14":{"book":"시편","ref":"시편 103:13~14","vs":[["13","아버지가 자식을 불쌍히 여기듯 여호와께서도 주를 경외하는 사람들을 불쌍히 여기신다."],["14","우리의 체질을 아시고 우리가 흙임을 기억하시기 때문이다."]]},"롬 5:8":{"book":"로마서","ref":"로마서 5:8","vs":[["8","그러나 우리가 아직 죄인이었을 때 그리스도께서 우리를 위해 죽으심으로 하나님께서는 우리에 대한 그분의 사랑을 나타내셨습니다."]]},"히 13:8":{"book":"히브리서","ref":"히브리서 13:8","vs":[["8","예수 그리스도께서는 어제나 오늘이나 영원토록 한결같으신 분입니다."]]},"사 40:11":{"book":"이사야","ref":"이사야 40:11","vs":[["11","그분은 목자처럼 자신의 양 떼를 돌보시고 자신의 어린 양들을 양 팔로 끌어안아 가슴에 품으시고 젖먹이 딸린 양들을 고이고이 이끄신다."]]}};
+
+function wvChipHTML(ref){
+  return '<button type="button" class="qa-v wv-chip" data-wv="'+esc(ref)+'" title="'+esc(WM[ref].ref)+' — 우리말성경 본문 열기">📖 함께 읽을 말씀 · '+esc(ref)+'</button>';
+}
+/* 한 주제의 부모용 Q&A 에 나온 읽을 말씀을 차례대로, 겹치는 구절은 한 번만 */
+function wvRefsOf(tk){
+  var c=dSermon(tk,'child'); if(!c||!c.qna) return [];
+  var out=[];
+  c.qna.forEach(function(q){ if(q.verse&&WM[q.verse]!=null&&out.indexOf(q.verse)<0) out.push(q.verse); });
+  return out;
+}
+function wvBoxHTML(tk){
+  var refs=wvRefsOf(tk); if(!refs.length) return '';
+  var h=['<div class="wvbox"><div class="wv-h">📖 읽을 말씀 <span class="wv-badge">우리말 역본</span></div>'];
+  h.push('<div class="wv-note">구절을 누르면 우리말성경 본문이 창으로 열립니다.</div>');
+  h.push('<div class="wv-list">');
+  refs.forEach(function(r){ h.push('<button type="button" class="wv-rv" data-wv="'+esc(r)+'" title="'+esc(WM[r].ref)+' — 우리말성경 본문 열기">'+esc(WM[r].ref)+'</button>'); });
+  h.push('</div></div>');
+  return h.join('');
+}
+function wvCopyText(ref){
+  var d=WM[ref]; if(!d) return '';
+  var L=[d.ref+' (우리말성경)'];
+  d.vs.forEach(function(v){ L.push(v[0]+' '+v[1]); });
+  return L.join('\n');
+}
+var WHOST=null, WVOPEN='';
+function wvHost(){
+  if(WHOST&&document.body.contains(WHOST)) return WHOST;
+  WHOST=document.createElement('div');
+  WHOST.id='wv';
+  WHOST.className='xmodal';
+  WHOST.setAttribute('role','dialog');
+  WHOST.setAttribute('aria-modal','true');
+  WHOST.setAttribute('aria-hidden','true');
+  document.body.appendChild(WHOST);
+  return WHOST;
+}
+function wvCardHTML(ref){
+  var d=WM[ref]; if(!d) return '';
+  var h=['<div class="xbk"></div><div class="xcard">'];
+  h.push('<div class="xh"><span class="xref">'+esc(d.ref)+'</span><span class="wv-badge">우리말 역본</span>');
+  h.push('<button type="button" class="xclose" data-wvclose="1" title="닫기" aria-label="닫기">×</button></div>');
+  h.push('<div class="xverses">');
+  d.vs.forEach(function(v){ h.push('<div class="xv"><span class="n">'+esc(v[0])+'</span><span>'+esc(v[1])+'</span></div>'); });
+  h.push('</div>');
+  h.push('<div class="wv-sub">본문 — 우리말성경 · 지창고 원문에서 그대로 옮겼습니다.</div>');
+  h.push('<div class="wv-foot"><button type="button" class="xcopy" data-wvcopy="1">📋 복사</button>');
+  h.push('<button type="button" class="wv-near" data-wvclose="1">닫기</button></div>');
+  h.push('</div>');
+  return h.join('');
+}
+function wvOpen(ref){
+  var d=WM[ref]; if(!d) return;
+  var m=wvHost();
+  m.innerHTML=wvCardHTML(ref);
+  m.classList.add('open');
+  m.setAttribute('aria-hidden','false');
+  WVOPEN=ref;
+  document.documentElement.style.overflow='hidden';
+  var bk=m.querySelector('.xbk'); if(bk) bk.onclick=function(ev){ ev.preventDefault(); wvClose(); };
+  m.querySelectorAll('[data-wvclose]').forEach(function(b){
+    b.onclick=function(ev){ ev.preventDefault(); ev.stopPropagation(); wvClose(); };
+  });
+  var cp=m.querySelector('[data-wvcopy]');
+  if(cp) cp.onclick=function(ev){ ev.preventDefault(); ev.stopPropagation();
+    copyWithMsg(wvCopyText(WVOPEN),'✓ 본문을 복사했습니다','본문을 복사하지 못했습니다'); };
+  var card=m.querySelector('.xcard'); if(card){ try{ card.scrollTop=0; }catch(e){} }
+  var cl=m.querySelector('.xclose'); if(cl&&cl.focus){ try{ cl.focus(); }catch(e){} }
+  setTimeout(function(){
+    document.addEventListener('click', wvTapClose, false);
+    document.addEventListener('keydown', wvEsc, true);
+  },0);
+}
+function wvClose(){
+  var m=WHOST; if(!m||!m.classList.contains('open')) return;
+  m.classList.remove('open'); m.innerHTML=''; m.setAttribute('aria-hidden','true');
+  WVOPEN='';
+  document.documentElement.style.overflow='';
+  document.removeEventListener('click', wvTapClose, false);
+  document.removeEventListener('keydown', wvEsc, true);
+}
+function wvEsc(ev){
+  if(!WVOPEN) return;
+  if(ev.key==='Escape'||ev.key==='Esc'||ev.keyCode===27){
+    ev.preventDefault(); ev.stopPropagation();
+    if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+    wvClose();
+  }
+}
+/* PC(1025px 이상)는 바깥 어두운 배경·×·닫기·Esc 로만 닫는다(안쪽 클릭은 그대로).
+   휴대폰·태블릿(1024px 이하)은 기능 단추(복사·닫기) 밖을 탭하면 안팎 어디서든 닫힌다. */
+function wvTapClose(ev){
+  if(!WVOPEN) return;
+  if(window.innerWidth>1024) return;
+  var t=ev.target;
+  if(t&&t.closest&&t.closest('button,a[href],input,select,textarea,label,summary')) return;
+  var sel=window.getSelection?window.getSelection():null;
+  if(sel&&!sel.isCollapsed&&String(sel).length>0) return;
+  wvClose();
+}
+document.addEventListener('click', function(ev){
+  var b=ev.target.closest?ev.target.closest('[data-wv]'):null;
+  if(!b) return;
+  ev.preventDefault();
+  wvOpen(b.getAttribute('data-wv'));
 }, false);
 
 </script>
