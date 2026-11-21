@@ -1747,7 +1747,7 @@ html[data-theme="dark"] .topbar .guidebtn{background:linear-gradient(180deg,#12b
 /* ══ 서고 이동 단추 (2026-11-21): 빨간 Home = 한 단계 위(서고 대문) · 맨 오른쪽 금색 UP = 이 서고 첫 페이지 ══ */
 a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
 .topbar .upbtn,header .upbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;
-  min-height:46px;padding:0 17px;border-radius:12px;
+  min-height:46px;padding:0 17px;border-radius:12px;margin-left:auto;
   border:2px solid rgba(255,255,255,.86);
   background:linear-gradient(180deg,#ffe889 0%,#f3c53a 52%,#cf9a12 100%);
   color:#4a3200;font-family:inherit;font-size:.95em;font-weight:900;
@@ -1762,7 +1762,27 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
 @media (max-width:767px){.topbar .upbtn,header .upbtn{min-height:42px;padding:0 13px;font-size:.84em;border-radius:10px}}
 @media (max-width:400px){.topbar .upbtn,header .upbtn{min-height:40px;padding:0 11px;font-size:.78em}}
 </style>
-</head>
+
+<style id="vaultnavCompact">
+@media (max-width:430px) and (min-width:361px){
+  .topbar{padding:8px 6px;gap:4px}
+  .topbar .homefab{width:38px;height:38px;font-size:.58em}
+  .topbar .guidebtn{height:38px;font-size:.7em;padding:0 .46em}
+  .navbtn{font-size:.7em;min-height:38px;padding:.4em .5em .4em .42em;gap:.22em}
+  .tagfab{font-size:.66em;min-height:38px;padding:.32em .44em;gap:.22em}
+  .topbar .storybtn{font-size:.68em;padding:.5em .5em;min-height:38px}
+  .topbar .upbtn{min-height:38px;padding:0 9px;font-size:.72em;letter-spacing:.1em}
+}
+@media (max-width:360px){
+  .topbar{padding:7px 5px;gap:4px}
+  .topbar .homefab{width:36px;height:36px;font-size:.56em}
+  .topbar .guidebtn{height:36px;font-size:.66em;padding:0 .4em}
+  .navbtn{font-size:.66em;min-height:36px;padding:.4em .42em .4em .36em;gap:.18em}
+  .tagfab{font-size:.62em;min-height:36px;padding:.32em .38em;gap:.18em}
+  .topbar .storybtn{font-size:.64em;padding:.5em .42em;min-height:36px}
+  .topbar .upbtn{min-height:36px;padding:0 7px;font-size:.68em;letter-spacing:.08em}
+}
+</style></head>
 <body>
 
 <!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->

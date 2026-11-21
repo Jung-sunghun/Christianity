@@ -601,7 +601,7 @@ main{padding-bottom:150px}
 /* ══ 서고 이동 단추 (2026-11-21): 빨간 Home = 한 단계 위(서고 대문) · 맨 오른쪽 금색 UP = 이 서고 첫 페이지 ══ */
 a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
 .topbar .upbtn,header .upbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;
-  min-height:46px;padding:0 17px;border-radius:12px;
+  min-height:46px;padding:0 17px;border-radius:12px;margin-left:auto;
   border:2px solid rgba(255,255,255,.86);
   background:linear-gradient(180deg,#ffe889 0%,#f3c53a 52%,#cf9a12 100%);
   color:#4a3200;font-family:inherit;font-size:.95em;font-weight:900;
@@ -615,6 +615,11 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
 @media (min-width:768px) and (max-width:1024px){.topbar .upbtn,header .upbtn{min-height:44px;padding:0 14px;font-size:.88em}}
 @media (max-width:767px){.topbar .upbtn,header .upbtn{min-height:42px;padding:0 13px;font-size:.84em;border-radius:10px}}
 @media (max-width:400px){.topbar .upbtn,header .upbtn{min-height:40px;padding:0 11px;font-size:.78em}}
+</style>
+<style id="vaultnavJinam">
+html{--tbhx:var(--tbh)}
+@media (min-width:1025px){aside{top:var(--tbhx);height:calc(100vh - var(--tbhx))}}
+.idxsec h2,.idxsec h3.auname{scroll-margin-top:calc(var(--tbhx) + 14px)}
 </style>
 </head>
 <body data-page="index" data-mb="37.6">
@@ -649,7 +654,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
 <span class="tb-spacer"></span>
 <button type="button" class="srchbtn" id="srchBtn" aria-label="검색 열기">🔍</button>
 <nav class="tblinks" aria-label="주요 목차"><a href="#/idx/issues">통권별</a><a href="#/idx/topics">주제별</a><a href="#/idx/all">전체 목록</a><a href="#/story">만든 이야기</a></nav>
-<a class="upbtn" id="upBtn" href="#/" aria-label="UP — 이 서고 표지로" title="UP — 이 서고 표지로">UP</a>
+<a class="upbtn" id="upBtn" href="#/" aria-label="UP — 이 서고 표지로" title="UP — 이 서고 표지로">UP</a><script>/* 상단 바 실제 높이 → --tbhx (UP 단추가 둘째 줄로 내려가도 sticky 목차·scroll-margin 이 어긋나지 않게. 레이아웃 값에는 쓰지 않아 되먹임 없음) */(function(){function s(){var t=document.querySelector(".topbar");if(t)document.documentElement.style.setProperty("--tbhx",Math.round(t.getBoundingClientRect().height)+"px");}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",s);}else{s();}window.addEventListener("resize",s);window.addEventListener("load",s);})();</script>
 <nav class="pager" id="pager" aria-label="이전·다음 글" style="display:none"><a class="pgprev" id="pgPrev" href="#/"><span class="pt">← 이전 글</span><span class="pa">←</span></a><a class="pgnext" id="pgNext" href="#/"><span class="pt">다음 글 →</span><span class="pa">→</span></a></nav>
 </div></header>
 <div class="layout">
