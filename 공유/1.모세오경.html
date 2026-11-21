@@ -1782,7 +1782,29 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
   .topbar .storybtn{font-size:.64em;padding:.5em .42em;min-height:36px}
   .topbar .upbtn{min-height:36px;padding:0 7px;font-size:.68em;letter-spacing:.08em}
 }
-</style></head>
+</style>
+<style id="jhbackCSS">
+/* ══ 상단 ◀ 전 · 후 ▶ (2026-11-21) — 서고 안에서 옮겨 온 화면을 되돌아가고 다시 앞으로 ══ */
+.jh-nav{flex:0 0 auto;display:inline-flex;align-items:stretch;min-width:0;height:34px;
+  border:1px solid rgba(255,255,255,.62);border-radius:999px;overflow:hidden;
+  background:rgba(255,255,255,.16);box-shadow:0 2px 8px rgba(0,0,0,.16)}
+.jh-nav>button{-webkit-appearance:none;appearance:none;margin:0;padding:0 10px;min-width:0;
+  display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;
+  color:#fff;font-family:inherit;font-size:.82em;font-weight:800;letter-spacing:-.01em;line-height:1;
+  white-space:nowrap;cursor:pointer;transition:background .15s ease,opacity .15s ease}
+.jh-nav>button+button{border-left:1px solid rgba(255,255,255,.42)}
+.jh-nav>button:hover:not(:disabled){background:rgba(255,255,255,.24)}
+.jh-nav>button:active:not(:disabled){background:rgba(255,255,255,.34)}
+.jh-nav>button:focus-visible{outline:2px solid #ffe08a;outline-offset:-3px}
+.jh-nav>button:disabled{opacity:.35;cursor:default}
+@media (max-width:1120px){.jh-nav{height:32px}.jh-nav>button{font-size:.78em;padding:0 8px}}
+@media (max-width:767px){.jh-nav{height:32px}.jh-nav>button{font-size:.76em;padding:0 7px}}
+@media (max-width:430px){.jh-nav{height:30px}.jh-nav>button{font-size:.72em;padding:0 5px}}
+/* '만든 이야기' 앞에 바짝 — 넓은 화면에서만 (좁은 화면 규칙은 건드리지 않는다) */
+@media (min-width:901px){.topbar .jh-nav+.storybtn{margin-left:10px}}
+@media print{.jh-nav{display:none!important}}
+</style>
+</head>
 <body>
 
 <!-- [홈 화면 바로가기 안내] 상단 바 ───────────────────────────────────── -->
@@ -1862,7 +1884,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
       aria-expanded="false" title="목차 · 검색창 열기 (태블릿·휴대폰)"><span aria-hidden="true">☰</span> 목차</button>
     <button type="button" class="tagfab" id="tagFab" aria-controls="tagSheet" aria-expanded="false" title="이 책의 인명 · 지명 · 사건 색인 바로보기"><span class="tf-full">👥 인명·지명·사건</span><span class="tf-short">👥 인명·지명</span></button>
     <span class="grow"></span>
-    <span class="small muted kbhint">키보드: <b>/</b> 검색 · <b>← →</b> 이동 · <b>Esc</b> Home</span>
+    <div class="jh-nav" role="group" aria-label="이전 단계·다음 단계로 이동"><button type="button" id="jhBack" title="이전 단계" aria-label="이전 단계">&#9664; 전</button><button type="button" id="jhFwd" title="다음 단계" aria-label="다음 단계">후 &#9654;</button></div>
     <button type="button" class="storybtn" id="storyBtn" title="만든 이야기 — 서고 소개와 메뉴 설명서">만든 이야기</button>
     <button type="button" class="upbtn" id="upBtn" aria-label="UP — 이 서고 첫 페이지(창세기 1장)로" title="UP — 이 서고 첫 페이지(창세기 1장)로">UP</button>
   </div>
@@ -2080,7 +2102,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
     <div><span class="n">NEW 14</span><b>문장 끝 관주 · 인명·지명·사건 상세</b><span>「설교문」과 「설교자 문장」 문장 끝에 <b>관주 창1:1</b> 같은 작은 박스가 붙습니다. 누르면 개역한글 본문·연결 이유·<b>📋 복사</b>가 열립니다. 왼쪽 <b>인명·지명·사건</b>을 누르면 원어·뜻·행적·그리스도 예표·연대기가 열리고, 지명은 실제 좌표에 핀이 찍힌 <b>이스라엘·애굽·시나이 벡터 지도</b>(확대·축소·동선)와 함께 열립니다.</span></div>
     <div><span class="n">NEW 01</span><b>구약언약연결 · 신약성취연결 (관주 기능)</b><span>단락마다 표를 달았습니다. 누르면 연결된 구절 전부를 창세기~요한계시록 순서로 펼치고, 구절마다 ‘복사’ 단추로 “책 장:절 본문”을 복사합니다.</span></div>
     <div><span class="n">NEW 02</span><b>키아즘 입체 도표</b><span>A – B – C(정점) – B′ – A′ 계단식 들여쓰기와 좌측 대칭 연결선, 정점 강조, 핵심어 표시를 한 도표에 담았습니다.</span></div>
-    <div><span class="n">NEW 03</span><b>Home 버튼 · 위아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. 빨간 <b>Home</b>은 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라가고, 맨 오른쪽 금색 <b>UP</b> 단추가 이 서고 첫 화면인 <b>창세기 1장</b>을 엽니다. 가이드 화면은 화면 맨 위 빨간 <b>Home</b> 옆 <b>사용안내</b> 단추로 엽니다. PC에서는 왼쪽 창과 본문 양쪽에 ↑·↓가 있어 각각 맨 위·맨 아래로 갑니다. 태블릿·휴대폰에서는 본문 쪽 ↑·↓만 남습니다.</span></div>
+    <div><span class="n">NEW 03</span><b>Home 버튼 · 위아래(↑↓) 단추</b><span>오른쪽 위 창 왼쪽에 빨간 동그라미 <b>Home</b> 단추를 두었습니다. 빨간 <b>Home</b>은 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라가고, 맨 오른쪽 금색 <b>UP</b> 단추가 이 서고 첫 화면인 <b>창세기 1장</b>을 엽니다. 가이드 화면은 화면 맨 위 빨간 <b>Home</b> 옆 <b>사용안내</b> 단추로 엽니다. PC에서는 왼쪽 창과 본문 양쪽에 ↑·↓가 있어 각각 맨 위·맨 아래로 갑니다. 태블릿·휴대폰에서는 본문 쪽 ↑·↓만 남습니다. 오른쪽 위 <b>만든 이야기</b> 단추 바로 왼쪽의 <b>◀ 전</b> · <b>후 ▶</b> 단추는 웹 브라우저처럼 <b>직전에 보던 화면과 그 스크롤 자리로 되돌아가고</b>, 되돌아간 뒤에는 <b>후 ▶</b>로 다시 앞으로 나아갑니다. 갈 기록이 없으면 흐리게 꺼져 있습니다.</span></div>
   </div>
 
   <div class="story-sec">
@@ -2116,7 +2138,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
             <li><code>주석 전체 복사</code> — 이 단락의 주석 전부를 복사합니다.</li>
             <li>문장 끝 <code>관주 …</code> — 설교문·설교자 문장의 문장 끝 박스. 누르면 개역한글 본문·연결 이유와 <b>📋 복사</b>가 열립니다.</li>
             <li><code>A−</code> <code>A+</code> — 글자 크기. <code>◐ 테마</code> — 무색 · 미색 · 세피아 · 다크를 차례로 돌립니다.</li>
-            <li>팝업은 <code>Esc</code> 키나 바깥을 눌러 닫습니다. 팝업이 열려 있을 때 <code>Esc</code>는 팝업부터 닫습니다.</li>
+            <li>팝업 닫기 — PC에서는 <b>바깥 어두운 배경</b>·<b>×</b>·<b>닫기</b>·<code>Esc</code>로만 닫히고, 팝업 안쪽 글자를 눌러도 창은 그대로 남습니다(복사·드래그). 휴대폰·태블릿에서는 기능 단추(복사·닫기)가 아닌 곳을 누르면 안팎 어디서든 닫힙니다. 팝업이 열려 있을 때 <code>Esc</code>는 팝업부터 닫습니다.</li>
           </ul>
         </div>
       </li>
@@ -2158,6 +2180,7 @@ a.homefab,a.homebtn{text-decoration:none;border-bottom:none;cursor:pointer}
           <p>화면 아래 왼쪽·오른쪽에 <b>↑·↓</b>가 위아래로 붙은 <b>알약(캡슐) 단추</b>가 하나씩 떠 있습니다 — 너비 50px, 위 절반이 <b>↑</b>, 가운데 얇은 금, 아래 절반이 <b>↓</b>인 한 덩어리입니다(휴대폰·태블릿에서는 2/3 크기로 줄어듭니다). 왼쪽 캡슐은 왼쪽 탐색창만, 오른쪽 캡슐은 본문만 맨 위·맨 아래로 부드럽게 올리고 내립니다. 위나 아래 끝에 있어도 단추는 그대로 보입니다 — 맨 위에서도 <b>↓</b>가, 맨 아래에서도 <b>↑</b>가 있습니다.</p>
           <ul>
             <li><code>Home</code> — 왼쪽 위 빨간 동그라미는 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라갑니다. 이 서고 첫 화면인 창세기 1장으로 오려면 맨 오른쪽 금색 <code>UP</code> 단추, 왼쪽 <code>Home</code> 단추, 왼쪽 위 제목 박스, 또는 <code>Esc</code> 키를 씁니다. 왼쪽 목차도 <b>창세기</b>로 돌아가 맨 위부터 보입니다.</li>
+            <li><code>◀ 전 · 후 ▶</code> — 오른쪽 위 두 단추는 이 서고 안에서 옮겨 다닌 자리를 기억합니다. <b>◀ 전</b>을 누르면 직전 장(단락)·사용안내·만든 이야기 화면과 그 스크롤 자리로 돌아가고, <b>후 ▶</b>를 누르면 되돌아온 길을 다시 앞으로 갑니다. 이 서고의 맨 처음 화면에서는 한 단계 위 <b>공유 자료실(서고 대문)</b>로 올라가며, 갈 곳이 없으면 흐리게 꺼집니다.</li>
             <li><code>사용안내</code> — 화면 맨 위 보라색 띠의 빨간 <code>Home</code> 동그라미 <b>바로 옆</b>에 청록색 네모 단추로 있습니다(휴대폰에서도 늘 보입니다). 누르면 <b>이 가이드 화면</b>(표지 · 만든 이야기 · 여섯 갈래 바로가기)이 열립니다.</li>
             <li><code>만든 이야기</code> — 오른쪽 위 빨간 테두리 단추로 이 페이지를 열고, <code>Esc</code> 키를 누르거나 아래 <code>Home — 창세기 1장으로</code> 단추를 누르면 창세기 1장으로 나옵니다.</li>
             <li>찾아보기 순서 — 왼쪽에서 단락을 고르고(①), 머리의 연결 표를 펼쳐 보고(②), 바로가기 바 여섯 칸으로 훑고(③), 키아즘 도표로 구조를 잡은 뒤(④), 설교자 문장에서 설교 개요와 그리스도 연결을 뽑습니다.</li>
@@ -4259,5 +4282,118 @@ document.addEventListener('DOMContentLoaded', init);
 })();
 </script>
 
+
+<script id="jhbackJS">
+/* ══ 2026-11-21: 상단 ◀ 전 · 후 ▶ — 서고 안 화면 기록(내부 스택) + 서고 간 이동 ══ */
+(function(){
+  'use strict';
+  var B=document.getElementById('jhBack'), F=document.getElementById('jhFwd');
+  if(!B||!F) return;
+  var stack=[], idx=-1, restoring=false, ready=false, lastPushAt=0, A=null, graceUntil=0;
+  function tn(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+  function sg(s){ return s?(s.kind+'|'+(s.id==null?'':s.id)):''; }
+  function sy(){ return window.scrollY||window.pageYOffset||0; }
+  function paint(){
+    var canB=ready&&(idx>0||history.length>1);
+    var canF=ready&&(idx>=0&&idx<stack.length-1);
+    B.disabled=!canB; F.disabled=!canF;
+  }
+  function push(st){
+    if(restoring||!A) return;
+    lastPushAt=tn();
+    if(!st) st={kind:'',id:''};
+    if(st.scroll==null) st.scroll=0;
+    if(idx>=0&&sg(stack[idx])===sg(st)){ stack[idx].scroll=st.scroll; paint(); return; }
+    /* 첫 화면이 늦게 그려진 경우(깊은 주소로 열었을 때) — 새 기록을 쌓지 않고 첫 칸을 바꾼다 */
+    if(idx===0&&stack.length===1&&tn()<graceUntil){ stack[0]=st; paint(); return; }
+    stack=stack.slice(0,idx+1); stack.push(st); idx=stack.length-1;
+    if(stack.length>80){ stack.shift(); idx--; }
+    paint();
+  }
+  function snap(){ try{ return A?A.state():null; }catch(e){ return null; } }
+  var tick=false;
+  function sync(){
+    if(restoring||idx<0) return;
+    if(tn()-lastPushAt<400) return;
+    stack[idx].scroll=sy();
+  }
+  window.addEventListener('scroll',function(){
+    if(tick) return; tick=true;
+    var rq=window.requestAnimationFrame||function(f){ return setTimeout(f,16); };
+    rq(function(){ tick=false; sync(); });
+  },{passive:true});
+  function apply(){
+    var st=stack[idx]; if(!st||!A) return;
+    var y=st.scroll||0;
+    restoring=true;
+    try{ A.restore(st); }catch(e){}
+    setTimeout(function(){ try{ window.scrollTo(0,y); }catch(e){} },0);
+    setTimeout(function(){ try{ window.scrollTo(0,y); }catch(e){} restoring=false; paint(); },90);
+  }
+  function go(d){
+    if(!ready) return;
+    if(idx>=0) stack[idx].scroll=sy();
+    if(d<0){
+      if(idx>0){ idx--; apply(); }
+      else if(history.length>1){ try{ history.back(); }catch(e){} }
+    } else if(idx>=0&&idx<stack.length-1){ idx++; apply(); }
+    paint();
+  }
+  B.addEventListener('click',function(e){ e.preventDefault(); go(-1); });
+  F.addEventListener('click',function(e){ e.preventDefault(); go(1); });
+  window.addEventListener('pageshow',function(){ paint(); });
+  window.JHNav={
+    adapter:function(a){ A=a; },
+    hook:function(names){
+      (names||[]).forEach(function(n){
+        var o=window[n];
+        if(typeof o!=='function'||o.__jh) return;
+        var w=function(){
+          if(!restoring&&idx>=0) stack[idx].scroll=sy();
+          var r=o.apply(this,arguments);
+          if(!restoring) push(snap());
+          return r;
+        };
+        w.__jh=1; window[n]=w;
+      });
+    },
+    leave:function(){ if(restoring||idx<0) return; stack[idx].scroll=sy(); },
+    enter:function(){ if(restoring) return; push(snap()); },
+    enterSoon:function(){ setTimeout(function(){ if(!restoring) push(snap()); },0); },
+    start:function(){
+      function arm(){
+        graceUntil=tn()+1600;
+        setTimeout(function(){
+          if(idx<0) push(snap()||{kind:'',id:'',scroll:0});
+          ready=true; paint();
+        },140);
+      }
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',arm);
+      else arm();
+    }
+  };
+})();
+</script>
+
+<script id="jhbackPage">
+/* 구약1. 모세오경 — 표지·장·만든 이야기 화면을 기록한다 */
+(function(){
+  if(!window.JHNav) return;
+  JHNav.adapter({
+    state:function(){
+      if(typeof S!=='undefined'&&S.story) return {kind:'story',id:''};
+      if(typeof S!=='undefined'&&S.cur) return {kind:'entry',id:S.cur};
+      return {kind:'cover',id:''};
+    },
+    restore:function(st){
+      if(st.kind==='entry'){ showEntry(st.id,false); }
+      else if(st.kind==='story'){ if(typeof showStory==='function') showStory(); else showCover(); }
+      else { showCover(); }
+    }
+  });
+  JHNav.hook(['showEntry','showCover','showStory']);
+  JHNav.start();
+})();
+</script>
 </body>
 </html>

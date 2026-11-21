@@ -621,6 +621,28 @@ html{--tbhx:var(--tbh)}
 @media (min-width:1025px){aside{top:var(--tbhx);height:calc(100vh - var(--tbhx))}}
 .idxsec h2,.idxsec h3.auname{scroll-margin-top:calc(var(--tbhx) + 14px)}
 </style>
+
+<style id="jhbackCSS">
+/* ══ 상단 ◀ 전 · 후 ▶ (2026-11-21) — 서고 안에서 옮겨 온 화면을 되돌아가고 다시 앞으로 ══ */
+.jh-nav{flex:0 0 auto;display:inline-flex;align-items:stretch;min-width:0;height:34px;
+  border:1px solid rgba(255,255,255,.62);border-radius:999px;overflow:hidden;
+  background:rgba(255,255,255,.16);box-shadow:0 2px 8px rgba(0,0,0,.16)}
+.jh-nav>button{-webkit-appearance:none;appearance:none;margin:0;padding:0 10px;min-width:0;
+  display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;
+  color:#fff;font-family:inherit;font-size:.82em;font-weight:800;letter-spacing:-.01em;line-height:1;
+  white-space:nowrap;cursor:pointer;transition:background .15s ease,opacity .15s ease}
+.jh-nav>button+button{border-left:1px solid rgba(255,255,255,.42)}
+.jh-nav>button:hover:not(:disabled){background:rgba(255,255,255,.24)}
+.jh-nav>button:active:not(:disabled){background:rgba(255,255,255,.34)}
+.jh-nav>button:focus-visible{outline:2px solid #ffe08a;outline-offset:-3px}
+.jh-nav>button:disabled{opacity:.35;cursor:default}
+@media (max-width:1120px){.jh-nav{height:32px}.jh-nav>button{font-size:.78em;padding:0 8px}}
+@media (max-width:767px){.jh-nav{height:32px}.jh-nav>button{font-size:.76em;padding:0 7px}}
+@media (max-width:430px){.jh-nav{height:30px}.jh-nav>button{font-size:.72em;padding:0 5px}}
+/* '만든 이야기' 앞에 바짝 — 넓은 화면에서만 (좁은 화면 규칙은 건드리지 않는다) */
+@media (min-width:901px){.topbar .jh-nav+.storybtn{margin-left:10px}}
+@media print{.jh-nav{display:none!important}}
+</style>
 </head>
 <body data-page="index" data-mb="37.6">
 <a class="skip" href="#view">본문으로</a>
@@ -653,7 +675,7 @@ html{--tbhx:var(--tbh)}
 <a class="homebtn" href="./" title="Home — 공유 자료실(서고 대문)으로 올라갑니다" aria-label="Home — 한 단계 위 공유 자료실(서고 대문)로">HOME</a>
 <span class="tb-spacer"></span>
 <button type="button" class="srchbtn" id="srchBtn" aria-label="검색 열기">🔍</button>
-<nav class="tblinks" aria-label="주요 목차"><a href="#/idx/issues">통권별</a><a href="#/idx/topics">주제별</a><a href="#/idx/all">전체 목록</a><a href="#/story">만든 이야기</a></nav>
+<div class="jh-nav" role="group" aria-label="이전 단계·다음 단계로 이동"><button type="button" id="jhBack" title="이전 단계" aria-label="이전 단계">&#9664; 전</button><button type="button" id="jhFwd" title="다음 단계" aria-label="다음 단계">후 &#9654;</button></div><nav class="tblinks" aria-label="주요 목차"><a href="#/idx/issues">통권별</a><a href="#/idx/topics">주제별</a><a href="#/idx/all">전체 목록</a><a href="#/story">만든 이야기</a></nav>
 <a class="upbtn" id="upBtn" href="#/" aria-label="UP — 이 서고 표지로" title="UP — 이 서고 표지로">UP</a><script>/* 상단 바 실제 높이 → --tbhx (UP 단추가 둘째 줄로 내려가도 sticky 목차·scroll-margin 이 어긋나지 않게. 레이아웃 값에는 쓰지 않아 되먹임 없음) */(function(){function s(){var t=document.querySelector(".topbar");if(t)document.documentElement.style.setProperty("--tbhx",Math.round(t.getBoundingClientRect().height)+"px");}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",s);}else{s();}window.addEventListener("resize",s);window.addEventListener("load",s);})();</script>
 <nav class="pager" id="pager" aria-label="이전·다음 글" style="display:none"><a class="pgprev" id="pgPrev" href="#/"><span class="pt">← 이전 글</span><span class="pa">←</span></a><a class="pgnext" id="pgNext" href="#/"><span class="pt">다음 글 →</span><span class="pa">→</span></a></nav>
 </div></header>
@@ -1294,7 +1316,7 @@ function resetDrawerTop(){
       '<section class="story-sec"><h2 id="howmade">만든 방식</h2>' +
       '<p>구글 드라이브 <code>신학지남</code> 폴더의 <code>.md</code> 원문 4,916개를 글마다 서지 정보(연도·통권·제목·저자)와 함께 담았습니다. 파일 이름에서 연도·통권·제목·저자를 뽑아 붙이고, 원문의 위키링크는 실제 링크로 바꾸었습니다.</p>' +
       '<p>글 본문은 손대지 않은 채 <b>100편 안팎씩 묶어 압축</b>해 파일 안에 넣었습니다. 글을 열 때 그 묶음만 그 자리에서 풀어 보여 주므로, 4,916편 전부를 담아도 파일 하나로 가볍게 열립니다. 외부 파일이나 인터넷을 부르는 일은 없습니다.</p></section>' +
-      '<section class="story-sec" id="manual"><h2 id="manual-h">사용법 — 일곱 가지만 익히면 됩니다</h2><div class="mgrid">' +
+      '<section class="story-sec" id="manual"><h2 id="manual-h">사용법 — 여덟 가지만 익히면 됩니다</h2><div class="mgrid">' +
       '<div class="mcard"><span class="mnum">1</span><div><b>찾기</b><p>왼쪽(휴대폰은 ☰ 목차) 검색창에 제목·저자·연도·통권을 넣습니다. 띄어쓰기로 여러 낱말을 함께 찾습니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">2</span><div><b>본문에서 찾기</b><p>글 위쪽 ‘이 글에서 낱말 찾기’에 넣으면 본문의 그 낱말이 모두 표시되고 첫 자리로 내려갑니다. ↑·↓로 다음 자리를 봅니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">3</span><div><b>☰ 목차 서랍</b><p>태블릿·휴대폰에서 위쪽 <b>☰ 목차</b>를 누르면 목차가 서랍으로 열립니다. 글을 고르면 서랍이 닫히고 그 글이 열립니다.</p></div></div>' +
@@ -1302,6 +1324,8 @@ function resetDrawerTop(){
       '<div class="mcard"><span class="mnum">5</span><div><b>저자·이웃 글</b><p>글에서 저자를 누르면 저자별 인덱스의 그 이름으로, 통권을 누르면 그 호로 갑니다. 목차 창에는 같은 호·같은 저자의 글이 함께 뜹니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">6</span><div><b>세 기기</b><p>PC는 좌우 2단이고 목차창·본문 양쪽에 <b>↑·↓</b> 알약 단추가 하나씩 있습니다. 태블릿·휴대폰은 한 단에 본문 쪽 단추 하나뿐입니다. 넓은 표는 표 안에서만 옆으로 넘어갑니다.</p></div></div>' +
       '<div class="mcard"><span class="mnum">7</span><div><b>오프라인 보관</b><p>이 파일 하나를 PC·휴대폰에 두고 누르면 끝입니다. 인터넷 없이 그대로 보입니다.</p></div></div>' +
+      '<div class="mcard"><span class="mnum">8</span><div><b>상단 단추 — HOME · UP · ◀ 전 · 후 ▶</b><p>왼쪽 <b>HOME</b>은 한 단계 위 <b>공유 자료실(서고 대문)</b>으로, 맨 오른쪽 <b>UP</b>은 이 서고 표지로 돌아갑니다. 그 왼쪽 <b>◀ 전</b> · <b>후 ▶</b>는 글·인덱스·만든 이야기 사이를 옮겨 다닌 자리를 기억해, <b>◀ 전</b>으로 직전 화면과 그 스크롤 자리로 되돌아가고 <b>후 ▶</b>로 다시 앞으로 나아갑니다(갈 기록이 없으면 흐리게 꺼짐).</p></div></div>' +
+
       '</div></section></div>';
     document.title = '만든 이야기 · 신학지남서고';
   }
@@ -1811,6 +1835,119 @@ function resetDrawerTop(){
 
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+})();
+</script>
+
+<script id="jhbackJS">
+/* ══ 2026-11-21: 상단 ◀ 전 · 후 ▶ — 서고 안 화면 기록(내부 스택) + 서고 간 이동 ══ */
+(function(){
+  'use strict';
+  var B=document.getElementById('jhBack'), F=document.getElementById('jhFwd');
+  if(!B||!F) return;
+  var stack=[], idx=-1, restoring=false, ready=false, lastPushAt=0, A=null, graceUntil=0;
+  function tn(){ return (window.performance&&performance.now)?performance.now():Date.now(); }
+  function sg(s){ return s?(s.kind+'|'+(s.id==null?'':s.id)):''; }
+  function sy(){ return window.scrollY||window.pageYOffset||0; }
+  function paint(){
+    var canB=ready&&(idx>0||history.length>1);
+    var canF=ready&&(idx>=0&&idx<stack.length-1);
+    B.disabled=!canB; F.disabled=!canF;
+  }
+  function push(st){
+    if(restoring||!A) return;
+    lastPushAt=tn();
+    if(!st) st={kind:'',id:''};
+    if(st.scroll==null) st.scroll=0;
+    if(idx>=0&&sg(stack[idx])===sg(st)){ stack[idx].scroll=st.scroll; paint(); return; }
+    /* 첫 화면이 늦게 그려진 경우(깊은 주소로 열었을 때) — 새 기록을 쌓지 않고 첫 칸을 바꾼다 */
+    if(idx===0&&stack.length===1&&tn()<graceUntil){ stack[0]=st; paint(); return; }
+    stack=stack.slice(0,idx+1); stack.push(st); idx=stack.length-1;
+    if(stack.length>80){ stack.shift(); idx--; }
+    paint();
+  }
+  function snap(){ try{ return A?A.state():null; }catch(e){ return null; } }
+  var tick=false;
+  function sync(){
+    if(restoring||idx<0) return;
+    if(tn()-lastPushAt<400) return;
+    stack[idx].scroll=sy();
+  }
+  window.addEventListener('scroll',function(){
+    if(tick) return; tick=true;
+    var rq=window.requestAnimationFrame||function(f){ return setTimeout(f,16); };
+    rq(function(){ tick=false; sync(); });
+  },{passive:true});
+  function apply(){
+    var st=stack[idx]; if(!st||!A) return;
+    var y=st.scroll||0;
+    restoring=true;
+    try{ A.restore(st); }catch(e){}
+    setTimeout(function(){ try{ window.scrollTo(0,y); }catch(e){} },0);
+    setTimeout(function(){ try{ window.scrollTo(0,y); }catch(e){} restoring=false; paint(); },90);
+  }
+  function go(d){
+    if(!ready) return;
+    if(idx>=0) stack[idx].scroll=sy();
+    if(d<0){
+      if(idx>0){ idx--; apply(); }
+      else if(history.length>1){ try{ history.back(); }catch(e){} }
+    } else if(idx>=0&&idx<stack.length-1){ idx++; apply(); }
+    paint();
+  }
+  B.addEventListener('click',function(e){ e.preventDefault(); go(-1); });
+  F.addEventListener('click',function(e){ e.preventDefault(); go(1); });
+  window.addEventListener('pageshow',function(){ paint(); });
+  window.JHNav={
+    adapter:function(a){ A=a; },
+    hook:function(names){
+      (names||[]).forEach(function(n){
+        var o=window[n];
+        if(typeof o!=='function'||o.__jh) return;
+        var w=function(){
+          if(!restoring&&idx>=0) stack[idx].scroll=sy();
+          var r=o.apply(this,arguments);
+          if(!restoring) push(snap());
+          return r;
+        };
+        w.__jh=1; window[n]=w;
+      });
+    },
+    leave:function(){ if(restoring||idx<0) return; stack[idx].scroll=sy(); },
+    enter:function(){ if(restoring) return; push(snap()); },
+    enterSoon:function(){ setTimeout(function(){ if(!restoring) push(snap()); },0); },
+    start:function(){
+      function arm(){
+        graceUntil=tn()+1600;
+        setTimeout(function(){
+          if(idx<0) push(snap()||{kind:'',id:'',scroll:0});
+          ready=true; paint();
+        },140);
+      }
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',arm);
+      else arm();
+    }
+  };
+})();
+</script>
+
+<script id="jhbackPage">
+/* 신학지남 — 해시 경로(#/ · #/a/12 · #/idx/… · #/story)가 곧 화면이다 */
+(function(){
+  if(!window.JHNav) return;
+  var D=null;
+  JHNav.adapter({
+    state:function(){ return {kind:'hash',id:(location.hash||'#/')}; },
+    restore:function(st){
+      var h=st.id||'#/';
+      try{ history.replaceState(null,'',h); }catch(e){}
+      try{ window.dispatchEvent(new Event('hashchange')); }catch(e){}
+    }
+  });
+  window.addEventListener('hashchange',function(){
+    if(D) JHNav.enterSoon();
+  });
+  D=1;
+  JHNav.start();
 })();
 </script>
 </body>
