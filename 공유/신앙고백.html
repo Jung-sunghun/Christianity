@@ -2532,7 +2532,7 @@ function sermonHTML(tk,dk,solo){
     s.qna.forEach(function(q,i){
       h.push('<div class="qa-item"><div class="qa-q"><span class="qa-n">Q'+(i+1)+'</span>'+esc(q.q)+'</div>');
       h.push('<div class="qa-a"><b>핵심 나눔 가이드</b> — '+esc(q.guide)+'</div>');
-      if(q.verse) h.push(WM[q.verse]!=null?wvChipHTML(q.verse):'<span class="qa-v">함께 읽을 말씀 · '+esc(q.verse)+'</span>');
+      if(q.verse) h.push((WM[q.verse]!=null&&(dk==='child'||dk==='child_kid'))?wvChipHTML(q.verse):'<span class="qa-v">함께 읽을 말씀 · '+esc(q.verse)+'</span>');
       h.push('</div>');
     });
     h.push('</div>');
