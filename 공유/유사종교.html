@@ -65,23 +65,22 @@ h1,h2,h3,h4,p,ul,ol,table{margin:0;padding:0}
 .navbtn{display:none;flex:none;height:58px;padding:0 18px;border-radius:11px;border:1px solid #fff;
   background:#f4f7fa;color:var(--navy);font-size:.96em;font-weight:800;white-space:nowrap}
 
-/* 상위 서고·첫 화면으로 올라가는 단추 */
-.tb-up{display:flex;align-items:center;gap:8px;flex:none}
-.upbtn{display:inline-flex;align-items:center;justify-content:center;height:58px;padding:0 16px;
-  border-radius:11px;border:1px solid #c9d8e6;background:#eaf1f8;color:var(--navy);
-  font-size:.92em;font-weight:800;white-space:nowrap;text-decoration:none;
+/* 오른쪽 끝: 이 서고의 첫 페이지(표지)로 */
+.coverbtn{display:inline-flex;align-items:center;justify-content:center;flex:none;height:58px;padding:0 18px;
+  border-radius:11px;border:2px solid #b78a2e;background:linear-gradient(180deg,#fdf3d8,#f2dfa8);
+  color:#5a3f06;font-size:.94em;font-weight:800;white-space:nowrap;
   transition:background .15s ease,border-color .15s ease,transform .15s ease}
-.upbtn:hover{background:#fff;border-color:#93b1cb;transform:translateY(-1px)}
-.upbtn:active{transform:translateY(0)}
-.upbtn:focus-visible{outline:3px solid #ffd9c0;outline-offset:2px}
+.coverbtn:hover{background:linear-gradient(180deg,#fff8e4,#f7e8bd);border-color:#9d7420;transform:translateY(-1px)}
+.coverbtn:active{transform:translateY(0)}
+.coverbtn:focus-visible{outline:3px solid #ffd9c0;outline-offset:2px}
+a.homefab{text-decoration:none}
 @media (max-width:767px){
-  .tb-up{gap:5px}
-  .upbtn{height:44px;font-size:.8em;padding:0 9px;border-radius:9px}
-  .upbtn .lbl-full{display:none}
-  .upbtn .lbl-short{display:inline}
+  .coverbtn{height:44px;font-size:.8em;padding:0 10px;border-radius:9px}
+  .coverbtn .lbl-full{display:none}
+  .coverbtn .lbl-short{display:inline}
 }
 @media (max-width:430px){
-  .upbtn{height:42px;font-size:.76em;padding:0 8px}
+  .coverbtn{height:42px;font-size:.78em;padding:0 9px}
 }
 
 /* 검색 결과 이동 바 — 상단 바 바로 아래 */
@@ -746,7 +745,7 @@ main{padding-bottom:150px}
 
 <header class="topbar">
   <div class="tb-row">
-    <button class="homefab" id="homeBtn" aria-label="표지로">HOME</button>
+    <a class="homefab" id="homeBtn" href="./" aria-label="정성헌 목사 서고 대문으로" title="정성헌 목사 서고 대문으로">HOME</a>
     <div class="tbrand">
       <b>유사종교서고</b>
       <span>반기독교·꾸란·유사종교 논조와 정통 교리 대조</span>
@@ -756,10 +755,7 @@ main{padding-bottom:150px}
       <button type="submit">찾기</button>
     </form>
     <div class="tb-actions">
-      <div class="tb-up">
-        <a class="upbtn" href="./" title="정성헌 목사 서고 대문으로"><span class="lbl-full">← 정성헌 목사 서고</span><span class="lbl-short">← 서고</span></a>
-        <a class="upbtn" href="../" title="첫 화면으로"><span class="lbl-full">🏠 첫 화면</span><span class="lbl-short">🏠</span></a>
-      </div>
+      <button class="coverbtn" id="coverBtn" aria-label="이 서고의 첫 페이지로" title="이 서고의 첫 페이지로"><span class="lbl-full">📖 첫 페이지</span><span class="lbl-short">📖</span></button>
       <button class="navbtn" id="navBtn" aria-label="목차 열기"><span class="lbl-full">☰ 목차</span><span class="lbl-short">☰</span></button>
       <button class="storybtn" id="storyBtn"><span class="lbl-full">만든 이야기</span><span class="lbl-short">이야기</span></button>
     </div>
@@ -3110,7 +3106,7 @@ function resetDrawerTop(){
   function bind() {
     if (BOUND) return; BOUND = true;
     setTb();
-    $('#homeBtn').addEventListener('click', function () { clearSearch(); showCover(); });
+    $('#coverBtn').addEventListener('click', function () { clearSearch(); showCover(); });
     $('#storyBtn').addEventListener('click', function () { closeDrawer(); show('story'); window.scrollTo({ top: 0, behavior: 'auto' }); });
     $('#navBtn').addEventListener('click', openDrawer);
     $('#drawerClose').addEventListener('click', closeDrawer);
